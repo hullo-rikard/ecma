@@ -1,0 +1,55 @@
+main {
+  width: 80vw;
+  height: 50vw;
+  margin: 5em auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+main #event_img {
+  min-width: 40vw;
+  overflow: hidden;
+  background-image: url("//www.onetheevent.org/wp-content/uploads/2020/06/Concert-crowd.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+main #info_section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-left: 2.5em;
+  padding-right: 1.5em;
+  overflow: scroll;
+}
+
+main #info_section #info_top {
+  border-top: 2px solid #0759B0;
+  border-bottom: 2px solid #0759B0;
+}
+
+main #info_section #info_top h1 {
+  color: #043263;
+}
+
+main #info_section #info p {
+  text-align: justify;
+}
+
+main #info_section #tickets button {
+  padding: 0.2em 0.5em;
+  font-size: 1.2em;
+  border: none;
+  border-radius: 20px;
+  background-color: #0A79F0;
+}
+/*# sourceMappingURL=event.css.map */
