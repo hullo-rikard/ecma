@@ -1,0 +1,35 @@
+$color1: #FFF;
+$color2: #000;
+$color3: #043263;
+$color4: #0A79F0;
+$color5: #0752A3;
+$color6: #0759B0;
+$color7: #06458A;
+
+.wrapper_all{
+    //margin: 30px 0 80px 0;
+
+    .display_div {
+        position: fixed;
+        //float: left;   
+        //overflow: auto;  
+        margin: 39px 0 0 0;   
+        height: 100%;
+        width: 50%;
+        background-image: url("https://cykelrundan.se/wp-content/uploads/2017/03/Concert-Event-14-1024x684.jpg");        
+    }
+    .text_div{
+        //position: static;
+        margin-top: 20px; 
+        float: right;
+        height: auto;
+        width: 50%;
+        background-color: $color4;
+    }
+    h1{
+        padding: 20px;
+    }
+    p{
+        padding: 20px;
+    }
+}
