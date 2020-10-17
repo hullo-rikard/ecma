@@ -21,7 +21,7 @@ function addHeader() {
     
     let event = document.createElement('a')
     event.innerHTML = 'Event'
-    event.href = 'event.html'
+    event.href = 'events.html'
     
     let about = document.createElement('a')
     about.innerHTML = 'Om oss'
