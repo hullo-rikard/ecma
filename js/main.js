@@ -10,22 +10,22 @@ function addHeader() {
     let header = document.createElement('header')
     
     let icon = document.createElement('embed')
-    icon.src = '/resources/img/acme-events.svg'
+    icon.src = 'img/acme-events.svg'
     let iconDiv = document.createElement('div')
     iconDiv.id = 'head-icon-div'
     iconDiv.appendChild(icon)
 
     let start = document.createElement('a')
     start.innerHTML = 'Start'
-    start.href = '/../index.html'
+    start.href = 'index.html'
     
     let event = document.createElement('a')
     event.innerHTML = 'Event'
-    event.href = '/pages/event.html'
+    event.href = 'event.html'
     
     let about = document.createElement('a')
     about.innerHTML = 'Om oss'
-    about.href = '/pages/omoss.html'
+    about.href = 'omoss.html'
 
     let navDiv = document.createElement('div')
     navDiv.id = 'nav-div'
@@ -46,7 +46,7 @@ function addFooter() {
     let footer = document.createElement('footer')
 
     let icon = document.createElement('embed')
-    icon.src = '/resources/img/acme-events2.svg'
+    icon.src = 'img/acme-events2.svg'
     let iconDiv =  document.createElement('div')
     iconDiv.id = 'foot-icon-div'
     iconDiv.appendChild(icon)
@@ -67,7 +67,7 @@ function addFooter() {
     
     let admin = document.createElement('a')
     admin.innerHTML = 'Admin'
-    admin.href = '/pages/admin.html'
+    admin.href = 'admin.html'
     let adminDiv = document.createElement('div')
     adminDiv.id = 'admin-div'
     adminDiv.appendChild(admin)
