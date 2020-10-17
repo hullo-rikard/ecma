@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AACA,AAAA,MAAM,CAAC;EACH,QAAQ,EAAE,QAAQ;CACrB",
+    "sources": [
+        "admin.scss"
+    ],
+    "names": [],
+    "file": "admin.css"
+}
