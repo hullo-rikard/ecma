@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', function(){
     addHeader()
     addFooter()
 })
+
 function addHeader() {
     let body = document.getElementsByTagName('body')[0]
     
