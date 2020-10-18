@@ -10,10 +10,11 @@ document.addEventListener("DOMContentLoaded", function(e) {
             "endDatetime": "2020-12-24 21:00:00",
             "tickets": 1,
             "category": "Catering",
-            "image": "https://img.com/img.jpg",
+            "image": 'https://c8.alamy.com/comp/AMDYP5/swedish-christmas-table-or-julbord-with-cheese-baked-bread-beats-aquavit-AMDYP5.jpg',
             "images": [
-                "https://img.com/img1.jpg",
-                "https://img.com/img2.jpg"
+                "https://blogs.studyinsweden.se/wp-content/uploads/2018/12/carolina_romare-swedish_christmas_table_-2418-1440x700.jpg",
+                "https://stockholmtoday.se/wp-content/uploads/2014/11/Christmas.jpg",
+                "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQQWdaJTfvUyZzzPPze_Pvrrdn5mcY1YNwP9cB6qgNnUwpp7SNYIEU1eWVt0W0nODOfuF_DxypL9Kge6zUHNMcTA2acLaZ3L7zg4xxq&usqp=CAU&ec=45714079"
             ],
             "members": {
                 "admins": [
@@ -369,15 +370,37 @@ class Event {
         this.admins = event.members.admins;
         this.guests = event.members.guests;
         this.guestbook = event.guestbook;
+        this.displayingImg;
+
         this.displayEvent();
     }
     displayEvent() {
         let container = document.getElementsByTagName("main")[0];
-        //// image ////
+        //// images ////
+        let imgContainer = document.createElement("div");
+        imgContainer.className = "imgContainer";
+        container.appendChild(imgContainer);
+        
         let img = document.createElement("div");
         img.className = "eventImg";
-        // img.style.backgroundImage = this.image;
-        container.appendChild(img);
+        img.style.backgroundImage = "url(" + this.image + ")";
+        img.addEventListener("click", e => {
+            this.popupImg(this.image);
+        })
+        imgContainer.appendChild(img);
+
+        let imgBar = document.createElement("div");
+        imgBar.className = "imgBar";
+        imgContainer.appendChild(imgBar);
+        for (let img of this.images) {
+            let thumb = document.createElement("div");
+            thumb.style.backgroundImage = "url(" + img + ")";
+            thumb.className = "thumb";
+            imgBar.appendChild(thumb);
+            console.log(thumb);
+        }
+
+        
         //// info containers////
         let infoSection = document.createElement("div");
         container.appendChild(infoSection);
@@ -427,5 +450,23 @@ class Event {
 
         }
         
+    }
+    popupImg(url) {
+        let bg = document.createElement("div");
+        bg.className = "popupBG";
+        document.getElementsByTagName("body")[0].appendChild(bg);
+
+        let imgContainer = document.createElement("div");
+        bg.appendChild(imgContainer);
+
+        let image = document.createElement("img");
+        image.src = url;
+        image.className = "popupImg";
+        imgContainer.appendChild(image);
+
+        bg.addEventListener("click", function(e) {
+            this.remove();
+        })
+        console.log("popup");
     }
 }
