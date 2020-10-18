@@ -67,9 +67,10 @@ function showAdmins(eventID){
 }
 
 function fillInputs(thisevent) {
-    let allInputs = document.querySelectorAll('input:not([type=file]),select')
+    let allInputs = document.querySelectorAll('input:not([type=file]), select')
     allInputs.forEach(element => {
         element.value = thisevent[element.name]
     })
+    //TODO: handle textarea
     //TODO: handle image
 }
