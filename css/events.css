@@ -61,6 +61,10 @@
   width: 100%;
 }
 
+.filterChoice {
+  font-weight: bold;
+}
+
 .filterChoice:hover {
   cursor: pointer;
 }

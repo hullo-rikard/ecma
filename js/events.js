@@ -46,11 +46,11 @@ document.addEventListener('DOMContentLoaded', async function(){
 
     sort.addEventListener('change', function(){
         let dateRadio = document.getElementById('date')
-        
-        while (upcomingEventsDiv.childNodes.length > 0) {
+
+        while (upcomingEventsDiv.childNodes.length) {
             upcomingEventsDiv.removeChild(upcomingEventsDiv.lastChild);
         }
-        while (pastEventsDiv.childNodes.length > 0) {
+        while (pastEventsDiv.childNodes.length) {
             pastEventsDiv.removeChild(pastEventsDiv.lastChild);
         }
 
@@ -66,6 +66,32 @@ document.addEventListener('DOMContentLoaded', async function(){
             addEvents(upcomingEvents,upcomingEventsDiv)
             addEvents(pastEvents,pastEventsDiv)
         }
+    })
+
+    let filter = document.getElementById('filter')
+    let filteredCat = []
+    filter.addEventListener('click', function(e){
+        if (!e.target.classList.contains('filterChoice')) {
+            return
+        }
+
+        if (!filteredCat.includes(e.target.innerHTML)) {
+            e.target.classList.add('filtered')
+            filteredCat.push(e.target.innerHTML)
+        }
+        else {
+            e.target.classList.remove('filtered')
+            filteredCat.splice(filteredCat.indexOf(e.target.innerHTML), 1)
+        }
+
+        while (upcomingEventsDiv.childNodes.length) {
+            upcomingEventsDiv.removeChild(upcomingEventsDiv.lastChild);
+        }
+        while (pastEventsDiv.childNodes.length) {
+            pastEventsDiv.removeChild(pastEventsDiv.lastChild);
+        }
+
+        
     })
 
 })
