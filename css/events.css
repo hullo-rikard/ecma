@@ -37,6 +37,14 @@
   width: 100%;
 }
 
+.filterChoice:hover {
+  cursor: pointer;
+}
+
+.filtered {
+  font-weight: normal !important;
+}
+
 #events {
   width: 100%;
 }
