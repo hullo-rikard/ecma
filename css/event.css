@@ -5,24 +5,27 @@
   background-color: rgba(4, 50, 99, 0.9);
   position: absolute;
   top: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-.popupBG div {
-  width: 100%;
-  height: 100%;
-  padding: 5%;
-}
-
-.popupBG div .popupImg {
-  max-width: 90%;
-  max-height: 90%;
-  margin: 0 auto;
+.popupBG .popupImg {
+  max-height: 92%;
+  max-width: 92%;
 }
 
 main {
-  width: 80vw;
-  height: 50vw;
-  margin: 5em auto;
+  width: 85vw;
+  height: 100vh;
+  margin: 0 auto;
+  padding: 80px 0 100px 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -30,6 +33,9 @@ main {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 main .imgContainer {
@@ -88,8 +94,7 @@ main .infoSection {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  margin-left: 2.5em;
-  padding-right: 1.5em;
+  margin-left: 1.5em;
 }
 
 main .infoSection .infoTop {
@@ -112,6 +117,20 @@ main .infoSection .info {
 main .infoSection .info p {
   margin: 0;
   text-align: justify;
+}
+
+main .infoSection .infoBottom {
+  margin: 0.45em 0 0.1em 0;
+}
+
+main .infoSection .infoBottom p {
+  margin: 0.8em 0;
+  font-weight: 600;
+}
+
+main .infoSection .infoBottom p + p {
+  font-size: 0.8em;
+  font-weight: 300;
 }
 
 main .infoSection .infoBottom button {

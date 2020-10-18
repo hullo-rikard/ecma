@@ -1,0 +1,354 @@
+{
+    "events": [
+      {
+        "id": 1,
+        "name": "Julbord 1",
+        "info": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Eget duis at tellus at urna condimentum mattis. Tincidunt lobortis feugiat vivamus at augue eget arcu dictum. Neque aliquam vestibulum morbi blandit. Cursus sit amet dictum sit. Nec feugiat in fermentum posuere urna nec tincidunt. Tristique senectus et netus et malesuada fames ac turpis egestas. Vitae justo eget magna fermentum iaculis. Sit amet nisl purus in mollis nunc sed. Vel fringilla est ullamcorper eget. Cras sed felis eget velit aliquet sagittis id. Fermentum iaculis eu non diam. Laoreet id donec ultrices tincidunt arcu non. Sed sed risus pretium quam vulputate dignissim suspendisse. <br>Erat nam at lectus urna. Volutpat odio facilisis mauris sit amet massa vitae tortor. Vel risus commodo viverra maecenas accumsan. Sociis natoque penatibus et magnis dis parturient. Egestas quis ipsum suspendisse ultrices. Ut consequat semper viverra nam libero justo laoreet. Pellentesque diam volutpat commodo sed. Scelerisque eleifend donec pretium vulputate sapien nec sagittis aliquam. Id aliquet risus feugiat in. Phasellus egestas tellus rutrum tellus pellentesque eu tincidunt tortor aliquam. Amet mattis vulputate enim nulla aliquet porttitor lacus luctus accumsan. Sit amet facilisis magna etiam tempor orci eu. Est placerat in egestas erat. Accumsan lacus vel facilisis volutpat est velit. Nam at lectus urna duis convallis. Viverra orci sagittis eu volutpat. Turpis egestas pretium aenean pharetra magna ac placerat vestibulum. Diam quam nulla porttitor massa",
+        "address": "Gatan 1, 12030 Stockholm",
+        "venue": "Huset A",
+        "startDatetime": "2020-12-24 18:00:00",
+        "endDatetime": "2020-12-24 21:00:00",
+        "tickets": 1,
+            "category": "Catering",
+            "image": "https://c8.alamy.com/comp/AMDYP5/swedish-christmas-table-or-julbord-with-cheese-baked-bread-beats-aquavit-AMDYP5.jpg",
+            "images": [
+                "https://blogs.studyinsweden.se/wp-content/uploads/2018/12/carolina_romare-swedish_christmas_table_-2418-1440x700.jpg",
+                "https://stockholmtoday.se/wp-content/uploads/2014/11/Christmas.jpg",
+                "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQQWdaJTfvUyZzzPPze_Pvrrdn5mcY1YNwP9cB6qgNnUwpp7SNYIEU1eWVt0W0nODOfuF_DxypL9Kge6zUHNMcTA2acLaZ3L7zg4xxq&usqp=CAU&ec=45714079"
+            ],
+        "members": {
+            "admins": [
+                {
+                    "username": "admin",
+                    "password": "password"
+                },
+                {
+                    "username": "micke",
+                    "password": "password123"
+                }
+            ],
+            "guests": [
+                {
+                    "name": "Maja",
+                    "email": "maja@maja.com"
+                },
+                {
+                    "name": "Daniel",
+                    "email": "daniel@daniel.com"
+                },
+                {
+                    "name": "Rikard",
+                    "email": "rikard@rikard.com"
+                },
+                {
+                    "name": "Dino",
+                    "email": "dino@dino.com"
+                }
+            ]
+        },
+        "guestbook": [
+            {
+                "namn": "testperson",
+                "message": "tralalla",
+                "datetime": "2020-10-22 11:11:23"
+            },
+            {
+                "namn": "testperson2",
+                "message": "tralallaallala",
+                "datetime": "2020-10-22 11:12:23"
+            }
+        ]
+        
+      },
+      {
+        "id": 2,
+        "name": "Julbord 2",
+        "address": "Gatan 2, 12030 Stockholm",
+        "venue": "Huset B",
+        "startDatetime": "2020-12-23 18:00:00",
+        "endDatetime": "2020-12-23 21:00:00",
+        "tickets": 182,
+        "category": "Catering",
+        "image": "https://img.com/img.jpg",
+        "images": [
+            "https://img.com/img1.jpg",
+            "https://img.com/img2.jpg"
+        ],
+        "members": {
+            "admins": [
+                {
+                    "username": "admin",
+                    "password": "password"
+                },
+                {
+                    "username": "micke",
+                    "password": "password123"
+                }
+            ],
+            "guests": [
+                {
+                    "name": "Maja",
+                    "email": "maja@maja.com"
+                },
+                {
+                    "name": "Daniel",
+                    "email": "daniel@daniel.com"
+                },
+                {
+                    "name": "Rikard",
+                    "email": "rikard@rikard.com"
+                },
+                {
+                    "name": "Dino",
+                    "email": "dino@dino.com"
+                }
+            ]
+        },
+        "guestbook": [
+            {
+                "namn": "testperson",
+                "message": "tralalla",
+                "datetime": "2020-10-22 11:11:23"
+            },
+            {
+                "namn": "testperson2",
+                "message": "tralallaallala",
+                "datetime": "2020-10-22 11:12:23"
+            }
+        ]
+        
+      },
+      {
+        "id": 3,
+        "name": "Julbord 3",
+        "address": "Gatan 3, 12030 Stockholm",
+        "venue": "Huset C",
+        "startDatetime": "2020-12-22 18:00:00",
+        "endDatetime": "2020-12-22 21:00:00",
+        "tickets": 182,
+        "category": "Catering",
+        "image": "https://img.com/img.jpg",
+        "images": [
+            "https://img.com/img1.jpg",
+            "https://img.com/img2.jpg"
+        ],
+        "members": {
+            "admins": [
+                {
+                    "username": "admin",
+                    "password": "password"
+                },
+                {
+                    "username": "micke",
+                    "password": "password123"
+                }
+            ],
+            "guests": [
+                {
+                    "name": "Maja",
+                    "email": "maja@maja.com"
+                },
+                {
+                    "name": "Daniel",
+                    "email": "daniel@daniel.com"
+                },
+                {
+                    "name": "Rikard",
+                    "email": "rikard@rikard.com"
+                },
+                {
+                    "name": "Dino",
+                    "email": "dino@dino.com"
+                }
+            ]
+        },
+        "guestbook": [
+            {
+                "namn": "testperson",
+                "message": "tralalla",
+                "datetime": "2020-10-22 11:11:23"
+            },
+            {
+                "namn": "testperson2",
+                "message": "tralallaallala",
+                "datetime": "2020-10-22 11:12:23"
+            }
+        ]
+        
+      },
+      {
+        "id": 4,
+        "name": "Julbord 4",
+        "address": "Gatan 4, 12030 Stockholm",
+        "venue": "Huset D",
+        "startDatetime": "2020-12-21 18:00:00",
+        "endDatetime": "2020-12-21 21:00:00",
+        "tickets": 182,
+        "category": "Catering",
+        "image": "https://img.com/img.jpg",
+        "images": [
+            "https://img.com/img1.jpg",
+            "https://img.com/img2.jpg"
+        ],
+        "members": {
+            "admins": [
+                {
+                    "username": "admin",
+                    "password": "password"
+                },
+                {
+                    "username": "micke",
+                    "password": "password123"
+                }
+            ],
+            "guests": [
+                {
+                    "name": "Maja",
+                    "email": "maja@maja.com"
+                },
+                {
+                    "name": "Daniel",
+                    "email": "daniel@daniel.com"
+                },
+                {
+                    "name": "Rikard",
+                    "email": "rikard@rikard.com"
+                },
+                {
+                    "name": "Dino",
+                    "email": "dino@dino.com"
+                }
+            ]
+        },
+        "guestbook": [
+            {
+                "namn": "testperson",
+                "message": "tralalla",
+                "datetime": "2020-10-22 11:11:23"
+            },
+            {
+                "namn": "testperson2",
+                "message": "tralallaallala",
+                "datetime": "2020-10-22 11:12:23"
+            }
+        ]
+        
+      },
+      {
+        "id": 5,
+        "name": "Julbord 5",
+        "address": "Gatan 5, 12030 Stockholm",
+        "venue": "Huset E",
+        "startDatetime": "2020-12-20 18:00:00",
+        "endDatetime": "2020-12-20 21:00:00",
+        "tickets": 182,
+        "category": "Catering",
+        "image": "https://img.com/img.jpg",
+        "images": [
+            "https://img.com/img1.jpg",
+            "https://img.com/img2.jpg"
+        ],
+        "members": {
+            "admins": [
+                {
+                    "username": "admin",
+                    "password": "password"
+                },
+                {
+                    "username": "micke",
+                    "password": "password123"
+                }
+            ],
+            "guests": [
+                {
+                    "name": "Maja",
+                    "email": "maja@maja.com"
+                },
+                {
+                    "name": "Daniel",
+                    "email": "daniel@daniel.com"
+                },
+                {
+                    "name": "Rikard",
+                    "email": "rikard@rikard.com"
+                },
+                {
+                    "name": "Dino",
+                    "email": "dino@dino.com"
+                }
+            ]
+        },
+        "guestbook": [
+            {
+                "namn": "testperson",
+                "message": "tralalla",
+                "datetime": "2020-10-22 11:11:23"
+            },
+            {
+                "namn": "testperson2",
+                "message": "tralallaallala",
+                "datetime": "2020-10-22 11:12:23"
+            }
+        ]
+        
+      },
+      {
+        "id": 6,
+        "name": "Julbord 6",
+        "address": "Gatan 6, 12030 Stockholm",
+        "venue": "Huset F",
+        "startDatetime": "2020-12-19 18:00:00",
+        "endDatetime": "2020-12-19 21:00:00",
+        "tickets": 182,
+        "category": "Catering",
+        "image": "https://img.com/img.jpg",
+        "images": [
+            "https://img.com/img1.jpg",
+            "https://img.com/img2.jpg"
+        ],
+        "members": {
+            "admins": [
+                {
+                    "username": "admin",
+                    "password": "password"
+                },
+                {
+                    "username": "micke",
+                    "password": "password123"
+                }
+            ],
+            "guests": [
+                {
+                    "name": "Maja",
+                    "email": "maja@maja.com"
+                },
+                {
+                    "name": "Daniel",
+                    "email": "daniel@daniel.com"
+                },
+                {
+                    "name": "Rikard",
+                    "email": "rikard@rikard.com"
+                },
+                {
+                    "name": "Dino",
+                    "email": "dino@dino.com"
+                }
+            ]
+        },
+        "guestbook": [
+            {
+                "namn": "testperson",
+                "message": "tralalla",
+                "datetime": "2020-10-22 11:11:23"
+            },
+            {
+                "namn": "testperson2",
+                "message": "tralallaallala",
+                "datetime": "2020-10-22 11:12:23"
+            }
+        ]
+        
+      }
+    ]
+}
