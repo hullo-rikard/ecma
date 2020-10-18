@@ -8,14 +8,15 @@ header {
     margin: 40px 30px;
     text-align: center;
 }
-.column.center {
-    width: 40%;
-    margin: 0px 5%
-}
 .column {
     float: left;
     width: 25%;
-    background-color: red;    
+    padding-bottom: 15px;
+    background-color: red;   
+    &.center {
+        width: 40%;
+        margin: 0px 5%
+    } 
 }
 input {
     width: 80%;
@@ -26,5 +27,18 @@ input {
 h4 {
     span {
         font-size: 12px;
+        font-weight: 500;
+    }
+}
+
+.eventList {
+    div {
+        cursor: pointer;
+        padding: 5px 0px;
+        margin: 5px 10px;
+        overflow: hidden;
+        &:hover {
+            background-color: yellow;
+        }
     }
 }

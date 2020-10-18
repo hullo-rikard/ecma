@@ -7,15 +7,16 @@ header {
   text-align: center;
 }
 
-.column.center {
-  width: 40%;
-  margin: 0px 5%;
-}
-
 .column {
   float: left;
   width: 25%;
+  padding-bottom: 15px;
   background-color: red;
+}
+
+.column.center {
+  width: 40%;
+  margin: 0px 5%;
 }
 
 input {
@@ -27,5 +28,17 @@ input {
 
 h4 span {
   font-size: 12px;
+  font-weight: 500;
+}
+
+.eventList div {
+  cursor: pointer;
+  padding: 5px 0px;
+  margin: 5px 10px;
+  overflow: hidden;
+}
+
+.eventList div:hover {
+  background-color: yellow;
 }
 /*# sourceMappingURL=admin.css.map */
