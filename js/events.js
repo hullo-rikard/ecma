@@ -68,30 +68,32 @@ document.addEventListener('DOMContentLoaded', async function(){
         }
     })
 
+    let eventDivs = document.getElementsByClassName('event')
     let filter = document.getElementById('filter')
-    let filteredCat = []
+    
     filter.addEventListener('click', function(e){
         if (!e.target.classList.contains('filterChoice')) {
             return
         }
 
-        if (!filteredCat.includes(e.target.innerHTML)) {
+        if (!e.target.classList.contains('filtered')) {
             e.target.classList.add('filtered')
-            filteredCat.push(e.target.innerHTML)
+
+            for (let event of eventDivs) {
+                if(event.getAttribute('category') == e.target.id) {
+                    event.classList.add('hidden')
+                }
+            }
         }
         else {
             e.target.classList.remove('filtered')
-            filteredCat.splice(filteredCat.indexOf(e.target.innerHTML), 1)
+            
+            for (let event of eventDivs) {
+                if(event.getAttribute('category') == e.target.id) {
+                    event.classList.remove('hidden')
+                }
+            }
         }
-
-        while (upcomingEventsDiv.childNodes.length) {
-            upcomingEventsDiv.removeChild(upcomingEventsDiv.lastChild);
-        }
-        while (pastEventsDiv.childNodes.length) {
-            pastEventsDiv.removeChild(pastEventsDiv.lastChild);
-        }
-
-        
     })
 
 })
@@ -108,7 +110,8 @@ function addEvents(inputArray, outputDiv) {
     for (let event of inputArray) {
         let outerDiv = document.createElement('div')
         outerDiv.classList.add('event')
-
+        outerDiv.setAttribute('category', event.category)
+        
         let imageDiv = document.createElement('div')
         imageDiv.classList.add('thumbnail')
         let image = document.createElement('img')
@@ -122,7 +125,6 @@ function addEvents(inputArray, outputDiv) {
 
         let address = document.createElement('p')
         address.innerHTML = event.address
-
 
         let date = document.createElement('h3')
         date.innerHTML = event.startDatetime

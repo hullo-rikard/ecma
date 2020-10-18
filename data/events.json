@@ -399,6 +399,120 @@
                     "datetime": "2020-10-22 11:12:23"
                 }
             ]
+        },
+        {
+            "id": 7,
+            "name": "Rock konsert",
+            "address": "Dödsmetalgatan 666, 12030 Stockholm",
+            "venue": "Huset A",
+            "startDatetime": "2021-05-10 19:00:00",
+            "endDatetime": "2021-05-10 23:00:00",
+            "tickets": 1000,
+            "category": "Konsert",
+            "image": "https://img.com/img.jpg",
+            "images": [
+                "https://img.com/img1.jpg",
+                "https://img.com/img2.jpg"
+            ],
+            "members": {
+                "admins": [
+                    {
+                        "username": "admin",
+                        "password": "password"
+                    },
+                    {
+                        "username": "micke",
+                        "password": "password123"
+                    }
+                ],
+                "guests": [
+                    {
+                        "name": "Maja",
+                        "email": "maja@maja.com"
+                    },
+                    {
+                        "name": "Daniel",
+                        "email": "daniel@daniel.com"
+                    },
+                    {
+                        "name": "Rikard",
+                        "email": "rikard@rikard.com"
+                    },
+                    {
+                        "name": "Dino",
+                        "email": "dino@dino.com"
+                    }
+                ]
+            },
+            "guestbook": [
+                {
+                    "namn": "testperson",
+                    "message": "tralalla",
+                    "datetime": "2020-10-22 11:11:23"
+                },
+                {
+                    "namn": "testperson2",
+                    "message": "tralallaallala",
+                    "datetime": "2020-10-22 11:12:23"
+                }
+            ]
+        },
+        {
+            "id": 7,
+            "name": "Bröllop",
+            "address": "Kärleksgatan 20, 12030 Stockholm",
+            "venue": "Huset A",
+            "startDatetime": "2021-06-13 14:00:00",
+            "endDatetime": "2021-06-13 22:00:00",
+            "tickets": 300,
+            "category": "Bröllop",
+            "image": "https://img.com/img.jpg",
+            "images": [
+                "https://img.com/img1.jpg",
+                "https://img.com/img2.jpg"
+            ],
+            "members": {
+                "admins": [
+                    {
+                        "username": "admin",
+                        "password": "password"
+                    },
+                    {
+                        "username": "micke",
+                        "password": "password123"
+                    }
+                ],
+                "guests": [
+                    {
+                        "name": "Maja",
+                        "email": "maja@maja.com"
+                    },
+                    {
+                        "name": "Daniel",
+                        "email": "daniel@daniel.com"
+                    },
+                    {
+                        "name": "Rikard",
+                        "email": "rikard@rikard.com"
+                    },
+                    {
+                        "name": "Dino",
+                        "email": "dino@dino.com"
+                    }
+                ]
+            },
+            "guestbook": [
+                {
+                    "namn": "testperson",
+                    "message": "tralalla",
+                    "datetime": "2020-10-22 11:11:23"
+                },
+                {
+                    "namn": "testperson2",
+                    "message": "tralallaallala",
+                    "datetime": "2020-10-22 11:12:23"
+                }
+            ]
         }
     ]
 }

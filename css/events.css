@@ -112,4 +112,8 @@ h1 {
       -ms-flex-align: center;
           align-items: center;
 }
+
+.hidden {
+  display: none !important;
+}
 /*# sourceMappingURL=events.css.map */
