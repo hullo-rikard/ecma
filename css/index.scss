@@ -12,22 +12,20 @@ $color7: #06458A;
     .display_div {
         position: fixed;
         //float: left;   
-        //overflow: auto;  
         margin: 39px 0 0 0;   
         height: 100%;
         width: 50%;
         //background-image: url("https://cykelrundan.se/wp-content/uploads/2017/03/Concert-Event-14-1024x684.jpg");        
     }
     .text_div{
-        //position: static;
         margin-top: 20px; 
         float: right;
         height: auto;
         width: 50%;
-        background-color: $color4;
+        //background-color: $color4;
     }
     h1{
-        padding: 20px;
+        padding: 20px 0 0 20px;
     }
     p{
         padding: 20px;

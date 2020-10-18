@@ -3,7 +3,6 @@
   margin: 39px 0 0 0;
   height: 100%;
   width: 50%;
-  background-image: url("https://cykelrundan.se/wp-content/uploads/2017/03/Concert-Event-14-1024x684.jpg");
 }
 
 .wrapper_all .text_div {
@@ -11,11 +10,10 @@
   float: right;
   height: auto;
   width: 50%;
-  background-color: #0A79F0;
 }
 
 .wrapper_all h1 {
-  padding: 20px;
+  padding: 20px 0 0 20px;
 }
 
 .wrapper_all p {
