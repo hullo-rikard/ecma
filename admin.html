@@ -12,21 +12,33 @@
 <body>
     <div class="container">
         <div class="column">
-            <h4>Alla event</h4>
+            <h4>Aktuella event</h4>
             <div class="eventList">
+                <!--List all events here-->
+            </div>
+            <h4>Gamla event</h4>
+            <div class="eventListOld">
                 <!--List all events here-->
             </div>
         </div>
         <div class="column center">
             <h4>Skapa nytt event<br><span>(eller klicka på ett event till vänster för att ändra)</span></h4>
             <form>
+                <input type="hidden" name="eventID" id="eventID" value="">
                 <input type="text" name="name" id="name" placeholder="Ange eventets namn">
                 <input type="text" name="address" id="address" placeholder="Ange eventets adress">
                 <input type="text" name="venue" id="venue" placeholder="Ange eventets lokal">
                 <input type="datetime-local" name="startDatetime" id="startDatetime" placeholder="Ange eventets start">
                 <input type="datetime-local" name="endDatetime" id="endDatetime" placeholder="Ange eventets slut">
                 <input type="number" name="tickets" id="tickets" placeholder="Ange eventets antal biljetter">
-                <input type="text" name="category" id="category" placeholder="Ange eventets kategori">
+                <select name="category" id="category">
+                    <option value="">Ange eventets kategori</option>
+                    <option value="Catering">Catering</option>
+                    <option value="Bröllop">Bröllop</option>
+                    <option value="Koncerter">Koncerter</option>
+                    <option value="Festivaler">Festivaler</option>
+                    <option value="Utbildningar">Utbildningar</option>
+                  </select>
                 <input type="file" name="image" id="image" placeholder="Ange eventets huvudbild">
                 <button>Skapa event!</button>
             </form>

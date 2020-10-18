@@ -1,3 +1,21 @@
+//this function should maybe be in the main.js file
+function getEventByEventID(eventsArray, ID){
+    for (var i=0; i < eventsArray.length; i++) {
+        if (eventsArray[i].id === ID) {
+            return eventsArray[i];
+        }
+    }
+}
+
+
+function fillInputs(thisevent) {
+    let allInputs = document.querySelectorAll('input:not([type=file]),select')
+    allInputs.forEach(element => {
+        element.value = thisevent[element.name]
+    })
+    //TODO: handle image
+}
+
 document.addEventListener('DOMContentLoaded', async () => {
 
     const eventListDiv = document.querySelector('.eventList')
@@ -14,12 +32,10 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     showEvents(events, eventListDiv)
 
-
-
-
     eventListDiv.addEventListener('click', (event) => {
         if(event.target.getAttribute('eventid')){
-            console.log('EventID: '+event.target.getAttribute('eventid')+' clicked!')
+            let thisevent = getEventByEventID(events, parseInt(event.target.getAttribute('eventid')) )
+            fillInputs(thisevent)
         }
     })
 })

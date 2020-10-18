@@ -19,7 +19,7 @@ header {
   margin: 0px 5%;
 }
 
-input {
+input, select {
   width: 80%;
   padding: 0px 10px;
   height: 26px;
