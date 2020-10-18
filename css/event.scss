@@ -13,7 +13,7 @@ main {
     display: flex;
     flex-direction: row;
 
-    #event_img {
+    .eventImg {
         // height: 60vw;
         min-width: 40vw;
         overflow: hidden;
@@ -21,7 +21,7 @@ main {
         background-size: cover;
         background-position: center;
     }
-    #info_section {
+    .infoSection {
         display: flex;
         flex-direction: column;
         margin-left: 2.5em;
@@ -29,7 +29,7 @@ main {
 
         overflow: scroll;
 
-        #info_top {
+        .infoTop {
             border-top: 2px solid $color6;
             border-bottom: 2px solid $color6;
             h1 {
@@ -37,18 +37,36 @@ main {
             }
 
         }
-        #info {
+        .info {
             p {
                 text-align: justify;
             }
         }
-        #tickets {
+        .infoBottom {
             button {
+                -webkit-box-sizing: border-box; 
+                   -moz-box-sizing: border-box;
+                    -ms-box-sizing: border-box;
+                        box-sizing: border-box;
                 padding: 0.2em 0.5em;
                 font-size: 1.2em;
                 border: none;
                 border-radius: 20px;
                 background-color: $color4;
+            }
+            button:active {
+                outline: none;
+                border: none;
+                }
+                
+            button:focus {
+                outline: 0;
+            }
+            button.notify {
+                font-size: 0.8em;
+                margin-left: 0.5em;
+                line-height: 1.1em;
+                padding: 0.25em;
             }
         }
     }
