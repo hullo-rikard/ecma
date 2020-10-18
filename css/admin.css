@@ -1,4 +1,32 @@
 header {
   position: relative;
 }
+
+.container {
+  margin: 40px 30px;
+}
+
+
+.column.center {
+  width: 40%;
+  margin: 0px 5%;
+}
+
+.column {
+  float: left;
+  width: 25%;
+  background-color: red;
+  text-align: center;
+}
+
+input {
+  width: 80%;
+  margin-bottom: 5px;
+  height: 28px;
+  padding: 0px 10px;
+}
+
+
+
+
 /*# sourceMappingURL=admin.css.map */

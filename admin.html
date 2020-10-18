@@ -10,8 +10,37 @@
     <title>Admin</title>
 </head>
 <body>
-
-    this is admin page!
-    
+    <div class="container">
+        <div class="column">
+            <h4>Alla event</h4>
+            <div class="eventList">
+                Lista event från json här
+            </div>
+        </div>
+        <div class="column center">
+            <h4>Skapa nytt event</h4>
+            <form>
+                <input type="text" name="name" id="name" placeholder="Ange eventets namn">
+                <input type="text" name="address" id="address" placeholder="Ange eventets adress">
+                <input type="text" name="venue" id="venue" placeholder="Ange eventets lokal">
+                <input type="datetime" name="startDatetime" id="startDatetime" placeholder="Ange eventets start">
+                <input type="datetime" name="endDatetime" id="endDatetime" placeholder="Ange eventets slut">
+                <input type="number" name="tickets" id="tickets" placeholder="Ange eventets antal biljetter">
+                <input type="text" name="category" id="category" placeholder="Ange eventets kategori">
+                <input type="file" name="image" id="image" placeholder="Ange eventets huvudbild">
+                <button>Skapa event!</button>
+            </form>
+        </div>
+        <div class="column">
+            <h4>Guests</h4>
+            <div class="guestsList">
+                Lista guests från json här
+            </div>
+            <h4>Admins</h4>
+            <div class="adminsList">
+                Lista admins från json här
+            </div>
+        </div>
+    </div>
 </body>
 </html>

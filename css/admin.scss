@@ -2,3 +2,18 @@
 header {
     position: relative;
 }
+.container {
+    margin: 40px 30px;
+}
+
+
+//admin specific
+.column.center {
+    width: 40%;
+    margin: 0px 5%
+}
+.column {
+    float: left;
+    width: 25%;
+    background-color: red;    
+}
