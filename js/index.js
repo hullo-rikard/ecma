@@ -1,17 +1,26 @@
 document.addEventListener("DOMContentLoaded", function(e){
-    //addDisplay();
+    addDisplay();
+
+   
 
 })
 
 function addDisplay(){
-    let body = document.getElementsByTagName("body")[0];
+     //-----placeholder-----//
+     let id = 0;
+     let images = ["https://cykelrundan.se/wp-content/uploads/2017/03/Concert-Event-14-1024x684.jpg",
+                   "https://brannovardshus.se/wp-content/uploads/2016/09/julbord.jpg",
+                   "https://tolvstockholm.se/wp-content/uploads/2019/04/tolvkonferensstockholm-1218x420.jpg"]
+     //--------------------//
 
-    let displayDiv = document.createElement("div");
-    displayDiv.classList.add("display_div")
+    id++;
+    if (id > 2){
+        id = 0;
+    }
+    document.getElementById("display").style.backgroundImage = "url(" + images[id] + ")";
+    setInterval("addDisplay", 2000);
+    
 
 
-
-    body.appendChild(displayDiv);
-
-    console.log("hej");
+    console.log("hej " + id);
 }
