@@ -7,15 +7,6 @@ function getEventByEventID(eventsArray, ID){
     }
 }
 
-
-function fillInputs(thisevent) {
-    let allInputs = document.querySelectorAll('input:not([type=file]),select')
-    allInputs.forEach(element => {
-        element.value = thisevent[element.name]
-    })
-    //TODO: handle image
-}
-
 document.addEventListener('DOMContentLoaded', async () => {
 
     const eventListDiv = document.querySelector('.eventList')
@@ -73,4 +64,12 @@ function showGuests(eventID){
 function showAdmins(eventID){
     console.log('showAdmins() called!')
     //Show event admins
+}
+
+function fillInputs(thisevent) {
+    let allInputs = document.querySelectorAll('input:not([type=file]),select')
+    allInputs.forEach(element => {
+        element.value = thisevent[element.name]
+    })
+    //TODO: handle image
 }
