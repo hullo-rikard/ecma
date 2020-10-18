@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', async function(){
 
     let events = await fetchEvents()
 
-    //showEvents(events)
+    showEvents(events, eventListDiv)
 
 })
 
@@ -23,11 +23,12 @@ async function fetchEvents() {
     });
 }
 
-function showEvents(events){
+function showEvents(events, outputElement){
+    console.log(events, outputElement)
     events.forEach(event => {
         let div =  document.createElement('div')
         div.textContent = event.name
-        eventListDiv.appendChild(div)
+        outputElement.appendChild(div)
     })
 }
 
