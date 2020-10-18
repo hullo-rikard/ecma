@@ -16,7 +16,10 @@
             <div id='filter-and-sort'>
                 <div id='sort'>
                     <span>Sortera efter: </span>
-                    <span id='date'>Datum</span>
+                    <input type="radio" id="date" name="sort" value="Datum" checked>
+                    <label for="date">Datum</label>
+                    <input type="radio" id="name" name="sort" value="Namn">
+                    <label for="name">Namn</label>
                 </div>
                 <div id='filter'>
                     <span>Visa kategorier: </span>
@@ -32,12 +35,16 @@
                 </div>
             </div>
             <div id='events'>
-                <div id='upcomingEvents'>
+                <div>
                     <h1>Kommande Event</h1>
+                </div>
+                <div id='upcomingEvents'>
                     <!-- upcoming events loaded here -->
                 </div>
-                <div id='pastEvents'>
+                <div>
                     <h1>Tidigare Event</h1>
+                </div>
+                <div id='pastEvents'>
                     <!-- past events loaded here -->
                 </div>
             </div>

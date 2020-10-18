@@ -26,12 +26,36 @@ $color7: #06458A;
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-    font-weight: bold;
+    // font-weight: bold;
 }
-
 
 #sort {
     width: 100%;
+    display: flex;
+    align-items: center;
+
+    input {
+        margin-left: 8px;
+        visibility: hidden;
+        height: 0;
+        width: 0;
+    }
+
+    input[type="radio"]:checked + label{
+        // background-color: #58ba83;
+        font-weight: bold;
+    }
+
+    label {
+        display: table-cell;
+        vertical-align: middle;
+        text-align: center;
+        cursor: pointer;
+        // background-color: #454545;
+        // color: white;
+        // padding: 5px 10px;
+        border-radius: 3px;
+    }    
 }
 
 #filter {

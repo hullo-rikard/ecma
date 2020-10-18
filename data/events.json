@@ -1,6 +1,63 @@
 {
     "events": [
         {
+            "id": 2,
+            "name": "Julbord 2",
+            "address": "Gatan 2, 12030 Stockholm",
+            "venue": "Huset B",
+            "startDatetime": "2020-12-23 18:00:00",
+            "endDatetime": "2020-12-23 21:00:00",
+            "tickets": 182,
+            "category": "Catering",
+            "image": "https://img.com/img.jpg",
+            "images": [
+                "https://img.com/img1.jpg",
+                "https://img.com/img2.jpg"
+            ],
+            "members": {
+                "admins": [
+                    {
+                        "username": "admin",
+                        "password": "password"
+                    },
+                    {
+                        "username": "micke",
+                        "password": "password123"
+                    }
+                ],
+                "guests": [
+                    {
+                        "name": "Maja",
+                        "email": "maja@maja.com"
+                    },
+                    {
+                        "name": "Daniel",
+                        "email": "daniel@daniel.com"
+                    },
+                    {
+                        "name": "Rikard",
+                        "email": "rikard@rikard.com"
+                    },
+                    {
+                        "name": "Dino",
+                        "email": "dino@dino.com"
+                    }
+                ]
+            },
+            "guestbook": [
+                {
+                    "namn": "testperson",
+                    "message": "tralalla",
+                    "datetime": "2020-10-22 11:11:23"
+                },
+                {
+                    "namn": "testperson2",
+                    "message": "tralallaallala",
+                    "datetime": "2020-10-22 11:12:23"
+                }
+            ]
+        },
+        {
             "id": 1,
             "name": "Julbord 1",
             "address": "Gatan 1, 12030 Stockholm",
@@ -57,63 +114,6 @@
                 }
             ]
             
-        },
-        {
-            "id": 2,
-            "name": "Julbord 2",
-            "address": "Gatan 2, 12030 Stockholm",
-            "venue": "Huset B",
-            "startDatetime": "2020-12-23 18:00:00",
-            "endDatetime": "2020-12-23 21:00:00",
-            "tickets": 182,
-            "category": "Catering",
-            "image": "https://img.com/img.jpg",
-            "images": [
-                "https://img.com/img1.jpg",
-                "https://img.com/img2.jpg"
-            ],
-            "members": {
-                "admins": [
-                    {
-                        "username": "admin",
-                        "password": "password"
-                    },
-                    {
-                        "username": "micke",
-                        "password": "password123"
-                    }
-                ],
-                "guests": [
-                    {
-                        "name": "Maja",
-                        "email": "maja@maja.com"
-                    },
-                    {
-                        "name": "Daniel",
-                        "email": "daniel@daniel.com"
-                    },
-                    {
-                        "name": "Rikard",
-                        "email": "rikard@rikard.com"
-                    },
-                    {
-                        "name": "Dino",
-                        "email": "dino@dino.com"
-                    }
-                ]
-            },
-            "guestbook": [
-                {
-                    "namn": "testperson",
-                    "message": "tralalla",
-                    "datetime": "2020-10-22 11:11:23"
-                },
-                {
-                    "namn": "testperson2",
-                    "message": "tralallaallala",
-                    "datetime": "2020-10-22 11:12:23"
-                }
-            ]
         },
         {
             "id": 3,

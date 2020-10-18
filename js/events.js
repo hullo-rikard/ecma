@@ -21,10 +21,9 @@ document.addEventListener('DOMContentLoaded', async function(){
     let upcomingEventsDiv = document.getElementById('upcomingEvents')
     let pastEventsDiv = document.getElementById('pastEvents')
 
-    let eventsFile = await fetchEvents()
-    let events = eventsFile[Object.keys(eventsFile)[0]]
+    let events = await fetchEvents()
 
-    Object.keys(events).reverse().forEach(function(index) {
+    Object.keys(events).forEach(function(index) {
         let eventDate = new Date(events[index].startDatetime)
         if (eventDate < now) {
             pastEvents.push(events[index])
@@ -33,9 +32,41 @@ document.addEventListener('DOMContentLoaded', async function(){
             upcomingEvents.push(events[index])
         }
     });
+    
+    console.log(events)
+
+    
+
+    upcomingEvents.sort(function(a, b){return new Date(a.startDatetime) - new Date(b.startDatetime)});
+    
     addEvents(upcomingEvents,upcomingEventsDiv)
     addEvents(pastEvents,pastEventsDiv)
 
+    let sort = document.getElementById('sort')
+
+    sort.addEventListener('change', function(){
+        let dateRadio = document.getElementById('date')
+        
+        while (upcomingEventsDiv.childNodes.length > 0) {
+            upcomingEventsDiv.removeChild(upcomingEventsDiv.lastChild);
+        }
+        while (pastEventsDiv.childNodes.length > 0) {
+            pastEventsDiv.removeChild(pastEventsDiv.lastChild);
+        }
+
+        if (dateRadio.checked == true) {
+            upcomingEvents.sort(function(a, b){return new Date(a.startDatetime) - new Date(b.startDatetime)});
+            pastEvents.sort(function(a, b){return new Date(a.startDatetime) - new Date(b.startDatetime)});
+            addEvents(upcomingEvents,upcomingEventsDiv)
+            addEvents(pastEvents,pastEventsDiv)
+        }
+        else {
+            upcomingEvents.sort(function(a, b){return a.name.localeCompare(b.name)});
+            pastEvents.sort(function(a, b){return a.name.localeCompare(b.name)});
+            addEvents(upcomingEvents,upcomingEventsDiv)
+            addEvents(pastEvents,pastEventsDiv)
+        }
+    })
 
 })
 
@@ -44,12 +75,11 @@ async function fetchEvents() {
     let output = await fetch(file)
     .then(response => response.json())
     .then(data => {return data})
-    return output
+    return output.events
 }
 
 function addEvents(inputArray, outputDiv) {
     for (let event of inputArray) {
-        console.log(event)
         let outerDiv = document.createElement('div')
         outerDiv.classList.add('event')
 

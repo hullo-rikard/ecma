@@ -26,11 +26,35 @@
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  font-weight: bold;
 }
 
 #sort {
   width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#sort input {
+  margin-left: 8px;
+  visibility: hidden;
+  height: 0;
+  width: 0;
+}
+
+#sort input[type="radio"]:checked + label {
+  font-weight: bold;
+}
+
+#sort label {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 3px;
 }
 
 #filter {
