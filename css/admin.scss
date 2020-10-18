@@ -4,6 +4,7 @@ header {
 }
 .container {
     margin: 40px 30px;
+    text-align: center;
 }
 
 
@@ -16,4 +17,15 @@ header {
     float: left;
     width: 25%;
     background-color: red;    
+}
+input {
+    width: 80%;
+    padding: 0px 10px;
+    height: 26px;
+    margin-bottom: 6px;
+}
+h4 {
+    span {
+        font-size: 12px;
+    }
 }

@@ -4,8 +4,8 @@ header {
 
 .container {
   margin: 40px 30px;
+  text-align: center;
 }
-
 
 .column.center {
   width: 40%;
@@ -16,17 +16,16 @@ header {
   float: left;
   width: 25%;
   background-color: red;
-  text-align: center;
 }
 
 input {
   width: 80%;
-  margin-bottom: 5px;
-  height: 28px;
   padding: 0px 10px;
+  height: 26px;
+  margin-bottom: 6px;
 }
 
-
-
-
+h4 span {
+  font-size: 12px;
+}
 /*# sourceMappingURL=admin.css.map */
