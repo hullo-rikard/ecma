@@ -14,7 +14,9 @@ header {
     float: left;
     width: 25%;
     padding-bottom: 15px;
-    background-color: red;   
+    background-color: #07458a;  
+    color: #fff; 
+    border-radius: 10px;
     &.center {
         width: 40%;
         margin: 0px 5%;
@@ -26,6 +28,21 @@ input, select {
     height: 26px;
     margin-bottom: 6px;
 }
+select {
+    width: calc(80% + 22px);
+    height:30px;
+    line-height:30px;
+}
+textarea {
+    padding: 5px;
+}
+button {
+    background-color: #fff;
+    width: calc(80% + 20px);
+    height: 46px;
+    margin-top: 20px;
+}
+
 h4 {
     span {
         font-size: 12px;
@@ -40,7 +57,7 @@ h4 {
         margin: 5px 10px;
         overflow: hidden;
         &:hover {
-            background-color: yellow;
+            background-color: #0058b5;
         }
     }
 }

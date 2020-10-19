@@ -13,7 +13,9 @@ header {
   float: left;
   width: 25%;
   padding-bottom: 15px;
-  background-color: red;
+  background-color: #07458a;
+  color: #fff;
+  border-radius: 10px;
 }
 
 .column.center {
@@ -26,6 +28,23 @@ input, select {
   padding: 0px 10px;
   height: 26px;
   margin-bottom: 6px;
+}
+
+select {
+  width: calc(80% + 22px);
+  height: 30px;
+  line-height: 30px;
+}
+
+textarea {
+  padding: 5px;
+}
+
+button {
+  background-color: #fff;
+  width: calc(80% + 20px);
+  height: 46px;
+  margin-top: 20px;
 }
 
 h4 span {
@@ -41,6 +60,6 @@ h4 span {
 }
 
 .eventList div:hover {
-  background-color: yellow;
+  background-color: #0058b5;
 }
 /*# sourceMappingURL=admin.css.map */
