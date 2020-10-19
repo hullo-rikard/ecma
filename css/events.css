@@ -1,6 +1,5 @@
 .container {
-  margin-top: 80px;
-  background-color: orange;
+  color: #FFF;
   min-height: auto;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -10,6 +9,7 @@
       -ms-flex-direction: column;
           flex-direction: column;
   padding-bottom: 100px;
+  width: 100%;
 }
 
 .container div {
@@ -20,22 +20,20 @@
 }
 
 #filter-and-sort {
+  text-align: right;
+  margin: 30px 0 30px;
   width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  background-color: white;
 }
 
 #sort {
-  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-self: right;
+  margin-bottom: 5px;
+  width: 100%;
+  background-color: orange;
 }
 
 #sort input {
@@ -58,7 +56,7 @@
 }
 
 #filter {
-  width: 100%;
+  background-color: orchid;
 }
 
 .filterChoice {
@@ -98,11 +96,12 @@ h1 {
 }
 
 .event {
+  background-color: #06458A;
   padding: 15px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  border: 2px solid black;
+  border-radius: 10px;
   margin-bottom: 10px;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;

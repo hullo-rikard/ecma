@@ -6,16 +6,13 @@ $color5: #0752A3;
 $color6: #0759B0;
 $color7: #06458A;
 
-
-
 .container {
-    margin-top: 80px;
-    background-color: orange;
+    color: $color1;
     min-height: auto;
     display: flex;
     flex-direction: column;
     padding-bottom: 100px;
-
+    width: 100%;
     div {
         max-width: 700px;
         align-self: center;
@@ -23,15 +20,18 @@ $color7: #06458A;
 }
 
 #filter-and-sort {
+    text-align: right;
+    margin: 30px 0 30px;
     width: 100%;
-    display: flex;
-    flex-wrap: wrap;
+    background-color: rgb(255, 255, 255);
 }
 
 #sort {
-    width: 100%;
     display: flex;
-    align-items: center;
+    justify-self: right;
+    margin-bottom: 5px;
+    width: 100%;
+    background-color: orange;
 
     input {
         margin-left: 8px;
@@ -54,7 +54,7 @@ $color7: #06458A;
 }
 
 #filter {
-    width: 100%;
+    background-color: orchid;
 }
 
 .filterChoice {
@@ -94,9 +94,10 @@ h1 {
 }
 
 .event {
+    background-color: $color7;
     padding: 15px;
     display: flex;
-    border: 2px solid black;
+    border-radius: 10px;
     margin-bottom: 10px;
     flex-flow: row;
     align-items: center;
