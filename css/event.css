@@ -121,6 +121,7 @@ main .infoSection .info p {
 
 main .infoSection .infoBottom {
   margin: 0.45em 0 0.1em 0;
+  background: transparent;
 }
 
 main .infoSection .infoBottom p {

@@ -30,7 +30,7 @@ class Event {
     constructor(event) {
         this.id = event.id;
         this.name = event.name;
-        this.info = event.info;
+        this.info = event.info; // description
         this.address = event.address;
         this.venue = event.venue;
         this.startDatetime = event.startDatetime;
