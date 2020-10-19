@@ -6,6 +6,12 @@ $color5: #0752A3;
 $color6: #0759B0;
 $color7: #06458A;
 
+
+h1 { //maybe should be in main file
+    font-weight: normal;
+    margin-bottom: 15px;
+}
+
 .container {
     color: $color1;
     min-height: auto;
@@ -23,84 +29,77 @@ $color7: #06458A;
     text-align: right;
     margin: 30px 0 30px;
     width: 100%;
-    background-color: rgb(255, 255, 255);
-}
 
-#sort {
-    display: flex;
-    justify-self: right;
-    margin-bottom: 5px;
-    width: 100%;
-    background-color: orange;
-
-    input {
-        margin-left: 8px;
-        visibility: hidden;
-        height: 0;
-        width: 0;
+    #sort {
+        margin-bottom: 5px;
+        width: 100%;
+        text-align: right;
+    
+        input {
+            margin-left: 8px;
+            visibility: hidden;
+            height: 0;
+            width: 0;
+        }
+    
+        input[type="radio"]:checked + label{
+            font-weight: bold;
+        }
+    
+        label {
+            text-align: center;
+            cursor: pointer;
+            border-radius: 3px;
+        }    
     }
-
-    input[type="radio"]:checked + label{
+    
+    .filterChoice {
         font-weight: bold;
     }
-
-    label {
-        display: table-cell;
-        vertical-align: middle;
-        text-align: center;
+    
+    .filterChoice:hover {
         cursor: pointer;
-        border-radius: 3px;
-    }    
+    }
+    
+    .filtered {
+        font-weight: normal !important;
+    }
 }
 
-#filter {
-    background-color: orchid;
-}
 
-.filterChoice {
-    font-weight: bold;
-}
-
-.filterChoice:hover {
-    cursor: pointer;
-}
-
-.filtered {
-    font-weight: normal !important;
-}
 
 #events {
     width: 100%;
-}
 
-h1 {
-    font-weight: normal;
-    margin-bottom: 15px;
-}
-
-.thumbnail {
-    border: 1px solid black;
-    border-radius: 5px;
-    width: 100px;
-    height: 80px;
-    overflow: hidden;
-    margin-right: 15px;
-    
-    img {
-        width: 400px;
-        height: 300px;
-        margin: -75px 0 0 -100px;
+    a {
+        text-decoration: none;
     }
-}
-
-.event {
-    background-color: $color7;
-    padding: 15px;
-    display: flex;
-    border-radius: 10px;
-    margin-bottom: 10px;
-    flex-flow: row;
-    align-items: center;
+    
+    .event {
+        background-color: $color7;
+        color: white;
+        padding: 15px;
+        display: flex;
+        border-radius: 10px;
+        margin-bottom: 10px;
+        flex-flow: row;
+        align-items: center;
+    
+        .thumbnail {
+            border: 1px solid black;
+            border-radius: 5px;
+            width: 100px;
+            height: 80px;
+            overflow: hidden;
+            margin-right: 15px;
+            
+            img {
+                width: 400px;
+                height: 300px;
+                margin: -75px 0 0 -100px;
+            }
+        }
+    }
 }
 
 .hidden {

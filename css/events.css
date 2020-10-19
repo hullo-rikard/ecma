@@ -1,3 +1,8 @@
+h1 {
+  font-weight: normal;
+  margin-bottom: 15px;
+}
+
 .container {
   color: #FFF;
   min-height: auto;
@@ -23,51 +28,40 @@
   text-align: right;
   margin: 30px 0 30px;
   width: 100%;
-  background-color: white;
 }
 
-#sort {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  justify-self: right;
+#filter-and-sort #sort {
   margin-bottom: 5px;
   width: 100%;
-  background-color: orange;
+  text-align: right;
 }
 
-#sort input {
+#filter-and-sort #sort input {
   margin-left: 8px;
   visibility: hidden;
   height: 0;
   width: 0;
 }
 
-#sort input[type="radio"]:checked + label {
+#filter-and-sort #sort input[type="radio"]:checked + label {
   font-weight: bold;
 }
 
-#sort label {
-  display: table-cell;
-  vertical-align: middle;
+#filter-and-sort #sort label {
   text-align: center;
   cursor: pointer;
   border-radius: 3px;
 }
 
-#filter {
-  background-color: orchid;
-}
-
-.filterChoice {
+#filter-and-sort .filterChoice {
   font-weight: bold;
 }
 
-.filterChoice:hover {
+#filter-and-sort .filterChoice:hover {
   cursor: pointer;
 }
 
-.filtered {
+#filter-and-sort .filtered {
   font-weight: normal !important;
 }
 
@@ -75,28 +69,13 @@
   width: 100%;
 }
 
-h1 {
-  font-weight: normal;
-  margin-bottom: 15px;
+#events a {
+  text-decoration: none;
 }
 
-.thumbnail {
-  border: 1px solid black;
-  border-radius: 5px;
-  width: 100px;
-  height: 80px;
-  overflow: hidden;
-  margin-right: 15px;
-}
-
-.thumbnail img {
-  width: 400px;
-  height: 300px;
-  margin: -75px 0 0 -100px;
-}
-
-.event {
+#events .event {
   background-color: #06458A;
+  color: white;
   padding: 15px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -110,6 +89,21 @@ h1 {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+#events .event .thumbnail {
+  border: 1px solid black;
+  border-radius: 5px;
+  width: 100px;
+  height: 80px;
+  overflow: hidden;
+  margin-right: 15px;
+}
+
+#events .event .thumbnail img {
+  width: 400px;
+  height: 300px;
+  margin: -75px 0 0 -100px;
 }
 
 .hidden {

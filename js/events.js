@@ -49,9 +49,13 @@ function addEvents(events) {
     let now = new Date()
 
     for (let event of events) {
+        let eventLink = document.createElement('a')
+        eventLink.href = "event.html?eventid={eventid}"
+
         let outerDiv = document.createElement('div')
         outerDiv.classList.add('event')
         outerDiv.setAttribute('category', event.category)
+        
         if (filteredCategories.includes(event.category)){
             outerDiv.classList.add('hidden')
         }
@@ -71,7 +75,7 @@ function addEvents(events) {
         address.innerHTML = event.address
 
         let date = document.createElement('h3')
-        date.innerHTML = event.startDatetime
+        date.innerHTML = event.startDatetime.replace("T", ", Kl ").slice(0, -3)
 
         infoDiv.appendChild(title)
         infoDiv.appendChild(date)
@@ -80,11 +84,13 @@ function addEvents(events) {
         outerDiv.appendChild(imageDiv)
         outerDiv.appendChild(infoDiv)
 
+        eventLink.appendChild(outerDiv)
+
         let eventDate = new Date(event.startDatetime)
 
         if (eventDate > now) {
-            upcomingEventsDiv.appendChild(outerDiv)
-        } else pastEventsDiv.appendChild(outerDiv)
+            upcomingEventsDiv.appendChild(eventLink)
+        } else pastEventsDiv.appendChild(eventLink)
     }
 }
 
