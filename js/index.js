@@ -19,7 +19,7 @@ function cycleDisplay(){
 
     document.getElementById("event_name").innerHTML = eventData.name[cycle.i];
 
-    document.getElementById("event_startdate").innerHTML = eventData.startDate[cycle.i];
+    document.getElementById("event_startdate").innerHTML = eventData.startDate[cycle.i];    
 
     document.getElementById("event_location").innerHTML = eventData.venue[cycle.i] + ",<br>" + eventData.address[cycle.i];
 
