@@ -12,17 +12,13 @@
 <body>
     <div class="container">
         <div class="column">
-            <h4>Aktuella event</h4>
+            <button class="newEvent">+ Nytt event</button>
             <div class="eventList">
-                <!--List all events here-->
-            </div>
-            <h4>Gamla event</h4>
-            <div class="eventListOld">
                 <!--List all events here-->
             </div>
         </div>
         <div class="column center">
-            <h4>Skapa nytt event<br><span>(eller klicka på ett event till vänster för att ändra)</span></h4>
+            <h4 class="createEvent">Skapa nytt event<br><span>(eller klicka på ett event till vänster för att ändra)</span></h4>
             <form>
                 <input type="hidden" name="eventID" id="eventID" value="">
                 <input type="text" name="name" id="name" placeholder="Ange eventets namn">
@@ -39,7 +35,7 @@
                     <option value="Festivaler">Festivaler</option>
                     <option value="Utbildningar">Utbildningar</option>
                 </select>
-                <textarea type="text" name="description" id="description" rows="8" cols="40">Ange eventets beskrivning</textarea>
+                <textarea type="text" name="description" id="description">Ange eventets beskrivning</textarea>
                 <input type="file" name="image" id="image" placeholder="Ange eventets huvudbild">
                 <button>Skapa event!</button>
             </form>
