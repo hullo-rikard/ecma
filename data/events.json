@@ -2,13 +2,14 @@
     "events": [
       {
         "id": 1,
-        "name": "Julbord 1",
+        "name": "Daniels 😋 julbord",
         "address": "Gatan 1, 12030 Stockholm",
         "venue": "Huset A",
-        "startDatetime": "2020-12-24 18:00:00",
-        "endDatetime": "2020-12-24 21:00:00",
-        "tickets": 182,
+        "startDatetime": "2020-12-24T18:00:00",
+        "endDatetime": "2020-12-24T21:00:00",
+        "tickets": 132,
         "category": "Catering",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in velit velit. Aenean rutrum maximus libero nec ullamcorper. Praesent erat tortor, scelerisque non diam sed, tempus tempor dolor. Vestibulum non nunc vel enim malesuada accumsan nec eu purus. Sed tempus dui ante, id dapibus quam rhoncus id. Suspendisse et fringilla nunc. Pellentesque elementum, nisi non faucibus congue, augue enim vulputate erat, vel scelerisque ex augue quis ante. In hac habitasse platea dictumst. Vestibulum eget pharetra eros. Nam convallis odio nec neque tristique, ut auctor orci luctus. Aliquam vitae metus suscipit, consequat neque eget, vehicula nulla. Fusce in posuere nulla. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nunc tempor sapien aliquam eros bibendum semper. Integer ultricies risus eget eros imperdiet congue. Etiam ut ligula sed justo viverra fermentum eu ac arcu. Phasellus eleifend elit non ex dignissim hendrerit. Aliquam tempor tellus nec consequat ullamcorper. Aliquam at tincidunt lorem. Ut eu dui ac velit consequat dapibus. Phasellus imperdiet, lacus rhoncus convallis dictum, nulla arcu semper sem, eget scelerisque velit ligula nec risus. Ut eget lorem euismod, blandit turpis vitae, tempor tortor. In tincidunt porttitor luctus.",
         "image": "https://img.com/img.jpg",
         "images": [
             "https://img.com/img1.jpg",
@@ -48,12 +49,12 @@
             {
                 "namn": "testperson",
                 "message": "tralalla",
-                "datetime": "2020-10-22 11:11:23"
+                "datetime": "2020-10-22T11:11:23"
             },
             {
                 "namn": "testperson2",
                 "message": "tralallaallala",
-                "datetime": "2020-10-22 11:12:23"
+                "datetime": "2020-10-22T11:12:23"
             }
         ]
         
@@ -63,10 +64,11 @@
         "name": "Julbord 2",
         "address": "Gatan 2, 12030 Stockholm",
         "venue": "Huset B",
-        "startDatetime": "2020-12-23 18:00:00",
-        "endDatetime": "2020-12-23 21:00:00",
-        "tickets": 182,
+        "startDatetime": "2020-12-23T17:00:00",
+        "endDatetime": "2020-12-23T20:00:00",
+        "tickets": 142,
         "category": "Catering",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in velit velit. Aenean rutrum maximus libero nec ullamcorper. Praesent erat tortor, scelerisque non diam sed, tempus tempor dolor. Vestibulum non nunc vel enim malesuada accumsan nec eu purus. Sed tempus dui ante, id dapibus quam rhoncus id. Suspendisse et fringilla nunc. Pellentesque elementum, nisi non faucibus congue, augue enim vulputate erat, vel scelerisque ex augue quis ante. In hac habitasse platea dictumst. Vestibulum eget pharetra eros. Nam convallis odio nec neque tristique, ut auctor orci luctus. Aliquam vitae metus suscipit, consequat neque eget, vehicula nulla. Fusce in posuere nulla. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nunc tempor sapien aliquam eros bibendum semper. Integer ultricies risus eget eros imperdiet congue. Etiam ut ligula sed justo viverra fermentum eu ac arcu. Phasellus eleifend elit non ex dignissim hendrerit. Aliquam tempor tellus nec consequat ullamcorper. Aliquam at tincidunt lorem. Ut eu dui ac velit consequat dapibus. Phasellus imperdiet, lacus rhoncus convallis dictum, nulla arcu semper sem, eget scelerisque velit ligula nec risus. Ut eget lorem euismod, blandit turpis vitae, tempor tortor. In tincidunt porttitor luctus.",
         "image": "https://img.com/img.jpg",
         "images": [
             "https://img.com/img1.jpg",
@@ -106,25 +108,26 @@
             {
                 "namn": "testperson",
                 "message": "tralalla",
-                "datetime": "2020-10-22 11:11:23"
+                "datetime": "2020-10-22T11:11:23"
             },
             {
                 "namn": "testperson2",
                 "message": "tralallaallala",
-                "datetime": "2020-10-22 11:12:23"
+                "datetime": "2020-10-22T11:12:23"
             }
         ]
         
       },
       {
         "id": 3,
-        "name": "Julbord 3",
+        "name": "Majas stämma 🎤",
         "address": "Gatan 3, 12030 Stockholm",
         "venue": "Huset C",
-        "startDatetime": "2020-12-22 18:00:00",
-        "endDatetime": "2020-12-22 21:00:00",
-        "tickets": 182,
-        "category": "Catering",
+        "startDatetime": "2020-12-22T16:00:00",
+        "endDatetime": "2020-12-22T19:00:00",
+        "tickets": 152,
+        "category": "Koncerter",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in velit velit. Aenean rutrum maximus libero nec ullamcorper. Praesent erat tortor, scelerisque non diam sed, tempus tempor dolor. Vestibulum non nunc vel enim malesuada accumsan nec eu purus. Sed tempus dui ante, id dapibus quam rhoncus id. Suspendisse et fringilla nunc. Pellentesque elementum, nisi non faucibus congue, augue enim vulputate erat, vel scelerisque ex augue quis ante. In hac habitasse platea dictumst. Vestibulum eget pharetra eros. Nam convallis odio nec neque tristique, ut auctor orci luctus. Aliquam vitae metus suscipit, consequat neque eget, vehicula nulla. Fusce in posuere nulla. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nunc tempor sapien aliquam eros bibendum semper. Integer ultricies risus eget eros imperdiet congue. Etiam ut ligula sed justo viverra fermentum eu ac arcu. Phasellus eleifend elit non ex dignissim hendrerit. Aliquam tempor tellus nec consequat ullamcorper. Aliquam at tincidunt lorem. Ut eu dui ac velit consequat dapibus. Phasellus imperdiet, lacus rhoncus convallis dictum, nulla arcu semper sem, eget scelerisque velit ligula nec risus. Ut eget lorem euismod, blandit turpis vitae, tempor tortor. In tincidunt porttitor luctus.",
         "image": "https://img.com/img.jpg",
         "images": [
             "https://img.com/img1.jpg",
@@ -164,25 +167,26 @@
             {
                 "namn": "testperson",
                 "message": "tralalla",
-                "datetime": "2020-10-22 11:11:23"
+                "datetime": "2020-10-22T11:11:23"
             },
             {
                 "namn": "testperson2",
                 "message": "tralallaallala",
-                "datetime": "2020-10-22 11:12:23"
+                "datetime": "2020-10-22T11:12:23"
             }
         ]
         
       },
       {
         "id": 4,
-        "name": "Julbord 4",
+        "name": "Winterburst",
         "address": "Gatan 4, 12030 Stockholm",
         "venue": "Huset D",
-        "startDatetime": "2020-12-21 18:00:00",
-        "endDatetime": "2020-12-21 21:00:00",
-        "tickets": 182,
-        "category": "Catering",
+        "startDatetime": "2020-12-21T15:00:00",
+        "endDatetime": "2020-12-21T18:00:00",
+        "tickets": 162,
+        "category": "Festivaler",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in velit velit. Aenean rutrum maximus libero nec ullamcorper. Praesent erat tortor, scelerisque non diam sed, tempus tempor dolor. Vestibulum non nunc vel enim malesuada accumsan nec eu purus. Sed tempus dui ante, id dapibus quam rhoncus id. Suspendisse et fringilla nunc. Pellentesque elementum, nisi non faucibus congue, augue enim vulputate erat, vel scelerisque ex augue quis ante. In hac habitasse platea dictumst. Vestibulum eget pharetra eros. Nam convallis odio nec neque tristique, ut auctor orci luctus. Aliquam vitae metus suscipit, consequat neque eget, vehicula nulla. Fusce in posuere nulla. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nunc tempor sapien aliquam eros bibendum semper. Integer ultricies risus eget eros imperdiet congue. Etiam ut ligula sed justo viverra fermentum eu ac arcu. Phasellus eleifend elit non ex dignissim hendrerit. Aliquam tempor tellus nec consequat ullamcorper. Aliquam at tincidunt lorem. Ut eu dui ac velit consequat dapibus. Phasellus imperdiet, lacus rhoncus convallis dictum, nulla arcu semper sem, eget scelerisque velit ligula nec risus. Ut eget lorem euismod, blandit turpis vitae, tempor tortor. In tincidunt porttitor luctus.",
         "image": "https://img.com/img.jpg",
         "images": [
             "https://img.com/img1.jpg",
@@ -222,25 +226,26 @@
             {
                 "namn": "testperson",
                 "message": "tralalla",
-                "datetime": "2020-10-22 11:11:23"
+                "datetime": "2020-10-22T11:11:23"
             },
             {
                 "namn": "testperson2",
                 "message": "tralallaallala",
-                "datetime": "2020-10-22 11:12:23"
+                "datetime": "2020-10-22T11:12:23"
             }
         ]
         
       },
       {
         "id": 5,
-        "name": "Julbord 5",
+        "name": "Föreläsning Frontend 2",
         "address": "Gatan 5, 12030 Stockholm",
         "venue": "Huset E",
-        "startDatetime": "2020-12-20 18:00:00",
-        "endDatetime": "2020-12-20 21:00:00",
-        "tickets": 182,
-        "category": "Catering",
+        "startDatetime": "2020-12-20T14:00:00",
+        "endDatetime": "2020-12-20T17:00:00",
+        "tickets": 172,
+        "category": "Utbildningar",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in velit velit. Aenean rutrum maximus libero nec ullamcorper. Praesent erat tortor, scelerisque non diam sed, tempus tempor dolor. Vestibulum non nunc vel enim malesuada accumsan nec eu purus. Sed tempus dui ante, id dapibus quam rhoncus id. Suspendisse et fringilla nunc. Pellentesque elementum, nisi non faucibus congue, augue enim vulputate erat, vel scelerisque ex augue quis ante. In hac habitasse platea dictumst. Vestibulum eget pharetra eros. Nam convallis odio nec neque tristique, ut auctor orci luctus. Aliquam vitae metus suscipit, consequat neque eget, vehicula nulla. Fusce in posuere nulla. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nunc tempor sapien aliquam eros bibendum semper. Integer ultricies risus eget eros imperdiet congue. Etiam ut ligula sed justo viverra fermentum eu ac arcu. Phasellus eleifend elit non ex dignissim hendrerit. Aliquam tempor tellus nec consequat ullamcorper. Aliquam at tincidunt lorem. Ut eu dui ac velit consequat dapibus. Phasellus imperdiet, lacus rhoncus convallis dictum, nulla arcu semper sem, eget scelerisque velit ligula nec risus. Ut eget lorem euismod, blandit turpis vitae, tempor tortor. In tincidunt porttitor luctus.",
         "image": "https://img.com/img.jpg",
         "images": [
             "https://img.com/img1.jpg",
@@ -280,25 +285,26 @@
             {
                 "namn": "testperson",
                 "message": "tralalla",
-                "datetime": "2020-10-22 11:11:23"
+                "datetime": "2020-10-22T11:11:23"
             },
             {
                 "namn": "testperson2",
                 "message": "tralallaallala",
-                "datetime": "2020-10-22 11:12:23"
+                "datetime": "2020-10-22T11:12:23"
             }
         ]
         
       },
       {
         "id": 6,
-        "name": "Julbord 6",
+        "name": "Bröllop Dino ❤️ Rikard",
         "address": "Gatan 6, 12030 Stockholm",
         "venue": "Huset F",
-        "startDatetime": "2020-12-19 18:00:00",
-        "endDatetime": "2020-12-19 21:00:00",
+        "startDatetime": "2020-12-19T13:00:00",
+        "endDatetime": "2020-12-19T16:00:00",
         "tickets": 182,
-        "category": "Catering",
+        "category": "Bröllop",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in velit velit. Aenean rutrum maximus libero nec ullamcorper. Praesent erat tortor, scelerisque non diam sed, tempus tempor dolor. Vestibulum non nunc vel enim malesuada accumsan nec eu purus. Sed tempus dui ante, id dapibus quam rhoncus id. Suspendisse et fringilla nunc. Pellentesque elementum, nisi non faucibus congue, augue enim vulputate erat, vel scelerisque ex augue quis ante. In hac habitasse platea dictumst. Vestibulum eget pharetra eros. Nam convallis odio nec neque tristique, ut auctor orci luctus. Aliquam vitae metus suscipit, consequat neque eget, vehicula nulla. Fusce in posuere nulla. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nunc tempor sapien aliquam eros bibendum semper. Integer ultricies risus eget eros imperdiet congue. Etiam ut ligula sed justo viverra fermentum eu ac arcu. Phasellus eleifend elit non ex dignissim hendrerit. Aliquam tempor tellus nec consequat ullamcorper. Aliquam at tincidunt lorem. Ut eu dui ac velit consequat dapibus. Phasellus imperdiet, lacus rhoncus convallis dictum, nulla arcu semper sem, eget scelerisque velit ligula nec risus. Ut eget lorem euismod, blandit turpis vitae, tempor tortor. In tincidunt porttitor luctus.",
         "image": "https://img.com/img.jpg",
         "images": [
             "https://img.com/img1.jpg",
@@ -338,12 +344,12 @@
             {
                 "namn": "testperson",
                 "message": "tralalla",
-                "datetime": "2020-10-22 11:11:23"
+                "datetime": "2020-10-22T11:11:23"
             },
             {
                 "namn": "testperson2",
                 "message": "tralallaallala",
-                "datetime": "2020-10-22 11:12:23"
+                "datetime": "2020-10-22T11:12:23"
             }
         ]
         

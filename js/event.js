@@ -1,9 +1,15 @@
 document.addEventListener("DOMContentLoaded", function(e) {    
+
+    
     let events = new Events();
     setTimeout(() => {
-        console.log("timeout");
-        events.displayEventById(1);;
+        const urlParams = new URLSearchParams(window.location.search);
+        let id = parseInt(urlParams.get("id"));
+        console.log(typeof id);
+        events.displayEventById(id);
     }, 100);
+
+
 })
 
 class Events {
@@ -12,7 +18,7 @@ class Events {
         this.getEvents();
     }
     async getEvents() {
-        await fetch("data/events_copy.json")
+        await fetch("data/events_copy.json") // data/events.json
         .then(response => response.json())
         .then(data => {
             for (let item of data.events) {
@@ -21,8 +27,12 @@ class Events {
         });
     }
     displayEventById(id) {
-        let event = this.events.find(entry => entry.id == id);
-        event.displayEvent();
+        if (typeof id == "number") {
+            let event = this.events.find(entry => entry.id == id);
+            event.displayEvent();
+        } else {
+            this.events[0].displayEvent();
+        }
     }
 }
 
@@ -68,7 +78,6 @@ class Event {
             thumb.style.backgroundImage = "url(" + image + ")";
             thumb.className = "thumb";
             imgBar.appendChild(thumb);
-            console.log(thumb);
             thumb.addEventListener("click", e => {
                 img.style.backgroundImage = "url(" + image + ")";
                 this.displayingImg = image;
@@ -93,7 +102,6 @@ class Event {
         let header = document.createElement("h1");
         header.innerHTML = this.name;
         infoTop.appendChild(header);
-        console.log(header);
 
         let infoText = document.createElement("p");
         infoText.innerHTML = this.info;
@@ -111,20 +119,25 @@ class Event {
         } else {
             ticketsButton.remove();
             availability.innerHTML = "Sold out!";
+            let container = document.createElement("div");
+            let inputDiv = document.createElement("div");
             let notify = document.createElement("p");
             let email = document.createElement("input");
             let submit = document.createElement("button");
             notify.innerHTML = "Notify me if tickets become available:";
             email.placeholder = "Email";
             submit.innerHTML = "submit";
-            submit.className = "notify"
-            infoBottom.appendChild(notify);
-            infoBottom.appendChild(email);
-            infoBottom.appendChild(submit);
+            submit.className = "notify";
+            infoBottom.appendChild(container);
+            container.appendChild(inputDiv);
+            inputDiv.appendChild(notify);
+            inputDiv.appendChild(email);
+            // container.appendChild(submit);
 
         }
         
     }
+    //// when click on large image ////
     popupImg(url) {
         let bg = document.createElement("div");
         bg.className = "popupBG";
@@ -138,7 +151,6 @@ class Event {
         bg.addEventListener("click", function(e) {
             this.remove();
         })
-        console.log("popup");
     }
 
     
