@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", async function(e){
     eventData = new EventData();
     await eventData.fetchEvents();
 
-    cycle = new Cycle(2, 2);
+    cycle = new Cycle(1, 1);
     cycleDisplay();
 
 })
@@ -27,7 +27,6 @@ function cycleDisplay(){
 
 class EventData{
     constructor(){
-        this.events = []; 
         this.id = [];
         this.name = [];
         //-----placeholder-----//        
@@ -42,13 +41,11 @@ class EventData{
         .then(response => response.json())
         .then(data => {
             for (let i = 0; i < data.events.length; i++) {
-                this.events.push(data.events[i]);
                 this.id.push(data.events[i].id);
                 this.name.push(data.events[i].name);
             }
         });        
 
-        console.log(this.events);
         console.log(this.id);
         console.log(this.name);
     }
