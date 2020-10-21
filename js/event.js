@@ -4,8 +4,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
     let events = new Events();
     setTimeout(() => {
         const urlParams = new URLSearchParams(window.location.search);
-        let id = parseInt(urlParams.get("id"));
-        console.log(typeof id);
+        let id = parseInt(urlParams.get("eventid"));
         events.displayEventById(id);
     }, 100);
 
@@ -42,7 +41,7 @@ class Event {
         this.name = event.name;
         this.info = event.description; // description
         this.address = event.address;
-        this.venue = event.venue;
+        this.address = event.address;
         this.startDatetime = event.startDatetime;
         this.endDatetime = event.endDatetime;
         this.tickets = event.tickets;
@@ -55,6 +54,7 @@ class Event {
         this.admins = event.members.admins;
         this.guests = event.members.guests;
         this.guestbook = event.guestbook;
+        this.bookingBumber = event.bookingBumber;
     }
     displayEvent() {
         //// images ////
@@ -80,38 +80,46 @@ class Event {
         //// info containers////
         let infoSection = document.getElementById("infoSection");
         let infoTop = infoSection.firstElementChild;
+        let date = infoTop.children[2];
+        let header = infoTop.firstElementChild;
+        let title = header.firstElementChild;
+        let category = header.children[1];
+        let address = infoTop.children[2];
         let info = infoSection.children[1];
         let infoBottom = infoSection.children[2];
-
+        let guestbook = infoBottom.children[2].firstElementChild;
+        
         //// info material ////
-        let header = infoTop.firstElementChild;
-        header.innerHTML = this.name;
+        title.innerHTML = this.name;
+        category.innerHTML = this.category;
 
         let infoText = info.firstElementChild;
         infoText.innerHTML = this.info;
+        date.innerHTML = this.startDatetime.replace("T", ", Kl ").slice(0, -3) + " - " + this.endDatetime.replace("T", ", Kl ").slice(0, -3);
+        address.innerHTML = this.address;
 
         let availability = infoBottom.firstElementChild;     
-        let bookDiv = infoBottom.children[1];  
-        let ticketsButton = bookDiv.firstElementChild;
+        let ticketsButton = infoBottom.children[1];  
         ticketsButton.addEventListener("click", this.bookTickets.bind(this));
 
         if (this.tickets - this.guests.length < 50 && this.tickets - this.guests.length > 0) {
-            availability.innerHTML = "Few tickets left!";
+            availability.innerHTML = "Fåtal biljetter kvar!!";
         } else if (this.tickets - this.guests.length < 0) {
-            availability.innerHTML = "Sold out!";
-            let notifyDiv = document.createElement("div");
-            let notify = document.createElement("p");
-            let email = document.createElement("input");
-            notify.innerHTML = "Notify me if tickets become available:";
-            email.placeholder = "Email";
-            ticketsButton.innerHTML = "submit";
-            ticketsButton.className = "notify";
+            availability.innerHTML = "Slutsålt!";
+            ticketsButton.innerHTML = "Maila mig om biljetter finns!";
+        }
 
-            bookDiv.insertBefore(notifyDiv, ticketsButton);
-            notifyDiv.appendChild(notify);
-            notifyDiv.appendChild(email);
-            // container.appendChild(submit);
+        for (let entry of this.guestbook) {
+            let wrapper = document.createElement("div");
+            let nameTime = document.createElement("p");
+            let text = document.createElement("p");
 
+            nameTime.innerHTML = entry.namn + " / " + entry.datetime.replace("T", ", Kl ").slice(0, -3);
+            text.innerHTML = entry.message;
+
+            guestbook.appendChild(wrapper);
+            wrapper.appendChild(text);
+            wrapper.appendChild(nameTime);
         }
         
     }
@@ -126,67 +134,87 @@ class Event {
 
         let form = document.createElement("form");
         bookDiv.appendChild(form);
-        let number = document.createElement("input");
         let email = document.createElement("input");
-        let creditCard = document.createElement("input");
         let button = document.createElement("button");
         let cancel = document.createElement("button");
-        
-        number.type = "number";
-        number.max  = this.tickets - this.guests.length;
-        number.min  = 1;
-        number.placeholder = "Number of tickets"
-        number.required = true;
         email.placeholder = "Email";
         email.required = true;
-        creditCard.placeholder = "Credit card number";
-        creditCard.required = true;
-        button.innerHTML = "Book tickets";
+        button.innerHTML = "Skicka";
         button.type      = "submit";
-        cancel.innerHTML = "Cancel";
+        cancel.innerHTML = "Avbryt";
         cancel.type      = "submit";
-
-        
-        form.appendChild(number);
         form.appendChild(email);
-        form.appendChild(creditCard);
         form.appendChild(button);
         form.appendChild(cancel);
-
+        let booking = false;
+        
+        //// in unavailable register email
+        if (this.tickets - this.guests.length > 0) {
+            booking = true;
+            var number = document.createElement("input");
+            var creditCard = document.createElement("input");
+            number.type = "number";
+            number.max  = this.tickets - this.guests.length;
+            number.min  = 1;
+            number.placeholder = "Antal biljetter"
+            number.required = true;
+            creditCard.placeholder = "Kreditkortsnummer";
+            creditCard.required = true;
+            form.insertBefore(creditCard, email);
+            form.insertBefore(number, creditCard);
+        }
+        console.log(creditCard);
+        
         form.onsubmit = (e) => {
             e.preventDefault();
             //// check that name is not only spaces 
             let trimmed = email.value.trim();
-            if (trimmed.length > 0 && tryParse(creditCard.value) && creditCard.value.length >= 15) { 
-                let nextId = 1;
-                let info = {
-                    event: this.name,
-                    id: this.id,
+            if (trimmed.length > 0 && trimmed.includes("@")) { 
+                if (booking) {
 
-                    creditCard: creditCard,
-                    purchaseId: nextId
-                };
+                    if (!isNaN(creditCard.value) && creditCard.value.length >= 15) {
+                        let nextId = 1;
+                        //TODO: spara ny json
+                        let info = {
+                            email: email,
+                            creditCard: creditCard,
+                            purchaseId: nextId
+                        };
+                        
+                        //// store values 
+                        localStorage.setItem("form", JSON.stringify(info));
 
-                //// store values 
-                localStorage.setItem("form", JSON.stringify(info));
+                        form.remove();
+                        let confirmDiv = document.createElement("div");
+                        let confirm = document.createElement("p");
+                        let button = document.createElement("button");
+                        confirmDiv.className = "confirm";
+                        confirm.innerHTML = "Dina biljetter är reserverade!!<br>En bokningsbekräftelse har skickats till din email."
+                        button.innerHTML = "OK";
+                        bookDiv.appendChild(confirmDiv);
+                        confirmDiv.appendChild(confirm);
+                        confirmDiv.appendChild(button);
+                        button.addEventListener("click", e => {
+                            bg.remove();
+                        });
+                        booking = false;
+                        localStorage.setItem()
 
-                this.startQuiz(info); //// START QUIZ 
+                    } else {
+                        alert("PVänligen ange ett giltigt kortnummer");
+                    }
+                } else {
+                    //TODO: store email
+                    alert("Tack, vi meddelar dig om någon biljett dyker upp.");
+                    bg.remove();
+                }
             } else {
-                alert("Please check your info again")
+                alert("Vänligen ange en giltig emailadress.")
             }
-            form.remove();
-            let confirmDiv = document.createElement("div");
-            let confirm = document.createElement("p");
-            let button = document.createElement("button");
-            confirmDiv.className = "confirm";
-            confirm.innerHTML = "A confirmation has been sent to your email. Thank you for your purchase."
-            button.innerHTML = "OK";
-            bookDiv.appendChild(confirmDiv);
-            confirmDiv.appendChild(confirm);
-            confirmDiv.appendChild(button);
-            button.addEventListener("click", e => {
-                bg.remove();
-            })
+
+
+
+            
         }
 
         cancel.addEventListener("click", e => {
