@@ -6,6 +6,10 @@ $color5: #0752A3;
 $color6: #0759B0;
 $color7: #06458A;
 
+*{
+    padding: 0;
+    margin: 0;
+}
 
 h1 { //maybe should be in main file
     font-weight: normal;

@@ -8,16 +8,13 @@ $color5: #0752A3;
 $color6: #0759B0;
 $color7: #06458A;
 
-*{
-    padding: 0;
-    margin: 0;
-}
-
 html {
     height: 100%;
 }
 
 body {
+    margin: 0;
+    padding: 0;
     position: relative;
     font-family: 'Rajdhani', sans-serif;
     background-color: $color6;

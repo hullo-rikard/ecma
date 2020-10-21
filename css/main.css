@@ -1,14 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap");
-* {
-  padding: 0;
-  margin: 0;
-}
-
 html {
   height: 100%;
 }
 
 body {
+  margin: 0;
+  padding: 0;
   position: relative;
   font-family: 'Rajdhani', sans-serif;
   background-color: #0759B0;
