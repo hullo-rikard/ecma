@@ -1,5 +1,7 @@
 let filteredCategories = []
 
+
+
 document.addEventListener('DOMContentLoaded', async function(){  
     let events = await fetchEvents()
     updateEvents(events)
@@ -56,7 +58,8 @@ function addEvents(events) {
         } else pastEventsDiv.appendChild(assembleEventNode(event))
 
         function assembleEventNode(event) {
-            let eventLink = Object.assign(document.createElement('a'),{href:'event.html?eventid={eventid}'})
+            console.log(event)
+            let eventLink = Object.assign(document.createElement('a'),{href:'event.html?eventid=' + event.id})
             let outerDiv = Object.assign(document.createElement('div'),{classList:'event'})
             outerDiv.setAttribute('category', event.category)
     
