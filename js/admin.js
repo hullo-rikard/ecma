@@ -77,20 +77,22 @@ function showEvent(thisevent, ui){
 function showGuests(thisevent, ui){
     thisevent.members.guests.forEach((guest, key) => {
         let div =  document.createElement('div')
-            div.setAttribute('guestid', key)
-            div.setAttribute('alt', guest.email)
-            div.setAttribute('title', guest.email)
+        let icon = document.createElement('div')
+            icon.className = 'delete'
+            icon.setAttribute('id', key)
             div.textContent = guest.name
+            div.appendChild(icon)
             ui.guestsListDiv.appendChild(div)
     })
 }
 function showAdmins(thisevent, ui){
     thisevent.members.admins.forEach((admin, key) => {
         let div =  document.createElement('div')
-            div.setAttribute('adminid', key)
-            div.setAttribute('alt', admin.password)
-            div.setAttribute('title', admin.password)
+        let icon = document.createElement('div')
+            icon.className = 'delete'
+            icon.setAttribute('id', key)
             div.textContent = admin.username
+            div.appendChild(icon)
             ui.adminsListDiv.appendChild(div)
     })
 }

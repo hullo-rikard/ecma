@@ -1,13 +1,12 @@
-//this should be fixed in the main.scss-file instead
-header {
-    position: relative;
-}
-
 //admin specific
+body {
+    background-color: #0058b5;
+}
 .container {
+    margin-top: 50px;
     padding: 40px 30px;
     text-align: center;
-    background-color: #0058b5;
+    
     height: 100vh;
 }
 .column {
@@ -61,5 +60,43 @@ h4 {
         &:hover {
             background-color: #0058b5;
         }
+    }
+}
+
+.guestsList {
+    position: relative;
+
+    div {
+        margin-bottom: 10px;
+    }
+
+    div.delete{
+        width: 18px;
+        height: 18px;
+        display: inline-block;
+        right: 10px;
+        position: absolute;
+        background-image: url('../img/delete.png');
+        background-size: 18px;
+        cursor: pointer;
+    }
+}
+
+.adminsList {
+    position: relative;
+
+    div {
+        margin-bottom: 10px;
+    }
+
+    div.delete{
+        width: 18px;
+        height: 18px;
+        display: inline-block;
+        right: 10px;
+        position: absolute;
+        background-image: url('../img/delete.png');
+        background-size: 18px;
+        cursor: pointer;
     }
 }
