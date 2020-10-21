@@ -31,16 +31,39 @@ body {
             max-width: 92%;
     
         }
+        .bookDiv {
+            width: 30em;
+            height: 20em;
+            background-color: $color4;
+            border-radius: 20px;
+            
+            .confirm,
+            form {
+                width: 60%;
+                margin: 20% auto;
+                display: flex;
+                flex-direction: column;
+                
+                p,
+                input {
+                    text-align: center;
+                }
+            }
+        }
     }
+
     
+    .pseudo {
+        height: 60px;
+    }
     main {
         background-color: $color1;
         // border-radius: 20px;
         color: $color3;
         width: 85vw;
-        height: 100vh;
+        height: 100%;
         margin: 0 auto;
-        padding: 80px 0 100px 0;
+        // padding: 80px 0 100px 0;
         display: flex;
         flex-direction: row;
         -webkit-box-sizing: border-box; 
@@ -48,7 +71,7 @@ body {
             -ms-box-sizing: border-box;
                 box-sizing: border-box;
     
-        .imgContainer {
+        #imgContainer {
             min-width: 40vw;
             height: 100%;
             display: flex;
@@ -85,7 +108,7 @@ body {
         }
         
     
-        .infoSection {
+        #infoSection {
             display: flex;
             flex-direction: column;
             margin-left: 1.5em;
@@ -166,6 +189,9 @@ body {
                 }
             }
         }
+    }
+    main + .pseudo {
+        height: 100px;
     }
 }
 

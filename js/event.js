@@ -18,7 +18,7 @@ class Events {
         this.getEvents();
     }
     async getEvents() {
-        await fetch("data/events_copy.json") // data/events.json
+        await fetch("data/events.json") // data/events.json
         .then(response => response.json())
         .then(data => {
             for (let item of data.events) {
@@ -40,7 +40,7 @@ class Event {
     constructor(event) {
         this.id = event.id;
         this.name = event.name;
-        this.info = event.info; // description
+        this.info = event.description; // description
         this.address = event.address;
         this.venue = event.venue;
         this.startDatetime = event.startDatetime;
@@ -50,29 +50,22 @@ class Event {
         this.image = event.image;
         this.displayingImg = event.image;
         this.images = event.images;
+        this.images.push(this.image);
         this.members = event.members;
         this.admins = event.members.admins;
         this.guests = event.members.guests;
         this.guestbook = event.guestbook;
     }
     displayEvent() {
-        let container = document.getElementsByTagName("main")[0];
         //// images ////
-        let imgContainer = document.createElement("div");
-        imgContainer.className = "imgContainer";
-        container.appendChild(imgContainer);
-        
-        let img = document.createElement("div");
-        img.className = "eventImg";
+        let img = document.querySelector(".eventImg");
+        console.log(img);
         img.style.backgroundImage = "url(" + this.image + ")";
         img.addEventListener("click", e => {
             this.popupImg(this.displayingImg);
         })
-        imgContainer.appendChild(img);
 
-        let imgBar = document.createElement("div");
-        imgBar.className = "imgBar";
-        imgContainer.appendChild(imgBar);
+        let imgBar = document.querySelector(".imgBar");
         for (let image of this.images) {
             let thumb = document.createElement("div");
             thumb.style.backgroundImage = "url(" + image + ")";
@@ -85,58 +78,123 @@ class Event {
         }
         
         //// info containers////
-        let infoSection = document.createElement("div");
-        container.appendChild(infoSection);
-        let infoTop = document.createElement("div");
-        let info = document.createElement("div");
-        let infoBottom = document.createElement("div");
-        infoSection.className = "infoSection";
-        infoTop.className = "infoTop";
-        info.className = "info";
-        infoBottom.className = "infoBottom";
-        infoSection.appendChild(infoTop);
-        infoSection.appendChild(info);
-        infoSection.appendChild(infoBottom);
+        let infoSection = document.getElementById("infoSection");
+        let infoTop = infoSection.firstElementChild;
+        let info = infoSection.children[1];
+        let infoBottom = infoSection.children[2];
 
         //// info material ////
-        let header = document.createElement("h1");
+        let header = infoTop.firstElementChild;
         header.innerHTML = this.name;
-        infoTop.appendChild(header);
 
-        let infoText = document.createElement("p");
+        let infoText = info.firstElementChild;
         infoText.innerHTML = this.info;
-        info.appendChild(infoText);
 
-        let availability = document.createElement("p");        
-        let ticketsButton = document.createElement("button");
-        ticketsButton.innerHTML = "BOOK TICKETS"
-        infoBottom.appendChild(availability);
-        infoBottom.appendChild(ticketsButton);
-        if (this.tickets - this.guests.length >= 50) {
-            availability.innerHTML = "Tickets available!";
-        } else if (this.tickets - this.guests.length < 50 && this.tickets - this.guests.length > 0) {
+        let availability = infoBottom.firstElementChild;     
+        let bookDiv = infoBottom.children[1];  
+        let ticketsButton = bookDiv.firstElementChild;
+        ticketsButton.addEventListener("click", this.bookTickets.bind(this));
+
+        if (this.tickets - this.guests.length < 50 && this.tickets - this.guests.length > 0) {
             availability.innerHTML = "Few tickets left!";
-        } else {
-            ticketsButton.remove();
+        } else if (this.tickets - this.guests.length < 0) {
             availability.innerHTML = "Sold out!";
-            let container = document.createElement("div");
-            let inputDiv = document.createElement("div");
+            let notifyDiv = document.createElement("div");
             let notify = document.createElement("p");
             let email = document.createElement("input");
-            let submit = document.createElement("button");
             notify.innerHTML = "Notify me if tickets become available:";
             email.placeholder = "Email";
-            submit.innerHTML = "submit";
-            submit.className = "notify";
-            infoBottom.appendChild(container);
-            container.appendChild(inputDiv);
-            inputDiv.appendChild(notify);
-            inputDiv.appendChild(email);
+            ticketsButton.innerHTML = "submit";
+            ticketsButton.className = "notify";
+
+            bookDiv.insertBefore(notifyDiv, ticketsButton);
+            notifyDiv.appendChild(notify);
+            notifyDiv.appendChild(email);
             // container.appendChild(submit);
 
         }
         
     }
+    bookTickets() {
+        //TODO: popup book tickets
+        let bg = document.createElement("div");
+        bg.className = "popupBG";
+        document.getElementsByTagName("body")[0].appendChild(bg);
+        let bookDiv = document.createElement("div");
+        bookDiv.className = "bookDiv";
+        bg.appendChild(bookDiv);
+
+        let form = document.createElement("form");
+        bookDiv.appendChild(form);
+        let number = document.createElement("input");
+        let email = document.createElement("input");
+        let creditCard = document.createElement("input");
+        let button = document.createElement("button");
+        let cancel = document.createElement("button");
+        
+        number.type = "number";
+        number.max  = this.tickets - this.guests.length;
+        number.min  = 1;
+        number.placeholder = "Number of tickets"
+        number.required = true;
+        email.placeholder = "Email";
+        email.required = true;
+        creditCard.placeholder = "Credit card number";
+        creditCard.required = true;
+        button.innerHTML = "Book tickets";
+        button.type      = "submit";
+        cancel.innerHTML = "Cancel";
+        cancel.type      = "submit";
+
+        
+        form.appendChild(number);
+        form.appendChild(email);
+        form.appendChild(creditCard);
+        form.appendChild(button);
+        form.appendChild(cancel);
+
+        form.onsubmit = (e) => {
+            e.preventDefault();
+            //// check that name is not only spaces 
+            let trimmed = email.value.trim();
+            if (trimmed.length > 0 && tryParse(creditCard.value) && creditCard.value.length >= 15) { 
+                let nextId = 1;
+                let info = {
+                    event: this.name,
+                    id: this.id,
+
+                    creditCard: creditCard,
+                    purchaseId: nextId
+                };
+
+                //// store values 
+                localStorage.setItem("form", JSON.stringify(info));
+
+                this.startQuiz(info); //// START QUIZ 
+            } else {
+                alert("Please check your info again")
+            }
+            form.remove();
+            let confirmDiv = document.createElement("div");
+            let confirm = document.createElement("p");
+            let button = document.createElement("button");
+            confirmDiv.className = "confirm";
+            confirm.innerHTML = "A confirmation has been sent to your email. Thank you for your purchase."
+            button.innerHTML = "OK";
+            bookDiv.appendChild(confirmDiv);
+            confirmDiv.appendChild(confirm);
+            confirmDiv.appendChild(button);
+            button.addEventListener("click", e => {
+                bg.remove();
+            })
+        }
+
+        cancel.addEventListener("click", e => {
+            bg.remove();
+        });
+        
+    }
+
     //// when click on large image ////
     popupImg(url) {
         let bg = document.createElement("div");
