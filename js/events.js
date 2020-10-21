@@ -49,72 +49,64 @@ function addEvents(events) {
     let now = new Date()
 
     for (let event of events) {
-        let eventLink = document.createElement('a')
-        eventLink.href = "event.html?eventid={eventid}"
-
-        let outerDiv = document.createElement('div')
-        outerDiv.classList.add('event')
-        outerDiv.setAttribute('category', event.category)
-        
-        if (filteredCategories.includes(event.category)){
-            outerDiv.classList.add('hidden')
-        }
-
-        let imageDiv = document.createElement('div')
-        imageDiv.classList.add('thumbnail')
-        let image = document.createElement('img')
-        image.src = '../img/defaultEvent.jpg'
-        imageDiv.appendChild(image)
-
-        let infoDiv = document.createElement('div')
-
-        let title = document.createElement('h2')
-        title.innerHTML = event.name
-
-        let address = document.createElement('p')
-        address.innerHTML = event.address
-
-        let date = document.createElement('h3')
-        date.innerHTML = event.startDatetime.replace("T", ", Kl ").slice(0, -3)
-
-        infoDiv.appendChild(title)
-        infoDiv.appendChild(date)
-        infoDiv.appendChild(address)
-
-        outerDiv.appendChild(imageDiv)
-        outerDiv.appendChild(infoDiv)
-
-        eventLink.appendChild(outerDiv)
-
         let eventDate = new Date(event.startDatetime)
 
         if (eventDate > now) {
-            upcomingEventsDiv.appendChild(eventLink)
-        } else pastEventsDiv.appendChild(eventLink)
+            upcomingEventsDiv.appendChild(assembleEventNode(event))
+        } else pastEventsDiv.appendChild(assembleEventNode(event))
+
+        function assembleEventNode(event) {
+            let eventLink = Object.assign(document.createElement('a'),{href:'event.html?eventid={eventid}'})
+            let outerDiv = Object.assign(document.createElement('div'),{classList:'event'})
+            outerDiv.setAttribute('category', event.category)
+    
+            let imageDiv = Object.assign(document.createElement('div'),{classList:'thumbnail'})
+            let image = Object.assign(document.createElement('img'),{src:'../img/defaultEvent.jpg'})
+            imageDiv.appendChild(image)
+    
+            let infoDiv = document.createElement('div')
+            let title = Object.assign(document.createElement('h2'),{innerHTML: event.name})
+            let address = Object.assign(document.createElement('p'),{innerHTML: event.address})
+            let date = Object.assign(document.createElement('h3'),{innerHTML: event.startDatetime.replace("T", ", Kl ").slice(0, -3)})
+    
+            infoDiv.appendChild(title)
+            infoDiv.appendChild(date)
+            infoDiv.appendChild(address)
+            
+            outerDiv.appendChild(imageDiv)
+            outerDiv.appendChild(infoDiv)
+            
+            if (filteredCategories.includes(event.category)){
+                outerDiv.classList.add('hidden')
+            }
+
+            eventLink.appendChild(outerDiv)
+
+            return eventLink
+        }
     }
 }
 
 function eventListeners(events) {
     let eventDivs = document.getElementsByClassName('event')
-    let filter = document.getElementById('filter')
-    let sort = document.getElementById('sort')
+    let filterDiv = document.getElementById('filter')
+    let sortDiv = document.getElementById('sort')
     
-    sort.addEventListener('change', function(){
+    sortDiv.addEventListener('change', function(){
         updateEvents(events)
     })
 
-    filter.addEventListener('click', function(e){
-        if (!e.target.classList.contains('filterChoice')) {
+    filterDiv.addEventListener('click', function(e){
+        if (!isCategory()) {
             return
         }
-        if (!e.target.classList.contains('filtered')) {
+        
+        if (!isFiltered()) {
             filteredCategories.push(e.target.id)
             e.target.classList.add('filtered')
 
             for (let event of eventDivs) {
-                if(event.getAttribute('category') == e.target.id) {
-                    event.classList.add('hidden')
-                }
+                hideCategoryEvent(event)
             }
         }
         else {
@@ -122,9 +114,27 @@ function eventListeners(events) {
             e.target.classList.remove('filtered')
             
             for (let event of eventDivs) {
-                if(event.getAttribute('category') == e.target.id) {
-                    event.classList.remove('hidden')
-                }
+                unhideCategoryEvent(event)
+            }
+        }
+        function isCategory() {
+            if(e.target.classList.contains('filterChoice')) {
+                return true
+            }
+        }
+        function isFiltered() {
+            if(e.target.classList.contains('filtered')) {
+                return true
+            }
+        }
+        function hideCategoryEvent(event) {
+            if(event.getAttribute('category') == e.target.id) {
+                event.classList.add('hidden')
+            }
+        }
+        function unhideCategoryEvent(event) {
+            if(event.getAttribute('category') == e.target.id) {
+                event.classList.remove('hidden')
             }
         }
     })
