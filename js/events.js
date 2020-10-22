@@ -26,6 +26,15 @@ class Eventlist {
         this.addEvents(this.sortEvents(this.events))
     }
 
+    removeEvents(upcoming, past) {
+        while (upcoming.childNodes.length) {
+            upcoming.removeChild(upcoming.lastChild);
+        }
+        while (past.childNodes.length) {
+            past.removeChild(past.lastChild);
+        }
+    }
+
     sortEvents(events) {
         let dateRadio = document.getElementById('date')
         
@@ -38,15 +47,6 @@ class Eventlist {
         return events
     }
 
-    removeEvents(upcoming, past) {
-        while (upcoming.childNodes.length) {
-            upcoming.removeChild(upcoming.lastChild);
-        }
-        while (past.childNodes.length) {
-            past.removeChild(past.lastChild);
-        }
-    }
-
     addEvents(events) {
         let now = new Date()
     
@@ -54,10 +54,10 @@ class Eventlist {
             let eventDate = new Date(event.startDatetime)
     
             if (eventDate > now) {
-                this.div.upcoming.appendChild(assembleEventNode(event, this))
-            } else this.div.past.appendChild(assembleEventNode(event, this))
+                this.div.upcoming.appendChild(assembleEventNode(event, this.filter.memory))
+            } else this.div.past.appendChild(assembleEventNode(event, this.filter.memory))
     
-            function assembleEventNode(event, self) {
+            function assembleEventNode(event, filterMemory) {
                 let eventLink = Object.assign(document.createElement('a'),{href:'event.html?eventid=' + event.id})
                 let outerDiv = Object.assign(document.createElement('div'),{classList:'event'})
                 outerDiv.setAttribute('category', event.category)
@@ -78,7 +78,7 @@ class Eventlist {
                 outerDiv.appendChild(imageDiv)
                 outerDiv.appendChild(infoDiv)
                 
-                if (self.filter.memory.includes(event.category)){
+                if (filterMemory.includes(event.category)){
                     outerDiv.classList.add('hidden')
                 }
     
