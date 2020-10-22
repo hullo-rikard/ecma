@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", async function(e){
     eventData = new EventData();
     await eventData.fetchEvents();
 
-    cycle = new Cycle(2, 2);
+    cycle = new Cycle(6, 6);
     cycleDisplay();
 
 })
@@ -19,10 +19,7 @@ function cycleDisplay(){
 
     document.getElementById("event_name").innerHTML = eventData.name[cycle.i];
 
-    document.getElementById("event_startdate").innerHTML = eventData.startDate[cycle.i];
-    // eventStartDate = document.getElementById("event_startdate");
-    // eventStartDate.innerHTML = eventData.startDate[cycle.i].replace("T", ", Kl ").slice(0, -3); 
-    //date.innerHTML = event.startDatetime.replace("T", ", Kl ").slice(0, -3)   
+    document.getElementById("event_startdate").innerHTML = eventData.startDate[cycle.i].replace("T", ", Kl ").slice(0, -3); 
 
     document.getElementById("event_location").innerHTML = eventData.venue[cycle.i] + ",<br>" + eventData.address[cycle.i];
 
@@ -43,11 +40,7 @@ class EventData{
         this.venue = [];
         this.startDate = [];
         this.tickets = [];
-        //-----placeholder-----//        
-        this.images = ["https://cykelrundan.se/wp-content/uploads/2017/03/Concert-Event-14-1024x684.jpg",
-                       "https://resources.mynewsdesk.com/image/upload/c_limit,dpr_2.625,f_auto,h_700,q_auto,w_360/kzygi5xu9ta3gtdijmig.jpg",
-                       "https://tolvstockholm.se/wp-content/uploads/2019/04/tolvkonferensstockholm-1218x420.jpg"]
-        //--------------------//       
+        this.images = [];    
     }   
     
     async fetchEvents() {
@@ -59,8 +52,9 @@ class EventData{
                 this.name.push(data.events[i].name);
                 this.address.push(data.events[i].address);
                 this.venue.push(data.events[i].venue);
-                this.startDate.push(new Date(data.events[i].startDatetime));
+                this.startDate.push(data.events[i].startDatetime);
                 this.tickets.push(data.events[i].tickets);
+                this.images.push(data.events[i].image);
             }
         });        
 
