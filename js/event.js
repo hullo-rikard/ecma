@@ -87,7 +87,8 @@ class Event {
         let address = infoTop.children[2];
         let info = infoSection.children[1];
         let infoBottom = infoSection.children[2];
-        let guestbook = infoBottom.children[2].firstElementChild;
+        let guestBookName = document.getElementById("gbName");
+        let guestBookInput = document.getElementById("gbEntry");
         
         //// info material ////
         title.innerHTML = this.name;
@@ -106,22 +107,49 @@ class Event {
             availability.innerHTML = "Fåtal biljetter kvar!!";
         } else if (this.tickets - this.guests.length < 0) {
             availability.innerHTML = "Slutsålt!";
-            ticketsButton.innerHTML = "Maila mig om biljetter finns!";
+            ticketsButton.innerHTML = "Håll mig uppdaterad!";
         }
-
+        this.refreshGuestbook();
+        guestBookInput.addEventListener("keyup", e => {
+            if (e.code == "Enter") {
+                guestBookInput.value = guestBookInput.value.trim();
+                guestBookName.value = guestBookName.value.trim();
+                if (guestBookName.value.length > 0 && guestBookInput.value.length > 0) {
+                    this.updateGuestbook(guestBookName.value, guestBookInput.value);
+                    this.refreshGuestbook();
+                    guestBookName.value = "";
+                    guestBookInput.value = "";
+                } else {
+                    alert("Vänligen fyll i både namn och meddelande för att skicka.")
+                }
+            }
+        })
+        
+    }
+    updateGuestbook(name, entry) {
+        this.guestbook.push({
+            "namn": name,
+            "message": entry,
+            "datetime": "2020-01-18478238476"
+        });
+        console.log(this.guestbook);
+    }
+    refreshGuestbook() {
+        let guestbook = document.querySelector(".messages");
+        while (guestbook.firstChild) {
+            guestbook.removeChild(guestbook.lastChild);
+        }  
         for (let entry of this.guestbook) {
-            let wrapper = document.createElement("div");
             let nameTime = document.createElement("p");
             let text = document.createElement("p");
 
-            nameTime.innerHTML = entry.namn + " / " + entry.datetime.replace("T", ", Kl ").slice(0, -3);
+            nameTime.innerHTML = entry.namn + "<br>" + entry.datetime.slice(0, -9);
             text.innerHTML = entry.message;
 
-            guestbook.appendChild(wrapper);
-            wrapper.appendChild(text);
-            wrapper.appendChild(nameTime);
+            guestbook.appendChild(nameTime);
+            guestbook.appendChild(text);
         }
-        
+        guestbook.scrollTop = guestbook.scrollHeight;
     }
     bookTickets() {
         //TODO: popup book tickets

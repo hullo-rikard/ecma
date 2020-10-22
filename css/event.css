@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap");
 body {
   background-color: #0759B0;
 }
@@ -263,12 +264,6 @@ body main #infoSection .infoBottom button {
   border: none;
   border-radius: 2px;
   background-color: #0A79F0;
-  -ms-grid-row: 1;
-  -ms-grid-row-span: 2;
-  grid-row: 1 / 3;
-  -ms-grid-column: 2;
-  -ms-grid-column-span: 1;
-  grid-column: 2 / 3;
 }
 
 body main #infoSection .infoBottom button:active {
@@ -299,20 +294,42 @@ body main #infoSection .infoBottom .guestBook {
 }
 
 body main #infoSection .infoBottom .guestBook .messages {
-  height: 4em;
   background-color: #0759B0;
+  background-color: #FFF;
+  overflow: scroll;
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+  height: 4em;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 3fr 1fr;
-      grid-template-columns: 3fr 1fr;
+  -ms-grid-columns: 2fr 6fr;
+      grid-template-columns: 2fr 6fr;
   -ms-grid-rows: auto;
       grid-template-rows: auto;
 }
 
-body main #infoSection .infoBottom .guestBook .messages div p {
+body main #infoSection .infoBottom .guestBook .messages p {
+  max-width: 100%;
   font-size: 0.8em;
   font-weight: 300;
-  margin: 0;
+  margin: 0.5em;
+  border-radius: 5px;
+  color: #043263;
+  font-weight: 600;
+}
+
+body main #infoSection .infoBottom .guestBook .messages::-webkit-scrollbar {
+  display: none;
+}
+
+body main #infoSection .infoBottom .guestBook input {
+  margin-top: 0.3em;
+  border: none;
+  text-indent: 0.5em;
+  font-family: Rajdhani;
+  padding: 0.2em 0;
 }
 
 body main #infoSection .infoBottom .guestBook textarea {
@@ -321,7 +338,11 @@ body main #infoSection .infoBottom .guestBook textarea {
   margin: 0;
   border-bottom-right-radius: 10px;
   border: none;
+  border-top: 0.1em solid #06458A;
   resize: none;
+  text-indent: 0.5em;
+  font-family: Rajdhani;
+  padding-top: 0.2em;
 }
 
 body main + .pseudo {
