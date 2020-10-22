@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", async function(e){
     eventData = new EventData();
     await eventData.fetchEvents();
 
-    cycle = new Cycle(6, 6);
+    cycle = new Cycle(5, 5);
     cycleDisplay();
 
 })
@@ -25,11 +25,9 @@ function cycleDisplay(){
 
     document.getElementById("event_tickets").innerHTML = eventData.tickets[cycle.i] + " biljetter kvar.";
 
-    //setTimeout(cycleDisplay, 5000);
+    document.getElementById("to_event").href = "event.html?eventid=" + eventData.id[cycle.i];
 
-    console.log("eventData.id[cycle.i] = " + eventData.id[cycle.i]);
-    console.log("heventData.name[cycle.i] = " + eventData.name[cycle.i]);
-    console.log("cycle.i = " + cycle.i)
+    setTimeout(cycleDisplay, 5000);
 }
 
 class EventData{
@@ -57,9 +55,6 @@ class EventData{
                 this.images.push(data.events[i].image);
             }
         });        
-
-        console.log(this.id);
-        console.log(this.name);
     }
 }
 

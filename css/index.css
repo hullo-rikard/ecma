@@ -3,8 +3,6 @@
   display: grid;
   -ms-grid-columns: 1fr 1fr;
       grid-template-columns: 1fr 1fr;
-  -ms-grid-rows: 100px 1fr 1fr;
-      grid-template-rows: 100px 1fr 1fr;
 }
 
 .wrapper_all #empty {
@@ -14,12 +12,15 @@
 }
 
 .wrapper_all .display_div {
-  -ms-grid-row: 1;
-  grid-row: 1;
+  -ms-grid-column: 1;
+  grid-column: 1;
   position: fixed;
   margin: 39px 0 0 0;
   height: 100%;
   width: 50%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .wrapper_all .display_div #title {
@@ -42,7 +43,13 @@
   margin: auto;
 }
 
+.wrapper_all .text_div #inner_text #button {
+  margin: 20px 0;
+  width: 100%;
+}
+
 .wrapper_all h1 {
+  margin: 1em 0;
   font-size: 3em;
   text-align: center;
   text-shadow: -1px -1px 0 #043263, 1px -1px 0 #043263, -1px 1px 0 #0A79F0, 1px 1px 0 #0A79F0;
@@ -52,10 +59,11 @@
   margin: 5px 0;
 }
 
-.wrapper_all button {
-  font-family: 'Rajdhani', sans-serif;
+.wrapper_all a {
+  text-decoration: none;
+  border: 1px solid #000;
+  background-color: #0A79F0;
+  color: #FFF;
   padding: 10px;
-  margin: 10px 0;
-  width: 100%;
 }
 /*# sourceMappingURL=index.css.map */
