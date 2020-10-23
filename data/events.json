@@ -210,6 +210,21 @@
                     "password": "password123"
                 }
             ],
+            "staff": [
+                {
+                    "name": "Putte",
+                    "role": "Projektkoordinator"
+                },
+                {
+                    "name": "Torsten",
+                    "role": "Evenemangsansvarig"
+                },
+                {
+                    "name": "Kerstin",
+                    "role": "Administratör"
+                }
+
+            ],
             "guests": [
                 {
                     "name": "Maja",

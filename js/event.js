@@ -52,6 +52,7 @@ class Event {
         this.images.push(this.image);
         this.members = event.members;
         this.admins = event.members.admins;
+        this.staff = event.members.staff;
         this.guests = event.members.guests;
         this.guestbook = event.guestbook;
         this.bookingBumber = event.bookingBumber;
@@ -78,29 +79,36 @@ class Event {
         }
         
         //// info containers////
-        let infoSection = document.getElementById("infoSection");
-        let infoTop = infoSection.firstElementChild;
-        let date = infoTop.children[2];
-        let header = infoTop.firstElementChild;
-        let title = header.firstElementChild;
-        let category = header.children[1];
-        let address = infoTop.children[2];
-        let info = infoSection.children[1];
-        let infoBottom = infoSection.children[2];
+        let date = document.querySelector(".date");
+        let title = document.querySelector(".title");
+        let category = document.querySelector(".category");
+        let address = document.querySelector(".venue");
+        let infoText = document.querySelector(".infoText");
         let guestBookName = document.getElementById("gbName");
         let guestBookInput = document.getElementById("gbEntry");
+        let guestlist = document.querySelector(".guests");
+        let stafflist = document.querySelector(".staff");
         
         //// info material ////
         title.innerHTML = this.name;
         category.innerHTML = this.category;
 
-        let infoText = info.firstElementChild;
         infoText.innerHTML = this.info;
         date.innerHTML = this.startDatetime.replace("T", ", Kl ").slice(0, -3) + " - " + this.endDatetime.replace("T", ", Kl ").slice(0, -3);
         address.innerHTML = this.address;
+        for (let guest of this.guests) {
+            let name = document.createElement("p");
+            name.innerHTML = guest.name;
+            guestlist.appendChild(name);
+        }
+        for (let member of this.staff) {
+            let name = document.createElement("p");
+            name.innerHTML = member.name + " - " + member.role;
+            stafflist.appendChild(name);
+        }
 
-        let availability = infoBottom.firstElementChild;     
-        let ticketsButton = infoBottom.children[1];  
+        let availability = document.querySelector(".avail_status");     
+        let ticketsButton = document.querySelector(".bookBtn"); 
         ticketsButton.addEventListener("click", this.bookTickets.bind(this));
 
         if (this.tickets - this.guests.length < 50 && this.tickets - this.guests.length > 0) {

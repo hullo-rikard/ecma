@@ -197,16 +197,12 @@ body main #infoSection .info {
 
 body main #infoSection .info p {
   margin: 0;
+  padding-bottom: 1em;
   text-align: justify;
   font-size: 0.8em;
 }
 
-body main #infoSection .info div {
-  height: 10%;
-  width: 100%;
-}
-
-body main #infoSection .infoBottom {
+body main #infoSection .gbSection {
   border-top: 5px solid #0759B0;
   z-index: 1;
   margin: 0.8em 1em 0 0;
@@ -249,12 +245,12 @@ body main #infoSection .infoBottom {
                 } */
 }
 
-body main #infoSection .infoBottom p {
+body main #infoSection .gbSection p {
   font-weight: 600;
   margin-top: 1em;
 }
 
-body main #infoSection .infoBottom button {
+body main #infoSection .gbSection button {
   -webkit-box-sizing: border-box;
   -ms-box-sizing: border-box;
   box-sizing: border-box;
@@ -266,23 +262,23 @@ body main #infoSection .infoBottom button {
   background-color: #0A79F0;
 }
 
-body main #infoSection .infoBottom button:active {
+body main #infoSection .gbSection button:active {
   outline: none;
   border: none;
 }
 
-body main #infoSection .infoBottom button:focus {
+body main #infoSection .gbSection button:focus {
   outline: 0;
 }
 
-body main #infoSection .infoBottom button.notify {
+body main #infoSection .gbSection button.notify {
   font-size: 0.8em;
   margin-left: 0.5em;
   line-height: 1.1em;
   text-transform: uppercase;
 }
 
-body main #infoSection .infoBottom .guestBook {
+body main #infoSection .gbSection .guestBook {
   margin: 1em 0;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -293,7 +289,7 @@ body main #infoSection .infoBottom .guestBook {
           flex-direction: column;
 }
 
-body main #infoSection .infoBottom .guestBook .messages {
+body main #infoSection .gbSection .guestBook .messages {
   background-color: #0759B0;
   background-color: #FFF;
   overflow: scroll;
@@ -310,7 +306,7 @@ body main #infoSection .infoBottom .guestBook .messages {
       grid-template-rows: auto;
 }
 
-body main #infoSection .infoBottom .guestBook .messages p {
+body main #infoSection .gbSection .guestBook .messages p {
   max-width: 100%;
   font-size: 0.8em;
   font-weight: 300;
@@ -320,11 +316,11 @@ body main #infoSection .infoBottom .guestBook .messages p {
   font-weight: 600;
 }
 
-body main #infoSection .infoBottom .guestBook .messages::-webkit-scrollbar {
+body main #infoSection .gbSection .guestBook .messages::-webkit-scrollbar {
   display: none;
 }
 
-body main #infoSection .infoBottom .guestBook input {
+body main #infoSection .gbSection .guestBook input {
   margin-top: 0.3em;
   border: none;
   text-indent: 0.5em;
@@ -332,7 +328,7 @@ body main #infoSection .infoBottom .guestBook input {
   padding: 0.2em 0;
 }
 
-body main #infoSection .infoBottom .guestBook textarea {
+body main #infoSection .gbSection .guestBook textarea {
   width: 100%;
   height: 4em;
   margin: 0;

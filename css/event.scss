@@ -165,19 +165,17 @@ body {
                 margin-top: 1em;
                 position: relative;
                 grid-row: 2 / 3;
-
+                
                 p {
                     margin: 0;
+                    padding-bottom: 1em;
                     text-align: justify;
                     font-size: 0.8em;
                 }
-                div {
-                    height: 10%;
-                    width: 100%;
-                }
+                
             }
             
-            .infoBottom {
+            .gbSection {
                 border-top: $border;
                 z-index: 1;
                 margin: 0.8em $padding1 0 0;
