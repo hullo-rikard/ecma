@@ -133,7 +133,6 @@ class Eventlist {
                 }
             }
             function unhideCategoryEvent(event) {
-                console.log(e.target.id)
                 if(event.getAttribute('category') == e.target.id) {
                     event.parentNode.classList.remove('hidden')
                 }
