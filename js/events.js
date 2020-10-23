@@ -59,8 +59,8 @@ class Eventlist {
     
             function assembleEventNode(event, filterMemory) {
                 let eventLink = Object.assign(document.createElement('a'),{href:'event.html?eventid=' + event.id})
-                let outerDiv = Object.assign(document.createElement('div'),{classList:'event'})
-                outerDiv.setAttribute('category', event.category)
+                let wrapper = Object.assign(document.createElement('div'),{classList:'event'})
+                wrapper.setAttribute('category', event.category)
         
                 let imageDiv = Object.assign(document.createElement('div'),{classList:'thumbnail'})
                 let image = Object.assign(document.createElement('img'),{src: event.image})
@@ -75,14 +75,14 @@ class Eventlist {
                 infoDiv.appendChild(date)
                 infoDiv.appendChild(address)
                 
-                outerDiv.appendChild(imageDiv)
-                outerDiv.appendChild(infoDiv)
+                wrapper.appendChild(imageDiv)
+                wrapper.appendChild(infoDiv)
+                                
+                eventLink.appendChild(wrapper)
                 
                 if (filterMemory.includes(event.category)){
-                    outerDiv.classList.add('hidden')
+                    eventLink.classList.add('hidden')
                 }
-    
-                eventLink.appendChild(outerDiv)
     
                 return eventLink
             }
@@ -128,13 +128,15 @@ class Eventlist {
                 }
             }
             function hideCategoryEvent(event) {
+                console.log(e.target.id)
                 if(event.getAttribute('category') == e.target.id) {
-                    event.classList.add('hidden')
+                    event.parentNode.classList.add('hidden')
                 }
             }
             function unhideCategoryEvent(event) {
+                console.log(e.target.id)
                 if(event.getAttribute('category') == e.target.id) {
-                    event.classList.remove('hidden')
+                    event.parentNode.classList.remove('hidden')
                 }
             }
         })
@@ -142,7 +144,7 @@ class Eventlist {
 }
 
 document.addEventListener('DOMContentLoaded', async function(){  
-    let myevents = new Eventlist(await fetchEvents())
+    let eventList = new Eventlist(await fetchEvents())
 })
 
 async function fetchEvents() {
