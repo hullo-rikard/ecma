@@ -46,12 +46,12 @@ body {
         .bookDiv {
             width: 30em;
             height: 20em;
-            background-color: $color4;
+            background-color: $color7;
             border-radius: 20px;
             
             .confirm,
             form {
-                width: 60%;
+                width: 40%;
                 margin: 20% auto;
                 display: flex;
                 flex-direction: column;
@@ -59,7 +59,40 @@ body {
                 p,
                 input {
                     text-align: center;
+                    padding: $padding3;
+                    border-radius: 2px;
+                    margin-bottom: $padding2;
+                    border: none;
                 }
+            }
+            button {
+                width: 100%;
+                -webkit-box-sizing: border-box; 
+                    -moz-box-sizing: border-box;
+                    -ms-box-sizing: border-box;
+                        box-sizing: border-box;
+                padding: $padding2 $padding1;
+                margin-bottom: $padding2;
+                color: $color1;
+                font-size: 0.8em;
+                border: none;
+                border-radius: 5px;
+                background-color: $color4;
+                font-weight: 600;
+                text-transform: uppercase;
+            }
+            button:hover {
+                background-color: $color6;
+            }
+
+            button:active {
+                outline: none;
+                border: none;
+                background-color: $color5;
+            }
+                
+            button:focus {
+                outline: 0;
             }
         }
     }
@@ -165,20 +198,20 @@ body {
             ////   INFO TEXT  ////
             .infoWrapper {
                 margin-top: 1em;
+                margin-right: 1em;
                 grid-row: 2 / 3;
                 display: grid;
-                grid-template-columns: 1fr 1fr;
-                grid-template-rows: 1fr 1fr;
+                grid-template-columns: 1.1fr 1fr;
+                grid-template-rows: 4fr 1fr 5fr;
                 gap: $padding2;
-                font-size: 0.8em;
                 overflow: scroll;
                 .info {
-                    // height: 100%;
                     overflow: scroll;
                     padding-right: $padding1;
-                    grid-row: 1 / 3;
+                    grid-row: 1 / 4;
                     
                     p {
+                        font-size: 0.8em;
                         margin: 0;
                         padding-bottom: 1em;
                         text-align: justify;
@@ -188,12 +221,18 @@ body {
                 .tickets {
                     grid-column: 2 / 3;
                     grid-row: 1 / 2;
+                    width: max-content;
+                    margin: 0 auto;
+                    padding-right: $padding1;
 
                     p.availStatus {
-                        font-size: 1.5em;
+                        font-size: 1.2em;
                         font-weight: 600;
+                        text-align: center;
                     }
                     button {
+                        width: 10em;
+                        justify-self: center;
                         -webkit-box-sizing: border-box; 
                             -moz-box-sizing: border-box;
                             -ms-box-sizing: border-box;
@@ -202,7 +241,7 @@ body {
                         color: $color1;
                         font-size: 0.8em;
                         border: none;
-                        border-radius: 2px;
+                        border-radius: 5px;
                         background-color: $color4;
                         font-weight: 600;
                         text-transform: uppercase;
@@ -220,18 +259,30 @@ body {
                     button:focus {
                         outline: 0;
                     }
-                    button.notify {
-                        font-size: 0.8em;
-                        margin-left: 0.5em;
-                        line-height: 1.1em;
+                }
+                .moreInfo {
+                    // border-bottom: $border;
+                    padding-right: $padding2;
+                    padding-bottom: $padding1;
+                    grid-column: 2 / 3;
+                    grid-row: 2 / 3;
+                    font-size: 0.8em;
+                    font-weight: 600;
+                    // text-align: center;
+                    
+                    
+                    .venue {
+                        font-size: 1.2em;
                     }
                 }
 
                 .people {
+                    font-size: 0.8em;
                     grid-column: 2 / 3;
-                    grid-row: 2 / 3;
+                    grid-row: 3 / 4;
                     display: grid;
-                    grid-template-columns: 1fr 1fr;
+                    grid-template-columns: 1fr 2.5fr;
+                    font-weight: 600;
                     
                     .guests {
                         grid-column: 1 / 2;
@@ -239,12 +290,14 @@ body {
                     .staff {
                         grid-column: 2 / 3;
                     }
+                    p + p {
+                        font-weight: 400;
+                    }
 
                 }
             }
             //// =========    GUEST BOOK   ========= ////
             .gbSection {
-                // background-color: $color3;
                 z-index: 1;
                 margin: 0 $padding1 $padding1 0;
                 grid-row: 3 / 4;
@@ -340,10 +393,15 @@ body {
                 border-bottom-right-radius: 10px;
             }
 
+            button:hover {
+                background-color: $color6;
+            }
+
             button:active {
                 outline: none;
                 border: none;
-                }
+                background-color: $color5;
+            }
                 
             button:focus {
                 outline: 0;

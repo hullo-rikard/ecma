@@ -88,13 +88,13 @@ class Event {
         let guestBookInput = document.getElementById("gbEntry");
         let guestlist = document.querySelector(".guests");
         let stafflist = document.querySelector(".staff");
+        let fulldate = document.querySelector(".fulldate");
         
         //// info material ////
         title.innerHTML = this.name;
         category.innerHTML = this.category;
-
+        date.innerHTML = this.startDatetime.replace("T", ", Kl ").slice(0, -3);
         infoText.innerHTML = this.info;
-        date.innerHTML = this.startDatetime.replace("T", ", Kl ").slice(0, -3) + " - " + this.endDatetime.replace("T", ", Kl ").slice(0, -3);
         address.innerHTML = this.address;
         for (let guest of this.guests) {
             let name = document.createElement("p");
@@ -107,6 +107,8 @@ class Event {
             stafflist.appendChild(name);
         }
 
+        fulldate.innerHTML = this.startDatetime.replace("T", ", Kl ").slice(0, -3) + " – " + this.endDatetime.replace("T", ", Kl ").slice(0, -3);
+        
         let availability = document.querySelector(".availStatus");     
         let ticketsButton = document.querySelector(".bookBtn"); 
         ticketsButton.addEventListener("click", this.bookTickets.bind(this));

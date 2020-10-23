@@ -36,13 +36,13 @@ body .popupBG .popupImg {
 body .popupBG .bookDiv {
   width: 30em;
   height: 20em;
-  background-color: #0A79F0;
+  background-color: #06458A;
   border-radius: 20px;
 }
 
 body .popupBG .bookDiv .confirm,
 body .popupBG .bookDiv form {
-  width: 60%;
+  width: 40%;
   margin: 20% auto;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -58,6 +58,40 @@ body .popupBG .bookDiv .confirm input,
 body .popupBG .bookDiv form p,
 body .popupBG .bookDiv form input {
   text-align: center;
+  padding: 0.3em;
+  border-radius: 2px;
+  margin-bottom: 0.5em;
+  border: none;
+}
+
+body .popupBG .bookDiv button {
+  width: 100%;
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0.5em 1em;
+  margin-bottom: 0.5em;
+  color: #FFF;
+  font-size: 0.8em;
+  border: none;
+  border-radius: 5px;
+  background-color: #0A79F0;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+body .popupBG .bookDiv button:hover {
+  background-color: #0759B0;
+}
+
+body .popupBG .bookDiv button:active {
+  outline: none;
+  border: none;
+  background-color: #0752A3;
+}
+
+body .popupBG .bookDiv button:focus {
+  outline: 0;
 }
 
 body .pseudo {
@@ -189,17 +223,17 @@ body main #infoSection .infoTop .date {
 
 body main #infoSection .infoWrapper {
   margin-top: 1em;
+  margin-right: 1em;
   -ms-grid-row: 2;
   -ms-grid-row-span: 1;
   grid-row: 2 / 3;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 1fr 1fr;
-      grid-template-columns: 1fr 1fr;
-  -ms-grid-rows: 1fr 1fr;
-      grid-template-rows: 1fr 1fr;
+  -ms-grid-columns: 1.1fr 1fr;
+      grid-template-columns: 1.1fr 1fr;
+  -ms-grid-rows: 4fr 1fr 5fr;
+      grid-template-rows: 4fr 1fr 5fr;
   gap: 0.5em;
-  font-size: 0.8em;
   overflow: scroll;
 }
 
@@ -207,11 +241,12 @@ body main #infoSection .infoWrapper .info {
   overflow: scroll;
   padding-right: 1em;
   -ms-grid-row: 1;
-  -ms-grid-row-span: 2;
-  grid-row: 1 / 3;
+  -ms-grid-row-span: 3;
+  grid-row: 1 / 4;
 }
 
 body main #infoSection .infoWrapper .info p {
+  font-size: 0.8em;
   margin: 0;
   padding-bottom: 1em;
   text-align: justify;
@@ -224,14 +259,23 @@ body main #infoSection .infoWrapper .tickets {
   -ms-grid-row: 1;
   -ms-grid-row-span: 1;
   grid-row: 1 / 2;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  margin: 0 auto;
+  padding-right: 1em;
 }
 
 body main #infoSection .infoWrapper .tickets p.availStatus {
-  font-size: 1.5em;
+  font-size: 1.2em;
   font-weight: 600;
+  text-align: center;
 }
 
 body main #infoSection .infoWrapper .tickets button {
+  width: 10em;
+  -ms-grid-column-align: center;
+      justify-self: center;
   -webkit-box-sizing: border-box;
   -ms-box-sizing: border-box;
   box-sizing: border-box;
@@ -239,7 +283,7 @@ body main #infoSection .infoWrapper .tickets button {
   color: #FFF;
   font-size: 0.8em;
   border: none;
-  border-radius: 2px;
+  border-radius: 5px;
   background-color: #0A79F0;
   font-weight: 600;
   text-transform: uppercase;
@@ -259,23 +303,36 @@ body main #infoSection .infoWrapper .tickets button:focus {
   outline: 0;
 }
 
-body main #infoSection .infoWrapper .tickets button.notify {
-  font-size: 0.8em;
-  margin-left: 0.5em;
-  line-height: 1.1em;
-}
-
-body main #infoSection .infoWrapper .people {
+body main #infoSection .infoWrapper .moreInfo {
+  padding-right: 0.5em;
+  padding-bottom: 1em;
   -ms-grid-column: 2;
   -ms-grid-column-span: 1;
   grid-column: 2 / 3;
   -ms-grid-row: 2;
   -ms-grid-row-span: 1;
   grid-row: 2 / 3;
+  font-size: 0.8em;
+  font-weight: 600;
+}
+
+body main #infoSection .infoWrapper .moreInfo .venue {
+  font-size: 1.2em;
+}
+
+body main #infoSection .infoWrapper .people {
+  font-size: 0.8em;
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
+  grid-column: 2 / 3;
+  -ms-grid-row: 3;
+  -ms-grid-row-span: 1;
+  grid-row: 3 / 4;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 1fr 1fr;
-      grid-template-columns: 1fr 1fr;
+  -ms-grid-columns: 1fr 2.5fr;
+      grid-template-columns: 1fr 2.5fr;
+  font-weight: 600;
 }
 
 body main #infoSection .infoWrapper .people .guests {
@@ -288,6 +345,10 @@ body main #infoSection .infoWrapper .people .staff {
   -ms-grid-column: 2;
   -ms-grid-column-span: 1;
   grid-column: 2 / 3;
+}
+
+body main #infoSection .infoWrapper .people p + p {
+  font-weight: 400;
 }
 
 body main #infoSection .gbSection {
@@ -417,9 +478,14 @@ body main #infoSection button {
   border-bottom-right-radius: 10px;
 }
 
+body main #infoSection button:hover {
+  background-color: #0759B0;
+}
+
 body main #infoSection button:active {
   outline: none;
   border: none;
+  background-color: #0752A3;
 }
 
 body main #infoSection button:focus {
