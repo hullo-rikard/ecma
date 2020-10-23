@@ -30,34 +30,37 @@
             </div>
 
             <!--// INFO -->
-            <div class="info">
-                <p class="infoText"></p>      
-            </div>
-            <!--// TICKETS -->
-            <div class="tickets">
-                <p class="avail_status">Biljetter finns!</p>
-                <button class="bookBtn">Boka biljett</button>
-            </div>
-            <!--// PEOPLE -->
-            <div class="people">
-                <div class="guests">
-                    <p>Gäster:</p>
+            <div class="infoWrapper">
+                <!--// TEXT -->
+                <div class="info">
+                    <p class="infoText"></p>      
                 </div>
-                <div class="staff">
-                    <p>Vi som gör eventet:</p>
+                <!--// TICKETS -->
+                <div class="tickets">
+                    <p class="availStatus">Biljetter finns!</p>
+                    <button class="bookBtn">Boka biljett</button>
+                    <!--TODO: LÄGG TILL TID & LOKAL, byt adress och lokal -->
+                </div>
+                <!--// PEOPLE -->
+                <div class="people">
+                    <div class="guests">
+                        <p>Gäster:</p>
+                    </div>
+                    <div class="staff">
+                        <p>Vi som gör eventet:</p>
+                    </div>
                 </div>
             </div>
 
             <!--// GUEST BOOK -->
             <div class="gbSection">                
-                <div class="guestBook">
-                    <div class="messages"></div>
-                    <div class="entry">
-                        <input id="gbName" type="text" placeholder="Namn">
-                        <textarea id="gbEntry" placeholder="Skriv ett meddelande i gästboken! Tryck Enter för att skicka."></textarea>
-                    </div>
-                </div>
-
+                <p class="gbHeader">Gästbok</p>
+                <!-- <div class="gbBackground"></div> -->
+                <div class="messages"></div>
+                <input id="gbName" type="text" placeholder="Namn">
+                <textarea id="gbEntry" placeholder="Skriv ett meddelande i gästboken!"></textarea>
+                <button class="gbButton">Skicka</button>
+                
             </div>
 
         </div>

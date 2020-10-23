@@ -27,7 +27,7 @@ body {
         position: fixed;
     }
     
-
+    //// =========    POPUP   ========= ////
     .popupBG {
         width: 100vw;
         height: 100%;
@@ -68,6 +68,7 @@ body {
     .pseudo {
         height: 85px;
     }
+    //* =========    MAIN   ========= *//
     main {
         background-color: $color7;
         border-radius: 20px;
@@ -82,7 +83,8 @@ body {
            -moz-box-sizing: border-box;
             -ms-box-sizing: border-box;
                 box-sizing: border-box;
-    
+
+        //// =========    IMAGES   ========= ////
         #imgContainer {
             -webkit-box-sizing: border-box; 
            -moz-box-sizing: border-box;
@@ -93,7 +95,7 @@ body {
             flex-direction: column;
             justify-content: space-between;
             margin: 1em;
-    
+            //// BIG ONE ////
             .eventImg {
                 // height: 60vw;
                 width: 100%;
@@ -101,9 +103,10 @@ body {
                 overflow: hidden;
                 background-size: cover;
                 background-position: center;
-                border-radius: 10px 0 0 0;
-
+                border-radius: 2px;
+                border-top-left-radius: 10px;
             }
+            //// SMALL ONES ////
             .imgBar {
                 width: 100%;
                 padding-top: 1em;
@@ -112,6 +115,7 @@ body {
                 overflow: hidden;
                 flex-direction: row;
                 overflow-x: scroll;
+                border-radius: 2px;
                 border-bottom-left-radius: 10px;
                 .thumb {
                     height: 100%;
@@ -119,6 +123,7 @@ body {
                     overflow: hidden;
                     background-size: cover;
                     background-position: center;
+                    border-radius: 2px;
                 }
                 .thumb + .thumb {
                     margin-left: 0.5em;
@@ -126,12 +131,13 @@ body {
             }
         }
         
-    
+        //// =========    EVENT INFO   ========= ////
         #infoSection {
             display: grid;
             grid-template-columns: 1fr;
             grid-template-rows: 1fr 6fr 2fr;
-    
+            
+            ////   TITLE & BASIC INFO  ////
             .infoTop {
                 margin: 1em 1em 0 0;
                 grid-row: 1 / 2;
@@ -155,152 +161,192 @@ body {
                     margin-top: $padding1;
                     font-weight: 600;
                 }
-                
-    
             }
-            .info {
-                height: 100%;
-                overflow: scroll;
-                padding-right: $padding1;
+            ////   INFO TEXT  ////
+            .infoWrapper {
                 margin-top: 1em;
-                position: relative;
                 grid-row: 2 / 3;
-                
-                p {
-                    margin: 0;
-                    padding-bottom: 1em;
-                    text-align: justify;
-                    font-size: 0.8em;
-                }
-                
-            }
-            
-            .gbSection {
-                border-top: $border;
-                z-index: 1;
-                margin: 0.8em $padding1 0 0;
-                grid-row: 3 / 4;
-
-                p {
-                    font-weight: 600;
-                    margin-top: $padding1;
-                }
-
-                button {
-                    -webkit-box-sizing: border-box; 
-                        -moz-box-sizing: border-box;
-                        -ms-box-sizing: border-box;
-                            box-sizing: border-box;
-                    padding: $padding2 $padding1;
-                    color: $color1;
-                    font-size: 0.8em;
-                    border: none;
-                    border-radius: 2px;
-                    background-color: $color4;
-                }
-
-                button:active {
-                    outline: none;
-                    border: none;
-                    }
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: 1fr 1fr;
+                gap: $padding2;
+                font-size: 0.8em;
+                overflow: scroll;
+                .info {
+                    // height: 100%;
+                    overflow: scroll;
+                    padding-right: $padding1;
+                    grid-row: 1 / 3;
                     
-                button:focus {
-                    outline: 0;
-                }
-                button.notify {
-                    font-size: 0.8em;
-                    margin-left: 0.5em;
-                    line-height: 1.1em;
-                    text-transform: uppercase;
-                }
-                .guestBook {
-                    margin: $padding1 0;
-                    display: flex;
-                    flex-direction: column;
-                    .messages {
-                        background-color: $color6;
-                        background-color: $color1;
-                        overflow: scroll;
-                        -ms-overflow-style: none;  /* IE and Edge */
-                        scrollbar-width: none;  /* Firefox */
-                        height: 4em;
-                        display: grid;
-                        grid-template-columns: 2fr 6fr;
-                        grid-template-rows: auto;
-                        p {
-                            max-width: 100%;
-                            font-size: 0.8em;
-                            font-weight: 300;
-                            margin: 0.5em;
-                            border-radius: 5px;
-                            color: $color3;
-                            font-weight: 600;
-                        }
-                        
-                    }
-                    .messages::-webkit-scrollbar {
-                        display: none;
-                    }
-                    input {
-                        margin-top: $padding3;
-                        border: none;
-                        text-indent: 0.5em;
-                        font-family: Rajdhani;
-                        padding: 0.2em 0;
-                    }
-                    textarea {
-                        width: 100%;
-                        height: 4em;
+                    p {
                         margin: 0;
-                        border-bottom-right-radius: 10px;
-                        border: none;
-                        border-top: 0.1em solid $color7;
-                        resize: none;
-                        text-indent: 0.5em;
-                        font-family: Rajdhani;
-                        padding-top: 0.2em;
-
+                        padding-bottom: 1em;
+                        text-align: justify;
                     }
-
                 }
 
+                .tickets {
+                    grid-column: 2 / 3;
+                    grid-row: 1 / 2;
 
-                // background: transparent;
-                
-                /* div {
-                    height: 3em;
-                    margin: 0.8em 0;
-                    padding: 0;
-                    -webkit-box-sizing: border-box; 
-                           -moz-box-sizing: border-box;
+                    p.availStatus {
+                        font-size: 1.5em;
+                        font-weight: 600;
+                    }
+                    button {
+                        -webkit-box-sizing: border-box; 
+                            -moz-box-sizing: border-box;
                             -ms-box-sizing: border-box;
                                 box-sizing: border-box;
-                    display: grid;
-                    grid-template-rows: 1fr 3fr;
-                    grid-template-columns: 5fr 1fr;
-                    gap: 0.5em;
-                    p {
-                        font-weight: 300;
+                        padding: $padding2 $padding1;
+                        color: $color1;
                         font-size: 0.8em;
-                        margin: 0;
-                        grid-row: 1 / 2;
-                        grid-column: 1 / 2;
-                    } */
-                    /* p + p {
-                        font-size: 0.8em;
-                        font-weight: 300;
-                    } */
-                    /* 
-                    input {
-                        width: 14em;
                         border: none;
                         border-radius: 2px;
-                        padding: 0.2em;
-                        grid-row: 2 / 3;
+                        background-color: $color4;
+                        font-weight: 600;
+                        text-transform: uppercase;
+                    }
+                    button:hover {
+                        background-color: $color6;
+                    }
+    
+                    button:active {
+                        outline: none;
+                        border: none;
+                        background-color: $color5;
+                    }
+                        
+                    button:focus {
+                        outline: 0;
+                    }
+                    button.notify {
+                        font-size: 0.8em;
+                        margin-left: 0.5em;
+                        line-height: 1.1em;
+                    }
+                }
+
+                .people {
+                    grid-column: 2 / 3;
+                    grid-row: 2 / 3;
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    
+                    .guests {
                         grid-column: 1 / 2;
                     }
+                    .staff {
+                        grid-column: 2 / 3;
+                    }
+
+                }
+            }
+            //// =========    GUEST BOOK   ========= ////
+            .gbSection {
+                // background-color: $color3;
+                z-index: 1;
+                margin: 0 $padding1 $padding1 0;
+                grid-row: 3 / 4;
+                min-height: 25vh;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: 1fr 0.5fr 2.5fr 0.5fr;
+                gap: $padding2;
+                overflow: scroll;
+
+                
+                p.gbHeader {
+                    border-top: $border;
+                    border-bottom: $border;
+                    grid-column: 1 / 3;
+                    grid-row: 1 / 2;
+                    font-size: 1.2em;
+                    font-weight: 600;
+                    padding: $padding3;
+                    margin-top: $padding3;
+                }
+                .gbBackground {
+                    background-color: $color3;
+                    grid-column: 1 / 3;
+                    grid-row: 2 / 5;
+                }
+                //// ALL MESSAGES ////
+                .messages {
                     
-                } */
+                    grid-column: 1 / 2;
+                    grid-row: 2 / 5;
+                    background-color: $color6;
+                    overflow: scroll;
+                    -ms-overflow-style: none;
+                    scrollbar-width: none;
+                    display: grid;
+                    grid-template-columns: 2fr 6fr;
+                    grid-template-rows: auto;
+                    border-radius: 4px;
+                    p {
+                        max-width: 100%;
+                        font-size: 0.8em;
+                        font-weight: 300;
+                        margin: 0.5em;
+                        border-radius: 5px;
+                        color: $color1;
+                        font-weight: 600;
+                    }
+                    
+                }
+                .messages::-webkit-scrollbar {
+                    display: none;
+                }
+            }
+
+            //// GUEST BOOK ENTRY ////
+            input {
+                border: none;
+                text-indent: 0.5em;
+                font-family: Rajdhani;
+                padding: 0.2em 0;
+                border-radius: 2px;
+                grid-column: 2 / 3;
+                grid-row: 2 / 3;
+            }
+            textarea {
+                grid-column: 2 / 3;
+                grid-row: 3 / 4;
+                width: 100%;
+                margin: 0;
+                border: none;
+                border-top: 0.1em solid $color7;
+                resize: none;
+                text-indent: 0.5em;
+                font-family: Rajdhani;
+                padding-top: 0.2em;
+                border-radius: 2px;
+                
+            }
+            button {
+                grid-column: 2 / 3;
+                grid-row: 4 / 5;
+                -webkit-box-sizing: border-box; 
+                -moz-box-sizing: border-box;
+                -ms-box-sizing: border-box;
+                box-sizing: border-box;
+                padding: $padding2 $padding1;
+                color: $color1;
+                font-size: 0.8em;
+                border: none;
+                background-color: $color4;
+                border-radius: 2px;
+                border-bottom-right-radius: 10px;
+            }
+
+            button:active {
+                outline: none;
+                border: none;
+                }
+                
+            button:focus {
+                outline: 0;
             }
         }
     }

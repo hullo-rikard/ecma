@@ -107,7 +107,7 @@ class Event {
             stafflist.appendChild(name);
         }
 
-        let availability = document.querySelector(".avail_status");     
+        let availability = document.querySelector(".availStatus");     
         let ticketsButton = document.querySelector(".bookBtn"); 
         ticketsButton.addEventListener("click", this.bookTickets.bind(this));
 

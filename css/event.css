@@ -107,7 +107,8 @@ body main #imgContainer .eventImg {
   overflow: hidden;
   background-size: cover;
   background-position: center;
-  border-radius: 10px 0 0 0;
+  border-radius: 2px;
+  border-top-left-radius: 10px;
 }
 
 body main #imgContainer .imgBar {
@@ -123,6 +124,7 @@ body main #imgContainer .imgBar {
       -ms-flex-direction: row;
           flex-direction: row;
   overflow-x: scroll;
+  border-radius: 2px;
   border-bottom-left-radius: 10px;
 }
 
@@ -132,6 +134,7 @@ body main #imgContainer .imgBar .thumb {
   overflow: hidden;
   background-size: cover;
   background-position: center;
+  border-radius: 2px;
 }
 
 body main #imgContainer .imgBar .thumb + .thumb {
@@ -184,73 +187,51 @@ body main #infoSection .infoTop .date {
   font-weight: 600;
 }
 
-body main #infoSection .info {
-  height: 100%;
-  overflow: scroll;
-  padding-right: 1em;
+body main #infoSection .infoWrapper {
   margin-top: 1em;
-  position: relative;
   -ms-grid-row: 2;
   -ms-grid-row-span: 1;
   grid-row: 2 / 3;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  -ms-grid-rows: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+  gap: 0.5em;
+  font-size: 0.8em;
+  overflow: scroll;
 }
 
-body main #infoSection .info p {
+body main #infoSection .infoWrapper .info {
+  overflow: scroll;
+  padding-right: 1em;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 2;
+  grid-row: 1 / 3;
+}
+
+body main #infoSection .infoWrapper .info p {
   margin: 0;
   padding-bottom: 1em;
   text-align: justify;
-  font-size: 0.8em;
 }
 
-body main #infoSection .gbSection {
-  border-top: 5px solid #0759B0;
-  z-index: 1;
-  margin: 0.8em 1em 0 0;
-  -ms-grid-row: 3;
+body main #infoSection .infoWrapper .tickets {
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
+  grid-column: 2 / 3;
+  -ms-grid-row: 1;
   -ms-grid-row-span: 1;
-  grid-row: 3 / 4;
-  /* div {
-                    height: 3em;
-                    margin: 0.8em 0;
-                    padding: 0;
-                    -webkit-box-sizing: border-box; 
-                           -moz-box-sizing: border-box;
-                            -ms-box-sizing: border-box;
-                                box-sizing: border-box;
-                    display: grid;
-                    grid-template-rows: 1fr 3fr;
-                    grid-template-columns: 5fr 1fr;
-                    gap: 0.5em;
-                    p {
-                        font-weight: 300;
-                        font-size: 0.8em;
-                        margin: 0;
-                        grid-row: 1 / 2;
-                        grid-column: 1 / 2;
-                    } */
-  /* p + p {
-                        font-size: 0.8em;
-                        font-weight: 300;
-                    } */
-  /* 
-                    input {
-                        width: 14em;
-                        border: none;
-                        border-radius: 2px;
-                        padding: 0.2em;
-                        grid-row: 2 / 3;
-                        grid-column: 1 / 2;
-                    }
-                    
-                } */
+  grid-row: 1 / 2;
 }
 
-body main #infoSection .gbSection p {
+body main #infoSection .infoWrapper .tickets p.availStatus {
+  font-size: 1.5em;
   font-weight: 600;
-  margin-top: 1em;
 }
 
-body main #infoSection .gbSection button {
+body main #infoSection .infoWrapper .tickets button {
   -webkit-box-sizing: border-box;
   -ms-box-sizing: border-box;
   box-sizing: border-box;
@@ -260,85 +241,189 @@ body main #infoSection .gbSection button {
   border: none;
   border-radius: 2px;
   background-color: #0A79F0;
-}
-
-body main #infoSection .gbSection button:active {
-  outline: none;
-  border: none;
-}
-
-body main #infoSection .gbSection button:focus {
-  outline: 0;
-}
-
-body main #infoSection .gbSection button.notify {
-  font-size: 0.8em;
-  margin-left: 0.5em;
-  line-height: 1.1em;
+  font-weight: 600;
   text-transform: uppercase;
 }
 
-body main #infoSection .gbSection .guestBook {
-  margin: 1em 0;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+body main #infoSection .infoWrapper .tickets button:hover {
+  background-color: #0759B0;
 }
 
-body main #infoSection .gbSection .guestBook .messages {
+body main #infoSection .infoWrapper .tickets button:active {
+  outline: none;
+  border: none;
+  background-color: #0752A3;
+}
+
+body main #infoSection .infoWrapper .tickets button:focus {
+  outline: 0;
+}
+
+body main #infoSection .infoWrapper .tickets button.notify {
+  font-size: 0.8em;
+  margin-left: 0.5em;
+  line-height: 1.1em;
+}
+
+body main #infoSection .infoWrapper .people {
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
+  grid-column: 2 / 3;
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 1;
+  grid-row: 2 / 3;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+}
+
+body main #infoSection .infoWrapper .people .guests {
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 1;
+  grid-column: 1 / 2;
+}
+
+body main #infoSection .infoWrapper .people .staff {
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
+  grid-column: 2 / 3;
+}
+
+body main #infoSection .gbSection {
+  z-index: 1;
+  margin: 0 1em 1em 0;
+  -ms-grid-row: 3;
+  -ms-grid-row-span: 1;
+  grid-row: 3 / 4;
+  min-height: 25vh;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  -ms-grid-rows: 1fr 0.5fr 2.5fr 0.5fr;
+      grid-template-rows: 1fr 0.5fr 2.5fr 0.5fr;
+  gap: 0.5em;
+  overflow: scroll;
+}
+
+body main #infoSection .gbSection p.gbHeader {
+  border-top: 5px solid #0759B0;
+  border-bottom: 5px solid #0759B0;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-column: 1 / 3;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 1;
+  grid-row: 1 / 2;
+  font-size: 1.2em;
+  font-weight: 600;
+  padding: 0.3em;
+  margin-top: 0.3em;
+}
+
+body main #infoSection .gbSection .gbBackground {
+  background-color: #043263;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-column: 1 / 3;
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 3;
+  grid-row: 2 / 5;
+}
+
+body main #infoSection .gbSection .messages {
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 1;
+  grid-column: 1 / 2;
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 3;
+  grid-row: 2 / 5;
   background-color: #0759B0;
-  background-color: #FFF;
   overflow: scroll;
   -ms-overflow-style: none;
-  /* IE and Edge */
   scrollbar-width: none;
-  /* Firefox */
-  height: 4em;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 2fr 6fr;
       grid-template-columns: 2fr 6fr;
   -ms-grid-rows: auto;
       grid-template-rows: auto;
+  border-radius: 4px;
 }
 
-body main #infoSection .gbSection .guestBook .messages p {
+body main #infoSection .gbSection .messages p {
   max-width: 100%;
   font-size: 0.8em;
   font-weight: 300;
   margin: 0.5em;
   border-radius: 5px;
-  color: #043263;
+  color: #FFF;
   font-weight: 600;
 }
 
-body main #infoSection .gbSection .guestBook .messages::-webkit-scrollbar {
+body main #infoSection .gbSection .messages::-webkit-scrollbar {
   display: none;
 }
 
-body main #infoSection .gbSection .guestBook input {
-  margin-top: 0.3em;
+body main #infoSection input {
   border: none;
   text-indent: 0.5em;
   font-family: Rajdhani;
   padding: 0.2em 0;
+  border-radius: 2px;
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
+  grid-column: 2 / 3;
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 1;
+  grid-row: 2 / 3;
 }
 
-body main #infoSection .gbSection .guestBook textarea {
+body main #infoSection textarea {
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
+  grid-column: 2 / 3;
+  -ms-grid-row: 3;
+  -ms-grid-row-span: 1;
+  grid-row: 3 / 4;
   width: 100%;
-  height: 4em;
   margin: 0;
-  border-bottom-right-radius: 10px;
   border: none;
   border-top: 0.1em solid #06458A;
   resize: none;
   text-indent: 0.5em;
   font-family: Rajdhani;
   padding-top: 0.2em;
+  border-radius: 2px;
+}
+
+body main #infoSection button {
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
+  grid-column: 2 / 3;
+  -ms-grid-row: 4;
+  -ms-grid-row-span: 1;
+  grid-row: 4 / 5;
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0.5em 1em;
+  color: #FFF;
+  font-size: 0.8em;
+  border: none;
+  background-color: #0A79F0;
+  border-radius: 2px;
+  border-bottom-right-radius: 10px;
+}
+
+body main #infoSection button:active {
+  outline: none;
+  border: none;
+}
+
+body main #infoSection button:focus {
+  outline: 0;
 }
 
 body main + .pseudo {
