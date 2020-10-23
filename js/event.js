@@ -84,11 +84,12 @@ class Event {
         let category = document.querySelector(".category");
         let address = document.querySelector(".venue");
         let infoText = document.querySelector(".infoText");
+        let fulldate = document.querySelector(".fulldate");
         let guestBookName = document.getElementById("gbName");
         let guestBookInput = document.getElementById("gbEntry");
         let guestlist = document.querySelector(".guests");
         let stafflist = document.querySelector(".staff");
-        let fulldate = document.querySelector(".fulldate");
+        let gbButton = document.querySelector(".gbButton");
         
         //// info material ////
         title.innerHTML = this.name;
@@ -116,24 +117,27 @@ class Event {
         if (this.tickets - this.guests.length < 50 && this.tickets - this.guests.length > 0) {
             availability.innerHTML = "Fåtal biljetter kvar!!";
         } else if (this.tickets - this.guests.length < 0) {
-            availability.innerHTML = "Slutsålt!";
+            availability.innerHTML = "Slutsålt";
             ticketsButton.innerHTML = "Håll mig uppdaterad!";
         }
+        
+        guestBookName.value = localStorage.getItem('gbname');
+
         this.refreshGuestbook();
-        guestBookInput.addEventListener("keyup", e => {
-            if (e.code == "Enter") {
-                guestBookInput.value = guestBookInput.value.trim();
+        gbButton.addEventListener("click", e => {
+            guestBookInput.value = guestBookInput.value.trim();
                 guestBookName.value = guestBookName.value.trim();
                 if (guestBookName.value.length > 0 && guestBookInput.value.length > 0) {
                     this.updateGuestbook(guestBookName.value, guestBookInput.value);
                     this.refreshGuestbook();
-                    guestBookName.value = "";
+                    
+                    localStorage.setItem('gbname', guestBookName.value);
+
                     guestBookInput.value = "";
                 } else {
                     alert("Vänligen fyll i både namn och meddelande för att skicka.")
                 }
-            }
-        })
+        });
         
     }
     updateGuestbook(name, entry) {
