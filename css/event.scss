@@ -1,0 +1,313 @@
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap');
+
+$color1: #FFF;
+$color2: #000;
+$color3: #043263;
+$color4: #0A79F0;
+$color5: #0752A3;
+$color6: #0759B0;
+$color7: #06458A;
+$border: 5px solid $color6;
+$padding1: 1em;
+$padding2: 0.5em;
+$padding3: 0.3em;
+$padding4: 0.8em;
+
+
+
+
+
+body {
+    background-color: $color6;
+
+    header,
+    footer { //// obs är det samma över alla sidor? ändra?
+        background-color: $color3;
+        height: 60px;
+        position: fixed;
+    }
+    
+
+    .popupBG {
+        width: 100vw;
+        height: 100%;
+        z-index: 2;
+        background-color: rgba(4, 50, 99, 0.9);
+        position: absolute;
+        top: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .popupImg {
+            max-height: 92%;
+            max-width: 92%;
+    
+        }
+        .bookDiv {
+            width: 30em;
+            height: 20em;
+            background-color: $color4;
+            border-radius: 20px;
+            
+            .confirm,
+            form {
+                width: 60%;
+                margin: 20% auto;
+                display: flex;
+                flex-direction: column;
+                
+                p,
+                input {
+                    text-align: center;
+                }
+            }
+        }
+    }
+
+    
+    .pseudo {
+        height: 85px;
+    }
+    main {
+        background-color: $color7;
+        border-radius: 20px;
+        color: $color1;
+        height: 75vh;
+        width: 80vw;
+        margin: 0 auto;
+        // padding: 80px 0 100px 0;
+        display: flex;
+        flex-direction: row;
+        -webkit-box-sizing: border-box; 
+           -moz-box-sizing: border-box;
+            -ms-box-sizing: border-box;
+                box-sizing: border-box;
+    
+        #imgContainer {
+            -webkit-box-sizing: border-box; 
+           -moz-box-sizing: border-box;
+            -ms-box-sizing: border-box;
+                box-sizing: border-box;
+            min-width: 40vw;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            margin: 1em;
+    
+            .eventImg {
+                // height: 60vw;
+                width: 100%;
+                height: 80%;
+                overflow: hidden;
+                background-size: cover;
+                background-position: center;
+                border-radius: 10px 0 0 0;
+
+            }
+            .imgBar {
+                width: 100%;
+                padding-top: 1em;
+                height: 17%;
+                display: flex;
+                overflow: hidden;
+                flex-direction: row;
+                overflow-x: scroll;
+                border-bottom-left-radius: 10px;
+                .thumb {
+                    height: 100%;
+                    min-width: 10em;
+                    overflow: hidden;
+                    background-size: cover;
+                    background-position: center;
+                }
+                .thumb + .thumb {
+                    margin-left: 0.5em;
+                }
+            }
+        }
+        
+    
+        #infoSection {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr 6fr 2fr;
+    
+            .infoTop {
+                margin: 1em 1em 0 0;
+                grid-row: 1 / 2;
+                div {
+                    border-top: $border;
+                    border-bottom: $border;
+                    display: flex;
+                    justify-content: space-between;
+                    h1 {
+                        color: $color1;
+                    }
+                    p {
+                        align-self: center;
+                        padding: $padding3 $padding4;
+                        background-color: $color4;
+                        border-radius: 2px;
+                        font-size: 0.8em;
+                    }
+                }
+                .date {
+                    margin-top: $padding1;
+                    font-weight: 600;
+                }
+                
+    
+            }
+            .info {
+                height: 100%;
+                overflow: scroll;
+                padding-right: $padding1;
+                margin-top: 1em;
+                position: relative;
+                grid-row: 2 / 3;
+
+                p {
+                    margin: 0;
+                    text-align: justify;
+                    font-size: 0.8em;
+                }
+                div {
+                    height: 10%;
+                    width: 100%;
+                }
+            }
+            
+            .infoBottom {
+                border-top: $border;
+                z-index: 1;
+                margin: 0.8em $padding1 0 0;
+                grid-row: 3 / 4;
+
+                p {
+                    font-weight: 600;
+                    margin-top: $padding1;
+                }
+
+                button {
+                    -webkit-box-sizing: border-box; 
+                        -moz-box-sizing: border-box;
+                        -ms-box-sizing: border-box;
+                            box-sizing: border-box;
+                    padding: $padding2 $padding1;
+                    color: $color1;
+                    font-size: 0.8em;
+                    border: none;
+                    border-radius: 2px;
+                    background-color: $color4;
+                }
+
+                button:active {
+                    outline: none;
+                    border: none;
+                    }
+                    
+                button:focus {
+                    outline: 0;
+                }
+                button.notify {
+                    font-size: 0.8em;
+                    margin-left: 0.5em;
+                    line-height: 1.1em;
+                    text-transform: uppercase;
+                }
+                .guestBook {
+                    margin: $padding1 0;
+                    display: flex;
+                    flex-direction: column;
+                    .messages {
+                        background-color: $color6;
+                        background-color: $color1;
+                        overflow: scroll;
+                        -ms-overflow-style: none;  /* IE and Edge */
+                        scrollbar-width: none;  /* Firefox */
+                        height: 4em;
+                        display: grid;
+                        grid-template-columns: 2fr 6fr;
+                        grid-template-rows: auto;
+                        p {
+                            max-width: 100%;
+                            font-size: 0.8em;
+                            font-weight: 300;
+                            margin: 0.5em;
+                            border-radius: 5px;
+                            color: $color3;
+                            font-weight: 600;
+                        }
+                        
+                    }
+                    .messages::-webkit-scrollbar {
+                        display: none;
+                    }
+                    input {
+                        margin-top: $padding3;
+                        border: none;
+                        text-indent: 0.5em;
+                        font-family: Rajdhani;
+                        padding: 0.2em 0;
+                    }
+                    textarea {
+                        width: 100%;
+                        height: 4em;
+                        margin: 0;
+                        border-bottom-right-radius: 10px;
+                        border: none;
+                        border-top: 0.1em solid $color7;
+                        resize: none;
+                        text-indent: 0.5em;
+                        font-family: Rajdhani;
+                        padding-top: 0.2em;
+
+                    }
+
+                }
+
+
+                // background: transparent;
+                
+                /* div {
+                    height: 3em;
+                    margin: 0.8em 0;
+                    padding: 0;
+                    -webkit-box-sizing: border-box; 
+                           -moz-box-sizing: border-box;
+                            -ms-box-sizing: border-box;
+                                box-sizing: border-box;
+                    display: grid;
+                    grid-template-rows: 1fr 3fr;
+                    grid-template-columns: 5fr 1fr;
+                    gap: 0.5em;
+                    p {
+                        font-weight: 300;
+                        font-size: 0.8em;
+                        margin: 0;
+                        grid-row: 1 / 2;
+                        grid-column: 1 / 2;
+                    } */
+                    /* p + p {
+                        font-size: 0.8em;
+                        font-weight: 300;
+                    } */
+                    /* 
+                    input {
+                        width: 14em;
+                        border: none;
+                        border-radius: 2px;
+                        padding: 0.2em;
+                        grid-row: 2 / 3;
+                        grid-column: 1 / 2;
+                    }
+                    
+                } */
+            }
+        }
+    }
+    main + .pseudo {
+        height: 100px;
+    }
+}
+
