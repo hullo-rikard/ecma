@@ -1,0 +1,66 @@
+$color1: #FFF;
+$color2: #000;
+$color3: #043263;
+$color4: #0A79F0;
+$color5: #0752A3;
+$color6: #0759B0;
+$color7: #06458A;
+
+.wrapper_all{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    //grid-template-rows: 100px 1fr 1fr;
+
+    #empty{
+        grid-row: 1;
+        min-height: 200px;
+    }
+
+    .display_div {
+        grid-column: 1;
+        position: fixed;
+        margin: 39px 0 0 0;   
+        height: 100%;
+        width: 50%;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size:cover;
+
+        #title{
+            grid-row: 2;
+            width: 75%;
+            margin: auto;
+        }
+    }
+    .text_div{
+        margin-top: 39px;
+        grid-column: 2;
+        
+        #inner_text{
+            grid-row: 2;
+            width: 50%;
+            margin: auto;
+
+            #button{
+                margin: 20px 0;
+                width: 100%;
+            }
+        }
+    }
+    h1{
+        margin: 1em 0;
+        font-size: 3em;
+        text-align: center;        
+        text-shadow: -1px -1px 0 $color3, 1px -1px 0 $color3, -1px 1px 0 $color4, 1px 1px 0 $color4;
+    }
+    p{
+        margin: 5px 0;
+    }
+    a{        
+        text-decoration: none;
+        border: 1px solid $color2;
+        background-color: $color4;
+        color: $color1;
+        padding: 10px;        
+    }
+}
