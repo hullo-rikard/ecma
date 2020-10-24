@@ -82,7 +82,7 @@ class Event {
         let date = document.querySelector(".date");
         let title = document.querySelector(".title");
         let category = document.querySelector(".category");
-        let address = document.querySelector(".venue");
+        let address = document.querySelector(".address");
         let infoText = document.querySelector(".infoText");
         let fulldate = document.querySelector(".fulldate");
         let guestBookName = document.getElementById("gbName");
@@ -141,10 +141,11 @@ class Event {
         
     }
     updateGuestbook(name, entry) {
+        let datetime = new Date().toISOString().slice(0, -5);
         this.guestbook.push({
             "namn": name,
             "message": entry,
-            "datetime": "2020-01-18478238476"
+            "datetime": datetime
         });
         console.log(this.guestbook);
     }
@@ -158,7 +159,7 @@ class Event {
             let text = document.createElement("p");
 
             nameTime.innerHTML = entry.namn + "<br>" + entry.datetime.slice(0, -9);
-            text.innerHTML = entry.message;
+            text.innerHTML = '"' + entry.message + '"';
 
             guestbook.appendChild(nameTime);
             guestbook.appendChild(text);
