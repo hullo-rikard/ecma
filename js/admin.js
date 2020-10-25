@@ -97,6 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     app.showEvents()
 
+    //clickhandler: show/delete event
     app.ui.eventListDiv.addEventListener('click', (event) => {
         if(event.target.getAttribute('eventid')){
             app.showEvent(event.target.getAttribute('eventid'))
@@ -105,26 +106,35 @@ document.addEventListener('DOMContentLoaded', () => {
             deleteEvent(event.target.getAttribute('id'))
         }
     })
-
+    //clickhandler: add/update event
+    app.ui.formButton.addEventListener('click', (e) => {
+        let eventID = document.querySelector('#id').value
+        if(eventID){
+            updateEvent(eventID)
+        } else {
+            addEvent()
+        }
+    })
+    //clickhandler: delete guest
+    app.ui.guestsListDiv.addEventListener('click', (event) => {
+        if(event.target.getAttribute('class') == 'delete') {
+            console.log('delete guest: '+event.target.getAttribute('id'))
+        }
+    })
+    //clickhandler: delete admin
+    app.ui.adminsListDiv.addEventListener('click', (event) => {
+        if(event.target.getAttribute('class') == 'delete') {
+            console.log('delete admin: '+event.target.getAttribute('id'))
+        }
+    })
+    //clickhandler: empty form
     app.ui.newEventBtn.addEventListener('click', () => { 
         app.isEditable(false) 
     })
 
-    app.ui.formButton.addEventListener('click', (e) => {
-        e.preventDefault()
-        let eventID = document.querySelector('#id').value
-        if(eventID){
-            //TODO: update event
-            updateEvent(eventID)
-        } else {
-            //TODO: create event
-            addEvent()
-        }
-    })
-
 })
 
-function addEvent(){ //TODO make this oop
+function addEvent(){ //TODO: make this oop
     let newEvent = {}
     let allInputs = document.querySelectorAll('input:not([id=id]), select, textarea')
 
@@ -143,7 +153,7 @@ function addEvent(){ //TODO make this oop
     localStorage.setItem('events', JSON.stringify(app.events))
     app.isEditable(false)
 }
-function updateEvent(eventID){ //TODO make this oop
+function updateEvent(eventID){ //TODO: make this oop
     let updateEvent = app.getEventByEventID(eventID)
     let allInputs = document.querySelectorAll('input:not([id=id]), select, textarea')
     app.events[updateEvent.arrayKey].images = []
@@ -160,7 +170,7 @@ function updateEvent(eventID){ //TODO make this oop
     localStorage.setItem('events', JSON.stringify(app.events))
     app.isEditable(false)
 }
-function deleteEvent(eventID){
+function deleteEvent(eventID){ //TODO: make this oop
     if (confirm('Vill du ta bort eventet?')) {
         arrayKey = app.getEventByEventID(eventID).arrayKey
         app.events.splice(arrayKey, 1)
