@@ -54,7 +54,7 @@ App.prototype.isEditable = function(boolean) {
     } else {
         this.ui.createEvent.innerHTML = "Skapa nytt event<br><span>(eller klicka på ett event till vänster för att ändra)</span>"
         this.ui.formButton.innerHTML = "Skapa event!"
-        document.querySelector('#eventID').value = ""
+        document.querySelector('#id').value = ""
         let allInputs = document.querySelectorAll('input:not([type=file]), select, textarea')
         allInputs.forEach(element => {
             element.value = ""
@@ -86,20 +86,40 @@ document.addEventListener('DOMContentLoaded', () => {
     })
 
     app.ui.formButton.addEventListener('click', (e) => {
-        e.preventDefault();
+        e.preventDefault()
         let eventID = document.querySelector('#id').value
         if(eventID){
             //TODO: update event
-            updateEvent(eventID);
+            updateEvent(eventID)
         } else {
             //TODO: create event
+            createEvent()
         }
     })
 
 })
 
+function createEvent(){
+    let newEvent = {}
+    let allInputs = document.querySelectorAll('input:not([id=id]), select, textarea')
+    newEvent.id = (app.events[app.events.length-1].id)+1
+    newEvent.images = []
+    newEvent.members = {}
+    newEvent.members.admins = []
+    newEvent.members.guests = []
+    newEvent.guestbook = []
+    
+    allInputs.forEach(element => {
+        newEvent[element.name] = element.value
+    })
+    console.log(newEvent)
+    
+
+}
+
 function updateEvent(eventID){
-    let allInputs = document.querySelectorAll('input:not([type=file]), select, textarea')
+    console.log('updateEvent')
+    let allInputs = document.querySelectorAll('input:not([id=id]), select, textarea')
     //get event & key from LS
     //update object with form input
     //send object to LS
