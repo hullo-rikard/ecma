@@ -5,7 +5,9 @@ class App {
     getEventByEventID(ID){
         for (var i=0; i < this.events.length; i++) {
             if (this.events[i].id === parseInt(ID)) {
-                return this.events[i];
+                let tempEvent = this.events[i]
+                tempEvent.arrayKey = i
+                return tempEvent;
             }
         }
     }

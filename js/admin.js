@@ -1,4 +1,5 @@
 App.prototype.showEvents = function() {
+    this.ui.eventListDiv.innerHTML = ""
     for (let event of this.events) {
         let div =  document.createElement('div')
             div.setAttribute('eventid', event.id)
@@ -18,7 +19,18 @@ App.prototype.fillForm = function(thisevent) {
     allInputs.forEach(element => {
         element.value = thisevent[element.name]
     })
-    //TODO: handle image
+    let i = 0
+    thisevent.images.forEach(element => {
+        let input = document.createElement('input')
+            input.setAttribute('type', 'test')
+            input.setAttribute('name', 'images-'+i)
+            input.setAttribute('id', 'images-'+1)
+            input.setAttribute('class', 'images')
+            input.setAttribute('value', element)
+        document.querySelector('form').appendChild(input)
+        i++
+    })
+    //TODO: handle multiple images
 }
 App.prototype.showGuests = function(thisevent) {
     thisevent.members.guests.forEach((guest, key) => {
@@ -47,7 +59,12 @@ App.prototype.clearGuestsAndAdmins = function() {
     this.ui.adminsListDiv.innerHTML = ""
 }
 App.prototype.isEditable = function(boolean) {
+    let images = document.querySelectorAll('.images')
+    images.forEach(element => {
+        element.remove()
+    })
     this.clearGuestsAndAdmins()
+    this.showEvents()
     if(boolean){
         this.ui.createEvent.innerHTML = "Ändra event"
         this.ui.formButton.innerHTML = "Spara ändringar!"
@@ -63,6 +80,7 @@ App.prototype.isEditable = function(boolean) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    console.log(app.events)
 
     app.ui = {
         eventListDiv: document.querySelector('.eventList'),
@@ -70,7 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
         adminsListDiv: document.querySelector('.adminsList'),
         newEventBtn: document.querySelector('.newEvent'),
         createEvent: document.querySelector('.createEvent'),
-        formButton: document.querySelector('form button')
+        formButton: document.querySelector('button.eventbtn')
     }
 
     app.showEvents()
@@ -93,15 +111,16 @@ document.addEventListener('DOMContentLoaded', () => {
             updateEvent(eventID)
         } else {
             //TODO: create event
-            createEvent()
+            addEvent()
         }
     })
 
 })
 
-function createEvent(){
+function addEvent(){ //TODO make this oop
     let newEvent = {}
     let allInputs = document.querySelectorAll('input:not([id=id]), select, textarea')
+
     newEvent.id = (app.events[app.events.length-1].id)+1
     newEvent.images = []
     newEvent.members = {}
@@ -112,16 +131,31 @@ function createEvent(){
     allInputs.forEach(element => {
         newEvent[element.name] = element.value
     })
-    console.log(newEvent)
-    
 
+    app.events.push(newEvent)
+    localStorage.setItem('events', JSON.stringify(app.events))
+    app.isEditable(false)
 }
 
-function updateEvent(eventID){
-    console.log('updateEvent')
+function updateEvent(eventID){ //TODO make this oop
+    let updateEvent = app.getEventByEventID(eventID)
     let allInputs = document.querySelectorAll('input:not([id=id]), select, textarea')
-    //get event & key from LS
-    //update object with form input
-    //send object to LS
-    console.log(eventID)
+    allInputs.forEach(element => {
+        app.events[updateEvent.arrayKey][element.name] = element.value
+    })
+    localStorage.setItem('events', JSON.stringify(app.events))
+    app.isEditable(false)
+}
+
+function addGuest(){
+    console.log('addGuest called!')
+}
+function deleteGuest(){
+    console.log('deleteGuest called!')
+}
+function addAdmin(){
+    console.log('addAdmin called!')
+}
+function deleteAdmin(){
+    console.log('deleteAdmin called!')
 }
