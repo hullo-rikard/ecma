@@ -3,10 +3,9 @@ App.prototype.showEvents = function() {
         let div =  document.createElement('div')
             div.setAttribute('eventid', event.id)
             div.textContent = event.name
-            app.ui.eventListDiv.appendChild(div)
+        app.ui.eventListDiv.appendChild(div)
     }
 }
-
 App.prototype.showEvent = function(ID) {
     let thisevent = this.getEventByEventID(ID)
     this.fillForm(thisevent)
@@ -29,7 +28,7 @@ App.prototype.showGuests = function(thisevent) {
             icon.setAttribute('id', key)
             div.textContent = guest.name
             div.appendChild(icon)
-            this.ui.guestsListDiv.appendChild(div)
+        this.ui.guestsListDiv.appendChild(div)
     })
 }
 App.prototype.showAdmins = function(thisevent) {
@@ -40,7 +39,7 @@ App.prototype.showAdmins = function(thisevent) {
             icon.setAttribute('id', key)
             div.textContent = admin.username
             div.appendChild(icon)
-            this.ui.adminsListDiv.appendChild(div)
+        this.ui.adminsListDiv.appendChild(div)
     })
 }
 App.prototype.clearGuestsAndAdmins = function() {
@@ -86,4 +85,23 @@ document.addEventListener('DOMContentLoaded', () => {
         app.isEditable(false) 
     })
 
+    app.ui.formButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        let eventID = document.querySelector('#id').value
+        if(eventID){
+            //TODO: update event
+            updateEvent(eventID);
+        } else {
+            //TODO: create event
+        }
+    })
+
 })
+
+function updateEvent(eventID){
+    let allInputs = document.querySelectorAll('input:not([type=file]), select, textarea')
+    //get event & key from LS
+    //update object with form input
+    //send object to LS
+    console.log(eventID)
+}
