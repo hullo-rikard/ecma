@@ -1,24 +1,15 @@
-function isEditable(boolean){
-    clearGuestsAndAdmins()
-    if(boolean){
-        document.querySelector('.createEvent').innerHTML = "Ändra event"
-        document.querySelector('form button').innerHTML = "Spara ändringar!"
-    } else {
-        document.querySelector('.createEvent').innerHTML = "Skapa nytt event<br><span>(eller klicka på ett event till vänster för att ändra)</span>"
-        document.querySelector('form button').innerHTML = "Skapa event!"
-        document.querySelector('#eventID').value = ""
-        let allInputs = document.querySelectorAll('input:not([type=file]), select, textarea')
-        allInputs.forEach(element => {
-            element.value = ""
-        })
+Events.prototype.showEvents = function(ui) {
+    for (let event of this.all) {
+        let div =  document.createElement('div')
+        div.setAttribute('eventid', event.id)
+        div.textContent = event.name
+        ui.eventListDiv.appendChild(div)
     }
 }
-function clearGuestsAndAdmins(){
-    document.querySelector('.guestsList').innerHTML = ""
-    document.querySelector('.adminsList').innerHTML = ""
-}
 
-document.addEventListener('DOMContentLoaded', async () => {
+
+
+document.addEventListener('DOMContentLoaded', () => {
 
     const ui = {
         eventListDiv: document.querySelector('.eventList'),
@@ -32,15 +23,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     const adminsListDiv = document.querySelector('.adminsList')
     const newEventBtn = document.querySelector('.newEvent')
 
-    //TODO: check if localstorage is used
-
-    let events = await fetchEvents()
-
-    showEvents(events, ui)
+    //showEvents(events.all, ui)
+    events.showEvents(ui)
 
     eventListDiv.addEventListener('click', (event) => {
         if(event.target.getAttribute('eventid')){
-            let thisevent = getEventByEventID(events, parseInt(event.target.getAttribute('eventid')))
+            let thisevent = getEventByEventID(events.all, parseInt(event.target.getAttribute('eventid')))
             showEvent(thisevent, ui)
             console.log(thisevent)
         }
@@ -48,24 +36,13 @@ document.addEventListener('DOMContentLoaded', async () => {
     newEventBtn.addEventListener('click', () => { isEditable(false) })
 })
 
-
-
-async function fetchEvents() {
-    let data = await fetch("../data/events.json")
-    .then(response => response.json())
-    .then(json => {
-        return json.events
-    })
-    return data
-}
-
 function showEvents(events, ui){
-    events.forEach(event => {
+    for (let event of events) {
         let div =  document.createElement('div')
-            div.setAttribute('eventid', event.id)
-            div.textContent = event.name
+        div.setAttribute('eventid', event.id)
+        div.textContent = event.name
         ui.eventListDiv.appendChild(div)
-    })
+    }
 }
 
 function showEvent(thisevent, ui){
@@ -103,6 +80,26 @@ function fillForm(thisevent, ui) {
         element.value = thisevent[element.name]
     })
     //TODO: handle image
+}
+
+function isEditable(boolean){
+    clearGuestsAndAdmins()
+    if(boolean){
+        document.querySelector('.createEvent').innerHTML = "Ändra event"
+        document.querySelector('form button').innerHTML = "Spara ändringar!"
+    } else {
+        document.querySelector('.createEvent').innerHTML = "Skapa nytt event<br><span>(eller klicka på ett event till vänster för att ändra)</span>"
+        document.querySelector('form button').innerHTML = "Skapa event!"
+        document.querySelector('#eventID').value = ""
+        let allInputs = document.querySelectorAll('input:not([type=file]), select, textarea')
+        allInputs.forEach(element => {
+            element.value = ""
+        })
+    }
+}
+function clearGuestsAndAdmins(){
+    document.querySelector('.guestsList').innerHTML = ""
+    document.querySelector('.adminsList').innerHTML = ""
 }
 
 

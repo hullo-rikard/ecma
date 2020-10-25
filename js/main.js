@@ -1,3 +1,41 @@
+let events
+
+class Events {
+    constructor(events) {
+        this.all = events;
+    }
+    getEventByEventID(ID){
+        for (var i=0; i < this.all.length; i++) {
+            if (this.all[i].id === ID) {
+                return this.all[i];
+            }
+        }
+    }
+}
+
+async function fetchEvents() {
+    let data = await fetch("../data/events.json")
+    .then(response => response.json())
+    .then(json => {
+        return json.events
+    })
+    return data
+}
+
+document.addEventListener('DOMContentLoaded', async () => {
+    if(localStorage.getItem('events')){
+        events = new Events(JSON.parse(localStorage.getItem('events')))
+    } else {
+        let fetchResult = await fetchEvents()
+        localStorage.setItem('events', JSON.stringify(fetchResult))
+        events = new Events(await fetchResult)
+    }
+})
+
+
+
+
+
 document.addEventListener('DOMContentLoaded', function(){
     addHeader()
     addFooter()
