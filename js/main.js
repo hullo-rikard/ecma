@@ -1,19 +1,17 @@
-let events
-
-class Events {
+class App {
     constructor(events) {
-        this.all = events;
+        this.events = events;
     }
     getEventByEventID(ID){
-        for (var i=0; i < this.all.length; i++) {
-            if (this.all[i].id === ID) {
-                return this.all[i];
+        for (var i=0; i < this.events.length; i++) {
+            if (this.events[i].id === parseInt(ID)) {
+                return this.events[i];
             }
         }
     }
 }
 
-async function fetchEvents() {
+async function fetchEvents() { //TODO? Ska denna kastas in i classen App?
     let data = await fetch("../data/events.json")
     .then(response => response.json())
     .then(json => {
@@ -22,18 +20,17 @@ async function fetchEvents() {
     return data
 }
 
-document.addEventListener('DOMContentLoaded', async () => {
+let app
+
+document.addEventListener('DOMContentLoaded', async () => { //TODO? Ska if-satsen kastas in i classen App?
     if(localStorage.getItem('events')){
-        events = new Events(JSON.parse(localStorage.getItem('events')))
+        app = new App(JSON.parse(localStorage.getItem('events')))
     } else {
         let fetchResult = await fetchEvents()
         localStorage.setItem('events', JSON.stringify(fetchResult))
-        events = new Events(await fetchResult)
+        app = new App(await fetchResult)
     }
 })
-
-
-
 
 
 document.addEventListener('DOMContentLoaded', function(){

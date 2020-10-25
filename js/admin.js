@@ -1,57 +1,27 @@
-Events.prototype.showEvents = function(ui) {
-    for (let event of this.all) {
+App.prototype.showEvents = function() {
+    for (let event of this.events) {
         let div =  document.createElement('div')
-        div.setAttribute('eventid', event.id)
-        div.textContent = event.name
-        ui.eventListDiv.appendChild(div)
+            div.setAttribute('eventid', event.id)
+            div.textContent = event.name
+            app.ui.eventListDiv.appendChild(div)
     }
 }
 
-
-
-document.addEventListener('DOMContentLoaded', () => {
-
-    const ui = {
-        eventListDiv: document.querySelector('.eventList'),
-        guestsListDiv: document.querySelector('.guestsList'),
-        adminsListDiv: document.querySelector('.adminsList'),
-        newEventBtn: document.querySelector('.newEvent'),
-    }
-
-    const eventListDiv = document.querySelector('.eventList')
-    const guestsListDiv = document.querySelector('.guestsList')
-    const adminsListDiv = document.querySelector('.adminsList')
-    const newEventBtn = document.querySelector('.newEvent')
-
-    //showEvents(events.all, ui)
-    events.showEvents(ui)
-
-    eventListDiv.addEventListener('click', (event) => {
-        if(event.target.getAttribute('eventid')){
-            let thisevent = getEventByEventID(events.all, parseInt(event.target.getAttribute('eventid')))
-            showEvent(thisevent, ui)
-            console.log(thisevent)
-        }
+App.prototype.showEvent = function(ID) {
+    let thisevent = this.getEventByEventID(ID)
+    this.fillForm(thisevent)
+    this.showGuests(thisevent)
+    this.showAdmins(thisevent)
+}
+App.prototype.fillForm = function(thisevent) {
+    this.isEditable(true)
+    let allInputs = document.querySelectorAll('input:not([type=file]), select, textarea')
+    allInputs.forEach(element => {
+        element.value = thisevent[element.name]
     })
-    newEventBtn.addEventListener('click', () => { isEditable(false) })
-})
-
-function showEvents(events, ui){
-    for (let event of events) {
-        let div =  document.createElement('div')
-        div.setAttribute('eventid', event.id)
-        div.textContent = event.name
-        ui.eventListDiv.appendChild(div)
-    }
+    //TODO: handle image
 }
-
-function showEvent(thisevent, ui){
-    //Show one event
-    fillForm(thisevent, ui)
-    showGuests(thisevent, ui)
-    showAdmins(thisevent, ui)
-}
-function showGuests(thisevent, ui){
+App.prototype.showGuests = function(thisevent) {
     thisevent.members.guests.forEach((guest, key) => {
         let div =  document.createElement('div')
         let icon = document.createElement('div')
@@ -59,10 +29,10 @@ function showGuests(thisevent, ui){
             icon.setAttribute('id', key)
             div.textContent = guest.name
             div.appendChild(icon)
-            ui.guestsListDiv.appendChild(div)
+            this.ui.guestsListDiv.appendChild(div)
     })
 }
-function showAdmins(thisevent, ui){
+App.prototype.showAdmins = function(thisevent) {
     thisevent.members.admins.forEach((admin, key) => {
         let div =  document.createElement('div')
         let icon = document.createElement('div')
@@ -70,26 +40,21 @@ function showAdmins(thisevent, ui){
             icon.setAttribute('id', key)
             div.textContent = admin.username
             div.appendChild(icon)
-            ui.adminsListDiv.appendChild(div)
+            this.ui.adminsListDiv.appendChild(div)
     })
 }
-function fillForm(thisevent, ui) {
-    isEditable(true)
-    let allInputs = document.querySelectorAll('input:not([type=file]), select, textarea')
-    allInputs.forEach(element => {
-        element.value = thisevent[element.name]
-    })
-    //TODO: handle image
+App.prototype.clearGuestsAndAdmins = function() {
+    this.ui.guestsListDiv.innerHTML = ""
+    this.ui.adminsListDiv.innerHTML = ""
 }
-
-function isEditable(boolean){
-    clearGuestsAndAdmins()
+App.prototype.isEditable = function(boolean) {
+    this.clearGuestsAndAdmins()
     if(boolean){
-        document.querySelector('.createEvent').innerHTML = "Ändra event"
-        document.querySelector('form button').innerHTML = "Spara ändringar!"
+        this.ui.createEvent.innerHTML = "Ändra event"
+        this.ui.formButton.innerHTML = "Spara ändringar!"
     } else {
-        document.querySelector('.createEvent').innerHTML = "Skapa nytt event<br><span>(eller klicka på ett event till vänster för att ändra)</span>"
-        document.querySelector('form button').innerHTML = "Skapa event!"
+        this.ui.createEvent.innerHTML = "Skapa nytt event<br><span>(eller klicka på ett event till vänster för att ändra)</span>"
+        this.ui.formButton.innerHTML = "Skapa event!"
         document.querySelector('#eventID').value = ""
         let allInputs = document.querySelectorAll('input:not([type=file]), select, textarea')
         allInputs.forEach(element => {
@@ -97,38 +62,28 @@ function isEditable(boolean){
         })
     }
 }
-function clearGuestsAndAdmins(){
-    document.querySelector('.guestsList').innerHTML = ""
-    document.querySelector('.adminsList').innerHTML = ""
-}
 
+document.addEventListener('DOMContentLoaded', () => {
 
+    app.ui = {
+        eventListDiv: document.querySelector('.eventList'),
+        guestsListDiv: document.querySelector('.guestsList'),
+        adminsListDiv: document.querySelector('.adminsList'),
+        newEventBtn: document.querySelector('.newEvent'),
+        createEvent: document.querySelector('.createEvent'),
+        formButton: document.querySelector('form button')
+    }
 
-//this function should maybe be in the main.js file
-function getEventByEventID(eventsArray, ID){
-    for (var i=0; i < eventsArray.length; i++) {
-        if (eventsArray[i].id === ID) {
-            return eventsArray[i];
+    app.showEvents()
+
+    app.ui.eventListDiv.addEventListener('click', (event) => {
+        if(event.target.getAttribute('eventid')){
+            app.showEvent(event.target.getAttribute('eventid'))
         }
-    }
-}
+    })
 
-class Event {
-    constructor(event) {
-        this.id = event.id;
-        this.name = event.name;
-        this.info = event.description;
-        this.address = event.address;
-        this.venue = event.venue;
-        this.startDatetime = event.startDatetime;
-        this.endDatetime = event.endDatetime;
-        this.tickets = event.tickets;
-        this.category = event.category;
-        this.image = event.image;
-        this.displayingImg = event.image;
-        this.images = event.images;
-        this.admins = event.members.admins;
-        this.guests = event.members.guests;
-        this.guestbook = event.guestbook;
-    }
-}
+    app.ui.newEventBtn.addEventListener('click', () => { 
+        app.isEditable(false) 
+    })
+
+})
