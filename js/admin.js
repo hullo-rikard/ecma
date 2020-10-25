@@ -2,8 +2,12 @@ App.prototype.showEvents = function() {
     this.ui.eventListDiv.innerHTML = ""
     for (let event of this.events) {
         let div =  document.createElement('div')
+        let icon = document.createElement('div')
+            icon.className = 'delete'
+            icon.setAttribute('id', event.id)
             div.setAttribute('eventid', event.id)
             div.textContent = event.name
+            div.appendChild(icon)
         app.ui.eventListDiv.appendChild(div)
     }
 }
@@ -97,6 +101,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if(event.target.getAttribute('eventid')){
             app.showEvent(event.target.getAttribute('eventid'))
         }
+        if(event.target.getAttribute('class') == 'delete'){
+            deleteEvent(event.target.getAttribute('id'))
+        }
     })
 
     app.ui.newEventBtn.addEventListener('click', () => { 
@@ -136,15 +143,30 @@ function addEvent(){ //TODO make this oop
     localStorage.setItem('events', JSON.stringify(app.events))
     app.isEditable(false)
 }
-
 function updateEvent(eventID){ //TODO make this oop
     let updateEvent = app.getEventByEventID(eventID)
     let allInputs = document.querySelectorAll('input:not([id=id]), select, textarea')
+    app.events[updateEvent.arrayKey].images = []
     allInputs.forEach(element => {
-        app.events[updateEvent.arrayKey][element.name] = element.value
+        if(element.classList.contains('images')){
+            if(element.value){
+                app.events[updateEvent.arrayKey].images.push(element.value)
+            }
+        } else {
+            app.events[updateEvent.arrayKey][element.name] = element.value
+        }
+        
     })
     localStorage.setItem('events', JSON.stringify(app.events))
     app.isEditable(false)
+}
+function deleteEvent(eventID){
+    if (confirm('Vill du ta bort eventet?')) {
+        arrayKey = app.getEventByEventID(eventID).arrayKey
+        app.events.splice(arrayKey, 1)
+        localStorage.setItem('events', JSON.stringify(app.events))
+        app.showEvents()
+    }
 }
 
 function addGuest(){
