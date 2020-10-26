@@ -68,6 +68,13 @@ header #nav-div {
 header #nav-div a {
   color: #FFF;
   margin-right: 10%;
+  text-decoration: none;
+  -webkit-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+}
+
+header #nav-div a:hover {
+  text-decoration: underline;
 }
 
 footer {
