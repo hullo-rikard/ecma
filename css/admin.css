@@ -1,0 +1,123 @@
+h4 {
+  margin: 15px 0px;
+}
+
+.container {
+  margin-top: 50px;
+  padding: 40px 30px;
+  text-align: center;
+  height: 100vh;
+}
+
+.column {
+  float: left;
+  width: 25%;
+  padding-bottom: 15px;
+  background-color: #07458a;
+  color: #fff;
+  border-radius: 10px;
+}
+
+.column.center {
+  width: 40%;
+  margin: 0px 5%;
+}
+
+input, select {
+  width: 80%;
+  padding: 0px 10px;
+  height: 26px;
+  margin-bottom: 6px;
+}
+
+select {
+  width: calc(80% + 22px);
+  height: 30px;
+  line-height: 30px;
+}
+
+textarea {
+  width: 80%;
+  height: 120px;
+  padding: 10px;
+}
+
+button {
+  background-color: #fff;
+  width: calc(80% + 20px);
+  height: 46px;
+  margin-top: 20px;
+}
+
+h4 span {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.eventList {
+  position: relative;
+}
+
+.eventList div {
+  cursor: pointer;
+  padding: 5px 0px;
+  margin: 5px 10px;
+  height: 30px;
+  line-height: 30px;
+  overflow: hidden;
+}
+
+.eventList div:hover {
+  background-color: #0058b5;
+}
+
+.eventList div.delete {
+  width: 18px;
+  height: 18px;
+  display: inline-block;
+  right: 10px;
+  position: absolute;
+  background-image: url("../img/delete.png");
+  background-repeat: no-repeat;
+  background-size: 18px;
+  cursor: pointer;
+}
+
+.guestsList {
+  position: relative;
+}
+
+.guestsList div {
+  margin-bottom: 10px;
+}
+
+.guestsList div.delete {
+  width: 18px;
+  height: 18px;
+  display: inline-block;
+  right: 10px;
+  position: absolute;
+  background-image: url("../img/delete.png");
+  background-size: 18px;
+  cursor: pointer;
+}
+
+.adminsList {
+  position: relative;
+}
+
+.adminsList div {
+  margin-bottom: 10px;
+}
+
+.adminsList div.delete {
+  width: 18px;
+  height: 18px;
+  display: inline-block;
+  right: 10px;
+  position: absolute;
+  background-image: url("../img/delete.png");
+  background-size: 18px;
+  cursor: pointer;
+}
+/*# sourceMappingURL=admin.css.map */

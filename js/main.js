@@ -1,3 +1,45 @@
+class App {
+    constructor(events) {
+        this.events = events;
+    }
+    getEventByEventID(ID){
+        for (var i=0; i < this.events.length; i++) {
+            if (this.events[i].id === parseInt(ID)) {
+                let tempEvent = this.events[i]
+                tempEvent.arrayKey = i
+                return tempEvent;
+            }
+        }
+    }
+}
+
+async function fetchEvents() { //TODO? Ska denna kastas in i classen App?
+    let data = await fetch("../data/events.json")
+    .then(response => response.json())
+    .then(json => {
+        return json.events
+    })
+    return data
+}
+
+let app
+
+//TODO: HÄR FINNS EN BUGG!! Om datan hämtas från .json-filen så awaitar den inte resultatet......
+document.addEventListener('DOMContentLoaded', async () => { //TODO? Ska if-satsen kastas in i classen App?
+    if(localStorage.getItem('events')){
+        app = new App(JSON.parse(localStorage.getItem('events')))
+    } else {
+        let fetchResult = await fetchEvents()
+        localStorage.setItem('events', JSON.stringify(fetchResult)) //denna verkar dock fungera då den sätts i webbläsaren
+        app = new App(JSON.parse(localStorage.getItem('events'))) //denna fungerar inte
+        //app = new App(await fetchResult) //denna fungerar inte
+    }
+    console.log(app)
+})
+
+
+
+
 document.addEventListener('DOMContentLoaded', function(){
     addHeader()
     addFooter()

@@ -4,10 +4,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css\main.css">
-    <script src="js\main.js"></script>
+    <link rel="stylesheet" href="css\admin.css">
+    <script defer src="js\main.js"></script>
+    <script defer src="js\admin.js"></script>
     <title>Admin</title>
 </head>
 <body>
-    
+    <div class="container">
+        <div class="column">
+            <button class="newEvent">+ Nytt event</button>
+            <div class="eventList">
+                <!--List all events here-->
+            </div>
+        </div>
+        <div class="column center">
+            <h4 class="createEvent">Skapa nytt event<br><span>(eller klicka på ett event till vänster för att ändra)</span></h4>
+            <form>
+                <input type="hidden" name="id" id="id" value="">
+                <input type="text" name="name" id="name" placeholder="Ange eventets namn">
+                <input type="text" name="address" id="address" placeholder="Ange eventets adress">
+                <input type="text" name="venue" id="venue" placeholder="Ange eventets lokal">
+                <input type="datetime-local" name="startDatetime" id="startDatetime" placeholder="Ange eventets start">
+                <input type="datetime-local" name="endDatetime" id="endDatetime" placeholder="Ange eventets slut">
+                <input type="number" name="tickets" id="tickets" placeholder="Ange eventets antal biljetter">
+                <select name="category" id="category">
+                    <option value="">Ange eventets kategori</option>
+                    <option value="Catering">Catering</option>
+                    <option value="Bröllop">Bröllop</option>
+                    <option value="Konserter">Konserter</option>
+                    <option value="Festivaler">Festivaler</option>
+                    <option value="Utbildningar">Utbildningar</option>
+                </select>
+                <textarea type="text" name="description" id="description">Ange eventets beskrivning</textarea>
+                <input type="text" name="image" id="image" placeholder="Ange länk till eventets huvudbild">
+            </form>
+            <button class="eventbtn">Skapa event!</button>
+        </div>
+        <div class="column">
+            <h4>Guests</h4>
+            <input type="text" name="guestName" id="guestName" placeholder="Gästens namn">
+            <input type="text" name="guestEmail" id="guestEmail" placeholder="Gästens e-post">
+            <button class="addGuest">Lägg till</button>
+            <div class="guestsList">
+                <!--List all event guests here-->
+            </div>
+            <h4>Admins</h4>
+            <input type="text" name="adminUser" id="adminUser" placeholder="Username">
+            <input type="password" name="adminPassword" id="adminPassword" placeholder="Password">
+            <button class="addAdmin">Lägg till</button>
+            <div class="adminsList">
+                <!--List all event admins here-->
+            </div>
+        </div>
+    </div>
 </body>
 </html>
