@@ -52,6 +52,7 @@ class Event {
         this.images.push(this.image);
         this.members = event.members;
         this.admins = event.members.admins;
+        this.staff = event.members.staff;
         this.guests = event.members.guests;
         this.guestbook = event.guestbook;
         this.bookingBumber = event.bookingBumber;
@@ -78,59 +79,73 @@ class Event {
         }
         
         //// info containers////
-        let infoSection = document.getElementById("infoSection");
-        let infoTop = infoSection.firstElementChild;
-        let date = infoTop.children[2];
-        let header = infoTop.firstElementChild;
-        let title = header.firstElementChild;
-        let category = header.children[1];
-        let address = infoTop.children[2];
-        let info = infoSection.children[1];
-        let infoBottom = infoSection.children[2];
+        let date = document.querySelector(".date");
+        let title = document.querySelector(".title");
+        let category = document.querySelector(".category");
+        let address = document.querySelector(".address");
+        let infoText = document.querySelector(".infoText");
+        let fulldate = document.querySelector(".fulldate");
         let guestBookName = document.getElementById("gbName");
         let guestBookInput = document.getElementById("gbEntry");
+        let guestlist = document.querySelector(".guests");
+        let stafflist = document.querySelector(".staff");
+        let gbButton = document.querySelector(".gbButton");
         
         //// info material ////
         title.innerHTML = this.name;
         category.innerHTML = this.category;
-
-        let infoText = info.firstElementChild;
+        date.innerHTML = this.startDatetime.replace("T", ", Kl ").slice(0, -3);
         infoText.innerHTML = this.info;
-        date.innerHTML = this.startDatetime.replace("T", ", Kl ").slice(0, -3) + " - " + this.endDatetime.replace("T", ", Kl ").slice(0, -3);
         address.innerHTML = this.address;
+        for (let guest of this.guests) {
+            let name = document.createElement("p");
+            name.innerHTML = guest.name;
+            guestlist.appendChild(name);
+        }
+        for (let member of this.staff) {
+            let name = document.createElement("p");
+            name.innerHTML = member.name + " - " + member.role;
+            stafflist.appendChild(name);
+        }
 
-        let availability = infoBottom.firstElementChild;     
-        let ticketsButton = infoBottom.children[1];  
+        fulldate.innerHTML = this.startDatetime.replace("T", ", Kl ").slice(0, -3) + " – " + this.endDatetime.replace("T", ", Kl ").slice(0, -3);
+        
+        let availability = document.querySelector(".availStatus");     
+        let ticketsButton = document.querySelector(".bookBtn"); 
         ticketsButton.addEventListener("click", this.bookTickets.bind(this));
 
         if (this.tickets - this.guests.length < 50 && this.tickets - this.guests.length > 0) {
             availability.innerHTML = "Fåtal biljetter kvar!!";
         } else if (this.tickets - this.guests.length < 0) {
-            availability.innerHTML = "Slutsålt!";
+            availability.innerHTML = "Slutsålt";
             ticketsButton.innerHTML = "Håll mig uppdaterad!";
         }
+        
+        guestBookName.value = localStorage.getItem('gbname');
+
         this.refreshGuestbook();
-        guestBookInput.addEventListener("keyup", e => {
-            if (e.code == "Enter") {
-                guestBookInput.value = guestBookInput.value.trim();
+        gbButton.addEventListener("click", e => {
+            guestBookInput.value = guestBookInput.value.trim();
                 guestBookName.value = guestBookName.value.trim();
                 if (guestBookName.value.length > 0 && guestBookInput.value.length > 0) {
                     this.updateGuestbook(guestBookName.value, guestBookInput.value);
                     this.refreshGuestbook();
-                    guestBookName.value = "";
+                    
+                    localStorage.setItem('gbname', guestBookName.value);
+
                     guestBookInput.value = "";
                 } else {
                     alert("Vänligen fyll i både namn och meddelande för att skicka.")
                 }
-            }
-        })
+        });
         
     }
     updateGuestbook(name, entry) {
+        let datetime = new Date().toISOString().slice(0, -5);
         this.guestbook.push({
             "namn": name,
             "message": entry,
-            "datetime": "2020-01-18478238476"
+            "datetime": datetime
         });
         console.log(this.guestbook);
     }
@@ -144,7 +159,7 @@ class Event {
             let text = document.createElement("p");
 
             nameTime.innerHTML = entry.namn + "<br>" + entry.datetime.slice(0, -9);
-            text.innerHTML = entry.message;
+            text.innerHTML = '"' + entry.message + '"';
 
             guestbook.appendChild(nameTime);
             guestbook.appendChild(text);

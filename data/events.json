@@ -8,6 +8,7 @@
         "startDatetime": "2020-12-24T18:00:00",
         "endDatetime": "2020-12-24T21:00:00",
         "tickets": 132,
+        "bookingNumber": 1000,
         "category": "Catering",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in velit velit. Aenean rutrum maximus libero nec ullamcorper. Praesent erat tortor, scelerisque non diam sed, tempus tempor dolor. Vestibulum non nunc vel enim malesuada accumsan nec eu purus. Sed tempus dui ante, id dapibus quam rhoncus id. Suspendisse et fringilla nunc. Pellentesque elementum, nisi non faucibus congue, augue enim vulputate erat, vel scelerisque ex augue quis ante. In hac habitasse platea dictumst. Vestibulum eget pharetra eros. Nam convallis odio nec neque tristique, ut auctor orci luctus. Aliquam vitae metus suscipit, consequat neque eget, vehicula nulla. Fusce in posuere nulla. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nunc tempor sapien aliquam eros bibendum semper. Integer ultricies risus eget eros imperdiet congue. Etiam ut ligula sed justo viverra fermentum eu ac arcu. Phasellus eleifend elit non ex dignissim hendrerit. Aliquam tempor tellus nec consequat ullamcorper. Aliquam at tincidunt lorem. Ut eu dui ac velit consequat dapibus. Phasellus imperdiet, lacus rhoncus convallis dictum, nulla arcu semper sem, eget scelerisque velit ligula nec risus. Ut eget lorem euismod, blandit turpis vitae, tempor tortor. In tincidunt porttitor luctus.",
         "image": "https://cdn1.tasteline.com/Julbord-samlingsbild-foto-Nurlan-Emir-1250-880x360.jpg",
@@ -27,6 +28,21 @@
                     "username": "micke",
                     "password": "password123"
                 }
+            ],
+            "staff": [
+                {
+                    "name": "Putte",
+                    "role": "Projektkoordinator"
+                },
+                {
+                    "name": "Torsten",
+                    "role": "Evenemangsansvarig"
+                },
+                {
+                    "name": "Kerstin",
+                    "role": "Administratör"
+                }
+
             ],
             "guests": [
                 {
@@ -68,7 +84,8 @@
         "venue": "Huset B",
         "startDatetime": "2020-12-23T17:00:00",
         "endDatetime": "2020-12-23T20:00:00",
-        "tickets": 142,
+        "tickets": 0,
+        "bookingNumber": 2000,
         "category": "Catering",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in velit velit. Aenean rutrum maximus libero nec ullamcorper. Praesent erat tortor, scelerisque non diam sed, tempus tempor dolor. Vestibulum non nunc vel enim malesuada accumsan nec eu purus. Sed tempus dui ante, id dapibus quam rhoncus id. Suspendisse et fringilla nunc. Pellentesque elementum, nisi non faucibus congue, augue enim vulputate erat, vel scelerisque ex augue quis ante. In hac habitasse platea dictumst. Vestibulum eget pharetra eros. Nam convallis odio nec neque tristique, ut auctor orci luctus. Aliquam vitae metus suscipit, consequat neque eget, vehicula nulla. Fusce in posuere nulla. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nunc tempor sapien aliquam eros bibendum semper. Integer ultricies risus eget eros imperdiet congue. Etiam ut ligula sed justo viverra fermentum eu ac arcu. Phasellus eleifend elit non ex dignissim hendrerit. Aliquam tempor tellus nec consequat ullamcorper. Aliquam at tincidunt lorem. Ut eu dui ac velit consequat dapibus. Phasellus imperdiet, lacus rhoncus convallis dictum, nulla arcu semper sem, eget scelerisque velit ligula nec risus. Ut eget lorem euismod, blandit turpis vitae, tempor tortor. In tincidunt porttitor luctus.",
         "image": "https://wragarden.se/wp-content/uploads/Julbord-180906-002.jpg",
@@ -86,6 +103,21 @@
                     "username": "micke",
                     "password": "password123"
                 }
+            ],
+            "staff": [
+                {
+                    "name": "Putte",
+                    "role": "Projektkoordinator"
+                },
+                {
+                    "name": "Torsten",
+                    "role": "Evenemangsansvarig"
+                },
+                {
+                    "name": "Kerstin",
+                    "role": "Administratör"
+                }
+
             ],
             "guests": [
                 {
@@ -114,7 +146,7 @@
             },
             {
                 "namn": "testperson2",
-                "message": "tralallaallala",
+                "message": "tralan jefleiruhelrif heröfh efkjne bf.kjweb föwehfi webföwefwel laal lala",
                 "datetime": "2020-10-22T11:12:23"
             }
         ]
@@ -128,6 +160,7 @@
         "startDatetime": "2020-12-22T16:00:00",
         "endDatetime": "2020-12-22T19:00:00",
         "tickets": 152,
+        "bookingNumber": 3000,
         "category": "Konserter",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in velit velit. Aenean rutrum maximus libero nec ullamcorper. Praesent erat tortor, scelerisque non diam sed, tempus tempor dolor. Vestibulum non nunc vel enim malesuada accumsan nec eu purus. Sed tempus dui ante, id dapibus quam rhoncus id. Suspendisse et fringilla nunc. Pellentesque elementum, nisi non faucibus congue, augue enim vulputate erat, vel scelerisque ex augue quis ante. In hac habitasse platea dictumst. Vestibulum eget pharetra eros. Nam convallis odio nec neque tristique, ut auctor orci luctus. Aliquam vitae metus suscipit, consequat neque eget, vehicula nulla. Fusce in posuere nulla. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nunc tempor sapien aliquam eros bibendum semper. Integer ultricies risus eget eros imperdiet congue. Etiam ut ligula sed justo viverra fermentum eu ac arcu. Phasellus eleifend elit non ex dignissim hendrerit. Aliquam tempor tellus nec consequat ullamcorper. Aliquam at tincidunt lorem. Ut eu dui ac velit consequat dapibus. Phasellus imperdiet, lacus rhoncus convallis dictum, nulla arcu semper sem, eget scelerisque velit ligula nec risus. Ut eget lorem euismod, blandit turpis vitae, tempor tortor. In tincidunt porttitor luctus.",
         "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Starhorse.jpg/1200px-Starhorse.jpg",
@@ -145,6 +178,21 @@
                     "username": "micke",
                     "password": "password123"
                 }
+            ],
+            "staff": [
+                {
+                    "name": "Putte",
+                    "role": "Projektkoordinator"
+                },
+                {
+                    "name": "Torsten",
+                    "role": "Evenemangsansvarig"
+                },
+                {
+                    "name": "Kerstin",
+                    "role": "Administratör"
+                }
+
             ],
             "guests": [
                 {
@@ -187,6 +235,7 @@
         "startDatetime": "2020-12-21T15:00:00",
         "endDatetime": "2020-12-21T18:00:00",
         "tickets": 162,
+        "bookingNumber": 4000,
         "category": "Festivaler",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in velit velit. Aenean rutrum maximus libero nec ullamcorper. Praesent erat tortor, scelerisque non diam sed, tempus tempor dolor. Vestibulum non nunc vel enim malesuada accumsan nec eu purus. Sed tempus dui ante, id dapibus quam rhoncus id. Suspendisse et fringilla nunc. Pellentesque elementum, nisi non faucibus congue, augue enim vulputate erat, vel scelerisque ex augue quis ante. In hac habitasse platea dictumst. Vestibulum eget pharetra eros. Nam convallis odio nec neque tristique, ut auctor orci luctus. Aliquam vitae metus suscipit, consequat neque eget, vehicula nulla. Fusce in posuere nulla. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nunc tempor sapien aliquam eros bibendum semper. Integer ultricies risus eget eros imperdiet congue. Etiam ut ligula sed justo viverra fermentum eu ac arcu. Phasellus eleifend elit non ex dignissim hendrerit. Aliquam tempor tellus nec consequat ullamcorper. Aliquam at tincidunt lorem. Ut eu dui ac velit consequat dapibus. Phasellus imperdiet, lacus rhoncus convallis dictum, nulla arcu semper sem, eget scelerisque velit ligula nec risus. Ut eget lorem euismod, blandit turpis vitae, tempor tortor. In tincidunt porttitor luctus.",
         "image": "https://media.stubhubstatic.com/stubhub-catalog/d_defaultLogo.jpg/t_f-fs-0fv,q_auto:low,f_auto,c_fill,dpr_2.0,$w_750,$h_416/grouping/1498494/b7a1854668a06c4df3f7b23ec783588f",
@@ -205,6 +254,21 @@
                     "username": "micke",
                     "password": "password123"
                 }
+            ],
+            "staff": [
+                {
+                    "name": "Putte",
+                    "role": "Projektkoordinator"
+                },
+                {
+                    "name": "Torsten",
+                    "role": "Evenemangsansvarig"
+                },
+                {
+                    "name": "Kerstin",
+                    "role": "Administratör"
+                }
+
             ],
             "guests": [
                 {
@@ -247,6 +311,7 @@
         "startDatetime": "2020-12-20T14:00:00",
         "endDatetime": "2020-12-20T17:00:00",
         "tickets": 172,
+        "bookingNumber": 5000,
         "category": "Utbildningar",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in velit velit. Aenean rutrum maximus libero nec ullamcorper. Praesent erat tortor, scelerisque non diam sed, tempus tempor dolor. Vestibulum non nunc vel enim malesuada accumsan nec eu purus. Sed tempus dui ante, id dapibus quam rhoncus id. Suspendisse et fringilla nunc. Pellentesque elementum, nisi non faucibus congue, augue enim vulputate erat, vel scelerisque ex augue quis ante. In hac habitasse platea dictumst. Vestibulum eget pharetra eros. Nam convallis odio nec neque tristique, ut auctor orci luctus. Aliquam vitae metus suscipit, consequat neque eget, vehicula nulla. Fusce in posuere nulla. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nunc tempor sapien aliquam eros bibendum semper. Integer ultricies risus eget eros imperdiet congue. Etiam ut ligula sed justo viverra fermentum eu ac arcu. Phasellus eleifend elit non ex dignissim hendrerit. Aliquam tempor tellus nec consequat ullamcorper. Aliquam at tincidunt lorem. Ut eu dui ac velit consequat dapibus. Phasellus imperdiet, lacus rhoncus convallis dictum, nulla arcu semper sem, eget scelerisque velit ligula nec risus. Ut eget lorem euismod, blandit turpis vitae, tempor tortor. In tincidunt porttitor luctus.",
         "image": "https://louiseedlund.se/wp-content/uploads/2017/11/F%C3%B6rel%C3%A4sning.jpeg",
@@ -264,6 +329,21 @@
                     "username": "micke",
                     "password": "password123"
                 }
+            ],
+            "staff": [
+                {
+                    "name": "Putte",
+                    "role": "Projektkoordinator"
+                },
+                {
+                    "name": "Torsten",
+                    "role": "Evenemangsansvarig"
+                },
+                {
+                    "name": "Kerstin",
+                    "role": "Administratör"
+                }
+
             ],
             "guests": [
                 {
@@ -306,6 +386,7 @@
         "startDatetime": "2020-12-19T13:00:00",
         "endDatetime": "2020-12-19T16:00:00",
         "tickets": 182,
+        "bookingNumber": 6000,
         "category": "Bröllop",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in velit velit. Aenean rutrum maximus libero nec ullamcorper. Praesent erat tortor, scelerisque non diam sed, tempus tempor dolor. Vestibulum non nunc vel enim malesuada accumsan nec eu purus. Sed tempus dui ante, id dapibus quam rhoncus id. Suspendisse et fringilla nunc. Pellentesque elementum, nisi non faucibus congue, augue enim vulputate erat, vel scelerisque ex augue quis ante. In hac habitasse platea dictumst. Vestibulum eget pharetra eros. Nam convallis odio nec neque tristique, ut auctor orci luctus. Aliquam vitae metus suscipit, consequat neque eget, vehicula nulla. Fusce in posuere nulla. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nunc tempor sapien aliquam eros bibendum semper. Integer ultricies risus eget eros imperdiet congue. Etiam ut ligula sed justo viverra fermentum eu ac arcu. Phasellus eleifend elit non ex dignissim hendrerit. Aliquam tempor tellus nec consequat ullamcorper. Aliquam at tincidunt lorem. Ut eu dui ac velit consequat dapibus. Phasellus imperdiet, lacus rhoncus convallis dictum, nulla arcu semper sem, eget scelerisque velit ligula nec risus. Ut eget lorem euismod, blandit turpis vitae, tempor tortor. In tincidunt porttitor luctus.",
         "image": "https://regionuppsala.se/contentassets/69dbdf9cc794478dac781eee8cde99e0/brollop.slottstrappen.fot.michael-jansson.jpg?width=450&height=400",
@@ -323,6 +404,21 @@
                     "username": "micke",
                     "password": "password123"
                 }
+            ],
+            "staff": [
+                {
+                    "name": "Putte",
+                    "role": "Projektkoordinator"
+                },
+                {
+                    "name": "Torsten",
+                    "role": "Evenemangsansvarig"
+                },
+                {
+                    "name": "Kerstin",
+                    "role": "Administratör"
+                }
+
             ],
             "guests": [
                 {
