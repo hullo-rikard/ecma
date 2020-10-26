@@ -37,37 +37,36 @@ App.prototype.fillForm = function(thisevent) {
     //TODO: handle multiple images
 }
 App.prototype.showGuests = function(thisevent) {
+    this.ui.guestsListDiv.innerHTML = ""
     thisevent.members.guests.forEach((guest, key) => {
         let div =  document.createElement('div')
         let icon = document.createElement('div')
             icon.className = 'delete'
             icon.setAttribute('id', key)
+            icon.setAttribute('eventid', thisevent.id)
             div.textContent = guest.name
             div.appendChild(icon)
         this.ui.guestsListDiv.appendChild(div)
     })
 }
 App.prototype.showAdmins = function(thisevent) {
+    this.ui.adminsListDiv.innerHTML = ""
     thisevent.members.admins.forEach((admin, key) => {
         let div =  document.createElement('div')
         let icon = document.createElement('div')
             icon.className = 'delete'
             icon.setAttribute('id', key)
+            icon.setAttribute('eventid', thisevent.id)
             div.textContent = admin.username
             div.appendChild(icon)
         this.ui.adminsListDiv.appendChild(div)
     })
-}
-App.prototype.clearGuestsAndAdmins = function() {
-    this.ui.guestsListDiv.innerHTML = ""
-    this.ui.adminsListDiv.innerHTML = ""
 }
 App.prototype.isEditable = function(boolean) {
     let images = document.querySelectorAll('.images')
     images.forEach(element => {
         element.remove()
     })
-    this.clearGuestsAndAdmins()
     this.showEvents()
     if(boolean){
         this.ui.createEvent.innerHTML = "Ändra event"
@@ -118,13 +117,13 @@ document.addEventListener('DOMContentLoaded', () => {
     //clickhandler: delete guest
     app.ui.guestsListDiv.addEventListener('click', (event) => {
         if(event.target.getAttribute('class') == 'delete') {
-            console.log('delete guest: '+event.target.getAttribute('id'))
+            deleteGuest(event.target.getAttribute('id'), event.target.getAttribute('eventid'))
         }
     })
     //clickhandler: delete admin
     app.ui.adminsListDiv.addEventListener('click', (event) => {
         if(event.target.getAttribute('class') == 'delete') {
-            console.log('delete admin: '+event.target.getAttribute('id'))
+            deleteAdmin(event.target.getAttribute('id'), event.target.getAttribute('eventid'))
         }
     })
     //clickhandler: empty form
@@ -178,16 +177,26 @@ function deleteEvent(eventID){ //TODO: make this oop
         app.showEvents()
     }
 }
+function deleteGuest(id, eventid){ //TODO: make this oop
+    if (confirm('Vill du ta bort gästen?')) {
+        let eventArrayKey = app.getEventByEventID(eventid).arrayKey
+        app.events[eventArrayKey].members.guests.splice(id,1)
+        localStorage.setItem('events', JSON.stringify(app.events))
+        app.showGuests(app.events[eventArrayKey])
+    }
+}
+function deleteAdmin(id, eventid){ //TODO: make this oop
+    if (confirm('Vill du ta bort admin?')) {
+        let eventArrayKey = app.getEventByEventID(eventid).arrayKey
+        app.events[eventArrayKey].members.admins.splice(id,1)
+        localStorage.setItem('events', JSON.stringify(app.events))
+        app.showAdmins(app.events[eventArrayKey])
+    }
+}
 
 function addGuest(){
     console.log('addGuest called!')
 }
-function deleteGuest(){
-    console.log('deleteGuest called!')
-}
 function addAdmin(){
     console.log('addAdmin called!')
-}
-function deleteAdmin(){
-    console.log('deleteAdmin called!')
 }
