@@ -90,8 +90,10 @@ class Event {
         let guestlist = document.querySelector(".guests");
         let stafflist = document.querySelector(".staff");
         let gbButton = document.querySelector(".gbButton");
+        let browserTitle = document.querySelector("title");
         
         //// info material ////
+        browserTitle.textContent = 'ACME Event - '+this.name
         title.innerHTML = this.name;
         category.innerHTML = this.category;
         date.innerHTML = this.startDatetime.replace("T", ", Kl ").slice(0, -3);
