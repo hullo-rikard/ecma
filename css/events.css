@@ -1,0 +1,117 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+h1 {
+  font-weight: normal;
+  margin-bottom: 15px;
+}
+
+.container {
+  color: #FFF;
+  min-height: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding-bottom: 100px;
+  width: 100%;
+}
+
+.container div {
+  max-width: 700px;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+#filter-and-sort {
+  text-align: right;
+  margin: 30px 0 30px;
+  width: 100%;
+}
+
+#filter-and-sort #sort {
+  margin-bottom: 5px;
+  width: 100%;
+  text-align: right;
+}
+
+#filter-and-sort #sort input {
+  margin-left: 8px;
+  visibility: hidden;
+  height: 0;
+  width: 0;
+}
+
+#filter-and-sort #sort input[type="radio"]:checked + label {
+  font-weight: bold;
+}
+
+#filter-and-sort #sort label {
+  text-align: center;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+#filter-and-sort .filterChoice {
+  font-weight: bold;
+}
+
+#filter-and-sort .filterChoice:hover {
+  cursor: pointer;
+}
+
+#filter-and-sort .filtered {
+  font-weight: normal !important;
+}
+
+#events {
+  width: 100%;
+}
+
+#events a {
+  text-decoration: none;
+}
+
+#events .event {
+  background-color: #06458A;
+  color: white;
+  padding: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row;
+          flex-flow: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#events .event .thumbnail {
+  border: 1px solid black;
+  border-radius: 5px;
+  width: 100px;
+  height: 80px;
+  overflow: hidden;
+  margin-right: 15px;
+}
+
+#events .event .thumbnail img {
+  width: 400px;
+  height: 300px;
+  margin: -75px 0 0 -100px;
+}
+
+.hidden {
+  display: none !important;
+}
+/*# sourceMappingURL=events.css.map */
