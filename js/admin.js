@@ -82,7 +82,7 @@ App.prototype.isEditable = function(boolean) {
     }
 }
 
-document.addEventListener('DOMContentLoaded', async () => {
+document.addEventListener('DOMContentLoaded', () => {
 
     console.log(app)
 

@@ -34,6 +34,7 @@ document.addEventListener('DOMContentLoaded', async () => { //TODO? Ska if-satse
         app = new App(JSON.parse(localStorage.getItem('events'))) //denna fungerar inte
         //app = new App(await fetchResult) //denna fungerar inte
     }
+    console.log(app)
 })
 
 
