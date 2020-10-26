@@ -19,7 +19,7 @@ App.prototype.showEvent = function(ID) {
 }
 App.prototype.fillForm = function(thisevent) {
     this.isEditable(true)
-    let allInputs = document.querySelectorAll('input:not([type=file]), select, textarea')
+    let allInputs = document.querySelectorAll('form input:not([type=file]), form select, form textarea')
     allInputs.forEach(element => {
         element.value = thisevent[element.name]
     })
@@ -28,7 +28,7 @@ App.prototype.fillForm = function(thisevent) {
         let input = document.createElement('input')
             input.setAttribute('type', 'test')
             input.setAttribute('name', 'images-'+i)
-            input.setAttribute('id', 'images-'+1)
+            input.setAttribute('id', 'images-'+i)
             input.setAttribute('class', 'images')
             input.setAttribute('value', element)
         document.querySelector('form').appendChild(input)
@@ -84,55 +84,59 @@ App.prototype.isEditable = function(boolean) {
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    console.log(app)
+    setTimeout(() => {
 
-    app.ui = {
-        eventListDiv: document.querySelector('.eventList'),
-        guestsListDiv: document.querySelector('.guestsList'),
-        adminsListDiv: document.querySelector('.adminsList'),
-        newEventBtn: document.querySelector('.newEvent'),
-        createEvent: document.querySelector('.createEvent'),
-        formButton: document.querySelector('button.eventbtn'),
-        guestAddBtn: document.querySelector('button.addGuest'),
-        adminAddBtn: document.querySelector('button.addAdmin')
-    }
+        console.log(app)
 
-    app.showEvents()
+        app.ui = {
+            eventListDiv: document.querySelector('.eventList'),
+            guestsListDiv: document.querySelector('.guestsList'),
+            adminsListDiv: document.querySelector('.adminsList'),
+            newEventBtn: document.querySelector('.newEvent'),
+            createEvent: document.querySelector('.createEvent'),
+            formButton: document.querySelector('button.eventbtn'),
+            guestAddBtn: document.querySelector('button.addGuest'),
+            adminAddBtn: document.querySelector('button.addAdmin')
+        }
 
-    //clickhandler: show/delete event
-    app.ui.eventListDiv.addEventListener('click', (event) => {
-        if(event.target.getAttribute('eventid')){
-            app.showEvent(event.target.getAttribute('eventid'))
-        }
-        if(event.target.getAttribute('class') == 'delete'){
-            deleteEvent(event.target.getAttribute('id'))
-        }
-    })
-    //clickhandler: add/update event
-    app.ui.formButton.addEventListener('click', (e) => {
-        let eventID = document.querySelector('#id').value
-        if(eventID){
-            updateEvent(eventID)
-        } else {
-            addEvent()
-        }
-    })
-    //clickhandler: delete guest
-    app.ui.guestsListDiv.addEventListener('click', (event) => {
-        if(event.target.getAttribute('class') == 'delete') {
-            deleteGuest(event.target.getAttribute('id'), event.target.getAttribute('eventid'))
-        }
-    })
-    //clickhandler: delete admin
-    app.ui.adminsListDiv.addEventListener('click', (event) => {
-        if(event.target.getAttribute('class') == 'delete') {
-            deleteAdmin(event.target.getAttribute('id'), event.target.getAttribute('eventid'))
-        }
-    })
-    //clickhandler: empty form
-    app.ui.newEventBtn.addEventListener('click', () => { 
-        app.isEditable(false) 
-    })
+        app.showEvents()
+
+        //clickhandler: show/delete event
+        app.ui.eventListDiv.addEventListener('click', (event) => {
+            if(event.target.getAttribute('eventid')){
+                app.showEvent(event.target.getAttribute('eventid'))
+            }
+            if(event.target.getAttribute('class') == 'delete'){
+                deleteEvent(event.target.getAttribute('id'))
+            }
+        })
+        //clickhandler: add/update event
+        app.ui.formButton.addEventListener('click', (e) => {
+            let eventID = document.querySelector('#id').value
+            if(eventID){
+                updateEvent(eventID)
+            } else {
+                addEvent()
+            }
+        })
+        //clickhandler: delete guest
+        app.ui.guestsListDiv.addEventListener('click', (event) => {
+            if(event.target.getAttribute('class') == 'delete') {
+                deleteGuest(event.target.getAttribute('id'), event.target.getAttribute('eventid'))
+            }
+        })
+        //clickhandler: delete admin
+        app.ui.adminsListDiv.addEventListener('click', (event) => {
+            if(event.target.getAttribute('class') == 'delete') {
+                deleteAdmin(event.target.getAttribute('id'), event.target.getAttribute('eventid'))
+            }
+        })
+        //clickhandler: empty form
+        app.ui.newEventBtn.addEventListener('click', () => { 
+            app.isEditable(false) 
+        })
+
+    }, 100);
 
 })
 
