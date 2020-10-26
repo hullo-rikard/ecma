@@ -82,8 +82,9 @@ App.prototype.isEditable = function(boolean) {
     }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    console.log(app.events)
+document.addEventListener('DOMContentLoaded', async () => {
+
+    console.log(app)
 
     app.ui = {
         eventListDiv: document.querySelector('.eventList'),
@@ -91,7 +92,9 @@ document.addEventListener('DOMContentLoaded', () => {
         adminsListDiv: document.querySelector('.adminsList'),
         newEventBtn: document.querySelector('.newEvent'),
         createEvent: document.querySelector('.createEvent'),
-        formButton: document.querySelector('button.eventbtn')
+        formButton: document.querySelector('button.eventbtn'),
+        guestAddBtn: document.querySelector('button.addGuest'),
+        adminAddBtn: document.querySelector('button.addAdmin')
     }
 
     app.showEvents()

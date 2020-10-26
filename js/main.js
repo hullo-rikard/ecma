@@ -37,6 +37,8 @@ document.addEventListener('DOMContentLoaded', async () => { //TODO? Ska if-satse
 })
 
 
+
+
 document.addEventListener('DOMContentLoaded', function(){
     addHeader()
     addFooter()
