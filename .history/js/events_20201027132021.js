@@ -141,8 +141,17 @@ class Eventlist {
     }
 }
 
-document.addEventListener('DOMContentLoaded', async function(){
-    setTimeout(function() {
-        let eventList = new Eventlist(app.events)
-    }, 500);
+document.addEventListener('DOMContentLoaded', async function(){  
+    // let eventList = new Eventlist(await fetchEvents())
+    console.log(app.events)
+    let eventList = new Eventlist(app.events)
+    
 })
+
+async function fetchEvents() {
+    let file = new Request('../data/events.json')
+    let fetched = await fetch(file)
+    .then(response => response.json())
+    .then(data => {return data})
+    return fetched.events
+}
