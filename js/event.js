@@ -1,12 +1,16 @@
+let events;
+
 document.addEventListener("DOMContentLoaded", function(e) {    
 
-    
-    let events = new Events();
+   
+    events = new Events();
     setTimeout(() => {
         const urlParams = new URLSearchParams(window.location.search);
         let id = parseInt(urlParams.get("eventid"));
-        events.displayEventById(id);
+        app.displayEventById(id);
+        console.log(app);
     }, 100);
+
 
 
 })
@@ -15,8 +19,14 @@ class Events {
     constructor() {
         this.events = [];
         this.getEvents();
+
     }
-    async getEvents() {
+    getEvents() {
+        for (let event of app.events) {
+            this.events.push(new Event(event));
+        }
+    }
+    async fetchEvents() {
         await fetch("data/events.json") // data/events.json
         .then(response => response.json())
         .then(data => {
@@ -27,121 +37,156 @@ class Events {
     }
     displayEventById(id) {
         if (typeof id == "number") {
-            let event = this.events.find(entry => entry.id == id);
-            event.displayEvent();
+            let event = this.events.find(obj => obj.id == id);
+            let page = new Page(event);
+            page.displayEvent();
         } else {
             this.events[0].displayEvent();
         }
     }
+    updateStorage() {
+        localStorage.setItem("avants", JSON.stringify(this.events));
+    }
 }
 
-class Event {
+App.prototype.displayEventById = function(id) {
+    if (typeof id == "number") {
+        let event = this.events.find(obj => obj.id == id);
+        let page = new Page(event);
+        page.displayEvent();
+    } else {
+        this.events[0].displayEvent();
+    }
+}
+
+App.prototype.updateStorage = function() {
+    localStorage.setItem("avants", JSON.stringify(this.events));
+}
+
+
+class Page {
     constructor(event) {
         this.id = event.id;
         this.name = event.name;
-        this.info = event.description; // description
-        this.address = event.address;
+        this.description = event.description; // description
         this.address = event.address;
         this.startDatetime = event.startDatetime;
         this.endDatetime = event.endDatetime;
         this.tickets = event.tickets;
         this.category = event.category;
-        this.image = event.image;
-        this.displayingImg = event.image;
-        this.images = event.images;
-        this.images.push(this.image);
         this.members = event.members;
-        this.admins = event.members.admins;
-        this.staff = event.members.staff;
-        this.guests = event.members.guests;
         this.guestbook = event.guestbook;
         this.bookingBumber = event.bookingBumber;
+        
+        
+        // this.event = event;
+        this.browserTitle = document.querySelector("title");
+        
+        //// images ////
+        this.img = document.querySelector(".eventImg");
+        this.imgBar = document.querySelector(".imgBar");
+        this.image = event.image;
+        this.images = event.images; // we want all images here including big one
+        this.images.push(this.image);
+        this.displayingImg = event.image;
+
+        //// info elements ////
+        this.date = document.querySelector(".date");
+        this.title = document.querySelector(".title");
+        this.categoryBtn = document.querySelector(".category");
+        this.addressP = document.querySelector(".address");
+        this.infoText = document.querySelector(".infoText");
+        this.fulldate = document.querySelector(".fulldate");
+        this.guestlist = document.querySelector(".guests");
+        this.stafflist = document.querySelector(".staff");
+
+        //// tickets ////
+        this.availability = document.querySelector(".availStatus");     
+        this.ticketsButton = document.querySelector(".bookBtn"); 
+        
+        //// guestbook elements ////
+        this.gbButton = document.querySelector(".gbButton");
+        this.guestBookName = document.getElementById("gbName");
+        this.guestBookInput = document.getElementById("gbEntry");
+        this.guestbookDisplay = document.querySelector(".messages");
+
     }
     displayEvent() {
         //// images ////
-        let img = document.querySelector(".eventImg");
-        console.log(img);
-        img.style.backgroundImage = "url(" + this.image + ")";
-        img.addEventListener("click", e => {
+        this.img.style.backgroundImage = "url(" + this.image + ")";
+        this.img.addEventListener("click", e => {
             this.popupImg(this.displayingImg);
         })
 
-        let imgBar = document.querySelector(".imgBar");
         for (let image of this.images) {
             let thumb = document.createElement("div");
             thumb.style.backgroundImage = "url(" + image + ")";
             thumb.className = "thumb";
-            imgBar.appendChild(thumb);
+            this.imgBar.appendChild(thumb);
             thumb.addEventListener("click", e => {
-                img.style.backgroundImage = "url(" + image + ")";
+                this.img.style.backgroundImage = "url(" + image + ")";
                 this.displayingImg = image;
             })
         }
         
-        //// info containers////
-        let date = document.querySelector(".date");
-        let title = document.querySelector(".title");
-        let category = document.querySelector(".category");
-        let address = document.querySelector(".address");
-        let infoText = document.querySelector(".infoText");
-        let fulldate = document.querySelector(".fulldate");
-        let guestBookName = document.getElementById("gbName");
-        let guestBookInput = document.getElementById("gbEntry");
-        let guestlist = document.querySelector(".guests");
-        let stafflist = document.querySelector(".staff");
-        let gbButton = document.querySelector(".gbButton");
-        let browserTitle = document.querySelector("title");
+        
         
         //// info material ////
-        browserTitle.textContent = 'ACME Event - '+this.name
-        title.innerHTML = this.name;
-        category.innerHTML = this.category;
-        date.innerHTML = this.startDatetime.replace("T", ", Kl ").slice(0, -3);
-        infoText.innerHTML = this.info;
-        address.innerHTML = this.address;
-        for (let guest of this.guests) {
-            let name = document.createElement("p");
-            name.innerHTML = guest.name;
-            guestlist.appendChild(name);
+        this.browserTitle.textContent = 'ACME Event - '+this.name
+        this.title.innerHTML = this.name;
+        this.categoryBtn.innerHTML = this.category;
+        this.date.innerHTML = this.startDatetime.replace("T", ", Kl ").slice(0, -3);
+        this.infoText.innerHTML = this.description;
+        this.addressP.innerHTML = this.address;
+        if (this.members.guests) {
+            for (let guest of this.members.guests) {
+                let name = document.createElement("p");
+                name.innerHTML = guest.name;
+                this.guestlist.appendChild(name);
+            }
         }
-        for (let member of this.staff) {
-            let name = document.createElement("p");
-            name.innerHTML = member.name + " - " + member.role;
-            stafflist.appendChild(name);
+        if (this.members.staff > 0) {
+            for (let member of this.members.staff) {
+                let name = document.createElement("p");
+                name.innerHTML = member.name + " - " + member.role;
+                stafflist.appendChild(name);
+            }
         }
 
-        fulldate.innerHTML = this.startDatetime.replace("T", ", Kl ").slice(0, -3) + " – " + this.endDatetime.replace("T", ", Kl ").slice(0, -3);
+        this.fulldate.innerHTML = this.startDatetime.replace("T", ", Kl ").slice(0, -3) + " – " + this.endDatetime.replace("T", ", Kl ").slice(0, -3);
         
-        let availability = document.querySelector(".availStatus");     
-        let ticketsButton = document.querySelector(".bookBtn"); 
-        ticketsButton.addEventListener("click", this.bookTickets.bind(this));
+        
+        this.ticketsButton.addEventListener("click", this.bookTickets.bind(this));
 
-        if (this.tickets - this.guests.length < 50 && this.tickets - this.guests.length > 0) {
-            availability.innerHTML = "Fåtal biljetter kvar!!";
-        } else if (this.tickets - this.guests.length < 0) {
-            availability.innerHTML = "Slutsålt";
-            ticketsButton.innerHTML = "Håll mig uppdaterad!";
+        if (this.tickets - this.members.guests.length < 50 && this.tickets - this.members.guests.length > 0) {
+            this.availability.innerHTML = "Fåtal biljetter kvar!!";
+        } else if (this.tickets - this.members.guests.length < 0) {
+            this.availability.innerHTML = "Slutsålt";
+            this.ticketsButton.innerHTML = "Håll mig uppdaterad!";
         }
         
-        guestBookName.value = localStorage.getItem('gbname');
+        this.guestBookName.value = localStorage.getItem('gbname');
 
         this.refreshGuestbook();
-        gbButton.addEventListener("click", e => {
-            guestBookInput.value = guestBookInput.value.trim();
-                guestBookName.value = guestBookName.value.trim();
-                if (guestBookName.value.length > 0 && guestBookInput.value.length > 0) {
-                    this.updateGuestbook(guestBookName.value, guestBookInput.value);
+        this.gbButton.addEventListener("click", e => {
+            this.guestBookInput.value = this.guestBookInput.value.trim();
+            this.guestBookName.value = this.guestBookName.value.trim();
+                if (this.guestBookName.value.length > 0 && this.guestBookInput.value.length > 0) {
+                    this.updateGuestbook(this.guestBookName.value, this.guestBookInput.value);
                     this.refreshGuestbook();
                     
-                    localStorage.setItem('gbname', guestBookName.value);
+                    localStorage.setItem('gbname', this.guestBookName.value);
 
-                    guestBookInput.value = "";
+                    this.guestBookInput.value = "";
                 } else {
                     alert("Vänligen fyll i både namn och meddelande för att skicka.")
                 }
         });
         
     }
+
+
+    //// Guestbook ////
     updateGuestbook(name, entry) {
         let datetime = new Date().toISOString().slice(0, -5);
         this.guestbook.push({
@@ -149,12 +194,10 @@ class Event {
             "message": entry,
             "datetime": datetime
         });
-        console.log(this.guestbook);
     }
     refreshGuestbook() {
-        let guestbook = document.querySelector(".messages");
-        while (guestbook.firstChild) {
-            guestbook.removeChild(guestbook.lastChild);
+        while (this.guestbookDisplay.firstChild) {
+            this.guestbookDisplay.removeChild(this.guestbookDisplay.lastChild);
         }  
         for (let entry of this.guestbook) {
             let nameTime = document.createElement("p");
@@ -163,11 +206,29 @@ class Event {
             nameTime.innerHTML = entry.namn + "<br>" + entry.datetime.slice(0, -9);
             text.innerHTML = '"' + entry.message + '"';
 
-            guestbook.appendChild(nameTime);
-            guestbook.appendChild(text);
+            this.guestbookDisplay.appendChild(nameTime);
+            this.guestbookDisplay.appendChild(text);
         }
-        guestbook.scrollTop = guestbook.scrollHeight;
+        this.guestbookDisplay.scrollTop = this.guestbookDisplay.scrollHeight;
     }
+
+    //// when click on large image ////
+    popupImg(url) {
+        let bg = document.createElement("div");
+        bg.className = "popupBG";
+        document.getElementsByTagName("body")[0].appendChild(bg);
+
+        let image = document.createElement("img");
+        image.src = url;
+        image.className = "popupImg";
+        bg.appendChild(image);
+
+        bg.addEventListener("click", function(e) {
+            this.remove();
+        })
+    }
+
+    //// book or notify button event ////
     bookTickets() {
         //TODO: popup book tickets
         let bg = document.createElement("div");
@@ -194,21 +255,17 @@ class Event {
         let booking = false;
         
         //// in unavailable register email
-        if (this.tickets - this.guests.length > 0) {
+        if (this.tickets - this.members.guests.length > 0) {
             booking = true;
-            var number = document.createElement("input");
+            var name = document.createElement("input");
             var creditCard = document.createElement("input");
-            number.type = "number";
-            number.max  = this.tickets - this.guests.length;
-            number.min  = 1;
-            number.placeholder = "Antal biljetter"
-            number.required = true;
+            name.placeholder = "Namn"
+            name.required = true;
             creditCard.placeholder = "Kreditkortsnummer";
             creditCard.required = true;
-            form.insertBefore(creditCard, email);
-            form.insertBefore(number, creditCard);
+            form.insertBefore(creditCard, button);
+            form.insertBefore(name, email);
         }
-        console.log(creditCard);
         
         form.onsubmit = (e) => {
             e.preventDefault();
@@ -216,18 +273,15 @@ class Event {
             let trimmed = email.value.trim();
             if (trimmed.length > 0 && trimmed.includes("@")) { 
                 if (booking) {
-
                     if (!isNaN(creditCard.value) && creditCard.value.length >= 15) {
-                        let nextId = 1;
-                        //TODO: spara ny json
-                        let info = {
-                            email: email,
-                            creditCard: creditCard,
-                            purchaseId: nextId
-                        };
-                        
-                        //// store values 
-                        localStorage.setItem("form", JSON.stringify(info));
+
+                        let guest = {
+                            "name": name.value,
+                            "email": email.value
+                        }
+                        localStorage.setItem("name", name.value); // save for form use
+                        this.members.guests.push(guest);
+                        app.updateStorage(); // update events in localstorage
 
                         form.remove();
                         let confirmDiv = document.createElement("div");
@@ -242,48 +296,25 @@ class Event {
                         button.addEventListener("click", e => {
                             bg.remove();
                         });
-                        booking = false;
-                        localStorage.setItem()
+
+                        booking = false; // reset current action status
 
                     } else {
-                        alert("PVänligen ange ett giltigt kortnummer");
+                        alert("Vänligen ange ett giltigt kortnummer");
                     }
                 } else {
                     //TODO: store email
+                    localStorage.setItem("email", email.value);
                     alert("Tack, vi meddelar dig om någon biljett dyker upp.");
                     bg.remove();
                 }
             } else {
                 alert("Vänligen ange en giltig emailadress.")
             }
-
-
-
-            
         }
-
         cancel.addEventListener("click", e => {
             bg.remove();
         });
         
     }
-
-    //// when click on large image ////
-    popupImg(url) {
-        let bg = document.createElement("div");
-        bg.className = "popupBG";
-        document.getElementsByTagName("body")[0].appendChild(bg);
-
-        let image = document.createElement("img");
-        image.src = url;
-        image.className = "popupImg";
-        bg.appendChild(image);
-
-        bg.addEventListener("click", function(e) {
-            this.remove();
-        })
-    }
-
-    
 }
-
