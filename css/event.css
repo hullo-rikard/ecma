@@ -329,6 +329,7 @@ body main #infoSection .infoWrapper .people {
   -ms-grid-columns: 1fr 2.5fr;
       grid-template-columns: 1fr 2.5fr;
   font-weight: 600;
+  gap: 0.5em;
 }
 
 body main #infoSection .infoWrapper .people .guests {
@@ -406,6 +407,7 @@ body main #infoSection .gbSection .messages {
       grid-template-columns: 2fr 6fr;
   grid-auto-rows: 2.5em;
   border-radius: 4px;
+  gap: 0.2em;
 }
 
 body main #infoSection .gbSection .messages p {

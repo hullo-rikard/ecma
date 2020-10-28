@@ -269,6 +269,7 @@ body {
                     overflow: scroll;
                     grid-template-columns: 1fr 2.5fr;
                     font-weight: 600;
+                    gap: 0.5em;
                     
                     .guests {
                         grid-column: 1 / 2;
@@ -323,6 +324,7 @@ body {
                     grid-template-columns: 2fr 6fr;
                     grid-auto-rows: 2.5em;
                     border-radius: 4px;
+                    gap: 0.2em;
                     p {
                         max-width: 100%;
                         font-size: 0.8em;

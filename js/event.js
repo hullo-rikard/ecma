@@ -1,66 +1,26 @@
-let events;
+
 
 document.addEventListener("DOMContentLoaded", function(e) {    
 
-   
-    events = new Events();
     setTimeout(() => {
         const urlParams = new URLSearchParams(window.location.search);
         let id = parseInt(urlParams.get("eventid"));
         app.displayEventById(id);
-        console.log(app);
     }, 100);
 
-
-
 })
-
-class Events {
-    constructor() {
-        this.events = [];
-        this.getEvents();
-
-    }
-    getEvents() {
-        for (let event of app.events) {
-            this.events.push(new Event(event));
-        }
-    }
-    async fetchEvents() {
-        await fetch("data/events.json") // data/events.json
-        .then(response => response.json())
-        .then(data => {
-            for (let item of data.events) {
-                this.events.push(new Event(item));
-            }
-        });
-    }
-    displayEventById(id) {
-        if (typeof id == "number") {
-            let event = this.events.find(obj => obj.id == id);
-            let page = new Page(event);
-            page.displayEvent();
-        } else {
-            this.events[0].displayEvent();
-        }
-    }
-    updateStorage() {
-        localStorage.setItem("avants", JSON.stringify(this.events));
-    }
-}
 
 App.prototype.displayEventById = function(id) {
     if (typeof id == "number") {
         let event = this.events.find(obj => obj.id == id);
-        let page = new Page(event);
-        page.displayEvent();
+        new Page(event).displayEvent();
     } else {
         this.events[0].displayEvent();
     }
 }
 
 App.prototype.updateStorage = function() {
-    localStorage.setItem("avants", JSON.stringify(this.events));
+    localStorage.setItem("events", JSON.stringify(this.events));
 }
 
 
@@ -68,7 +28,7 @@ class Page {
     constructor(event) {
         this.id = event.id;
         this.name = event.name;
-        this.description = event.description; // description
+        this.description = event.description;
         this.address = event.address;
         this.startDatetime = event.startDatetime;
         this.endDatetime = event.endDatetime;
@@ -76,10 +36,7 @@ class Page {
         this.category = event.category;
         this.members = event.members;
         this.guestbook = event.guestbook;
-        this.bookingBumber = event.bookingBumber;
-        
-        
-        // this.event = event;
+                
         this.browserTitle = document.querySelector("title");
         
         //// images ////
@@ -128,9 +85,7 @@ class Page {
                 this.displayingImg = image;
             })
         }
-        
-        
-        
+
         //// info material ////
         this.browserTitle.textContent = 'ACME Event - '+this.name
         this.title.innerHTML = this.name;
@@ -138,18 +93,14 @@ class Page {
         this.date.innerHTML = this.startDatetime.replace("T", ", Kl ").slice(0, -3);
         this.infoText.innerHTML = this.description;
         this.addressP.innerHTML = this.address;
-        if (this.members.guests) {
-            for (let guest of this.members.guests) {
-                let name = document.createElement("p");
-                name.innerHTML = guest.name;
-                this.guestlist.appendChild(name);
-            }
-        }
-        if (this.members.staff > 0) {
+
+        this.refreshGuestList();
+
+        if (this.members.staff.length > 0) {
             for (let member of this.members.staff) {
                 let name = document.createElement("p");
                 name.innerHTML = member.name + " - " + member.role;
-                stafflist.appendChild(name);
+                this.stafflist.appendChild(name);
             }
         }
 
@@ -194,7 +145,9 @@ class Page {
             "message": entry,
             "datetime": datetime
         });
+        app.updateStorage();
     }
+
     refreshGuestbook() {
         while (this.guestbookDisplay.firstChild) {
             this.guestbookDisplay.removeChild(this.guestbookDisplay.lastChild);
@@ -210,6 +163,20 @@ class Page {
             this.guestbookDisplay.appendChild(text);
         }
         this.guestbookDisplay.scrollTop = this.guestbookDisplay.scrollHeight;
+    }
+
+    //// Refresh guest list ////
+    refreshGuestList() {
+        while (this.guestlist.children.length > 1) {
+            this.guestlist.removeChild(this.guestlist.lastChild);
+        } 
+        if (this.members.guests.length > 0) {
+            for (let guest of this.members.guests) {
+                let name = document.createElement("p");
+                name.innerHTML = guest.name;
+                this.guestlist.appendChild(name);
+            }
+        }
     }
 
     //// when click on large image ////
@@ -230,7 +197,6 @@ class Page {
 
     //// book or notify button event ////
     bookTickets() {
-        //TODO: popup book tickets
         let bg = document.createElement("div");
         bg.className = "popupBG";
         document.getElementsByTagName("body")[0].appendChild(bg);
@@ -244,23 +210,28 @@ class Page {
         let button = document.createElement("button");
         let cancel = document.createElement("button");
         email.placeholder = "Email";
-        email.required = true;
         button.innerHTML = "Skicka";
         button.type      = "submit";
         cancel.innerHTML = "Avbryt";
-        cancel.type      = "submit";
         form.appendChild(email);
         form.appendChild(button);
         form.appendChild(cancel);
         let booking = false;
         
-        //// in unavailable register email
+        //// if unavailable register email
         if (this.tickets - this.members.guests.length > 0) {
             booking = true;
             var name = document.createElement("input");
             var creditCard = document.createElement("input");
-            name.placeholder = "Namn"
+            if (localStorage.getItem("guest")) {
+                let guest = localStorage.getItem("guest");
+                guest = JSON.parse(guest);
+                name.value = guest.name;
+                email.value = guest.email;
+            }
+            name.placeholder = "Namn";
             name.required = true;
+            email.required = true;
             creditCard.placeholder = "Kreditkortsnummer";
             creditCard.required = true;
             form.insertBefore(creditCard, button);
@@ -273,29 +244,36 @@ class Page {
             let trimmed = email.value.trim();
             if (trimmed.length > 0 && trimmed.includes("@")) { 
                 if (booking) {
-                    if (!isNaN(creditCard.value) && creditCard.value.length >= 15) {
+                    if (!isNaN(creditCard.value) && creditCard.value.length >= 8) {
 
                         let guest = {
                             "name": name.value,
                             "email": email.value
                         }
-                        localStorage.setItem("name", name.value); // save for form use
-                        this.members.guests.push(guest);
-                        app.updateStorage(); // update events in localstorage
+                        
 
                         form.remove();
                         let confirmDiv = document.createElement("div");
                         let confirm = document.createElement("p");
                         let button = document.createElement("button");
                         confirmDiv.className = "confirm";
-                        confirm.innerHTML = "Dina biljetter är reserverade!!<br>En bokningsbekräftelse har skickats till din email."
+                        confirm.innerHTML = "Dina biljetter är reserverade!<br>Ditt bodningsnummer är: " + this.bookingNumber + "<br>En bokningsbekräftelse har skickats till din email."
                         button.innerHTML = "OK";
+/*                         this.bookingNumber++;           //! why not working?
+                        console.log(this.bookingNumber);            //  5001
+                        console.log(app.events[4].bookingNumber);   //  5000 */
                         bookDiv.appendChild(confirmDiv);
                         confirmDiv.appendChild(confirm);
                         confirmDiv.appendChild(button);
                         button.addEventListener("click", e => {
                             bg.remove();
                         });
+
+                        localStorage.setItem("guest", JSON.stringify(guest)); // save for form use
+                        
+                        this.members.guests.push(guest);
+                        app.updateStorage(); // update events in localstorage
+                        this.refreshGuestList();
 
                         booking = false; // reset current action status
 
@@ -313,6 +291,7 @@ class Page {
             }
         }
         cancel.addEventListener("click", e => {
+            e.preventDefault(); 
             bg.remove();
         });
         
