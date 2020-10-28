@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css\main.css">
+    <link rel="stylesheet" href="css\events.css">
+    <script defer src="js\main.js"></script>
+    <script defer src="js\events.js"></script>
+    <title>Events</title>
+</head>
+    <body>
+        <div id='pseudo-header'></div>
+        <div class='container'>
+            <div id='filter-and-sort'>
+                <div id='sort'>
+                    <span>Sortera efter: </span>
+                    <input type="radio" id="date" name="sort" value="Datum" checked>
+                    <label for="date">Datum</label>
+                    <input type="radio" id="name" name="sort" value="Namn">
+                    <label for="name">Namn</label>
+                </div>
+                <div id='filter'>
+                    <span>Visa kategorier: </span>
+                    <span id='Catering' class='filterChoice'>Catering</span>
+                    <span> - </span>
+                    <span id='Bröllop' class='filterChoice'>Bröllop</span>
+                    <span> - </span>
+                    <span id='Konserter' class='filterChoice'>Konserter</span>
+                    <span> - </span>
+                    <span id='Festivaler' class='filterChoice'>Festivaler</span>
+                    <span> - </span>
+                    <span id='Utbildningar' class='filterChoice'>Utbildningar</span>
+                </div>
+            </div>
+            <div id='events'>
+                <div>
+                    <h1>Kommande Event</h1>
+                </div>
+                <div id='upcomingEvents'>
+                    <!-- upcoming events loaded here -->
+                </div>
+                <div>
+                    <h1>Tidigare Event</h1>
+                </div>
+                <div id='pastEvents'>
+                    <!-- past events loaded here -->
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

@@ -26,7 +26,7 @@ let app
 
 //TODO: HÄR FINNS EN BUGG!! Om datan hämtas från .json-filen så awaitar den inte resultatet......
 document.addEventListener('DOMContentLoaded', async () => { //TODO? Ska if-satsen kastas in i classen App?
-
+    console.log("hej maindom")
     if(localStorage.getItem('events')){
         app = new App(JSON.parse(localStorage.getItem('events')))
     } else {
@@ -35,7 +35,8 @@ document.addEventListener('DOMContentLoaded', async () => { //TODO? Ska if-satse
         app = new App(JSON.parse(localStorage.getItem('events'))) //denna fungerar inte
         //app = new App(await fetchResult) //denna fungerar inte
     }
-    console.log(app)
+    // console.log(app)
+    console.log("hej då maindom")
 })
 
 

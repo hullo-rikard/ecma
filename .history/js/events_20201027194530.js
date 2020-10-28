@@ -143,6 +143,6 @@ class Eventlist {
 
 document.addEventListener('DOMContentLoaded', async function(){
     setTimeout(function() {
-        new Eventlist(app.events)
+        let eventList = new Eventlist(app.events)
     }, 500);
 })
