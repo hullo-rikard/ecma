@@ -257,7 +257,7 @@ class Page {
                         let confirm = document.createElement("p");
                         let button = document.createElement("button");
                         confirmDiv.className = "confirm";
-                        confirm.innerHTML = "Dina biljetter är reserverade!<br>Ditt bodningsnummer är: " + this.bookingNumber + "<br>En bokningsbekräftelse har skickats till din email."
+                        confirm.innerHTML = "Dina biljetter är reserverade!<br>En bokningsbekräftelse har skickats till din email."
                         button.innerHTML = "OK";
 /*                         this.bookingNumber++;           //! why not working?
                         console.log(this.bookingNumber);            //  5001
