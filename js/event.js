@@ -259,9 +259,6 @@ class Page {
                         confirmDiv.className = "confirm";
                         confirm.innerHTML = "Dina biljetter är reserverade!<br>En bokningsbekräftelse har skickats till din email."
                         button.innerHTML = "OK";
-/*                         this.bookingNumber++;           //! why not working?
-                        console.log(this.bookingNumber);            //  5001
-                        console.log(app.events[4].bookingNumber);   //  5000 */
                         bookDiv.appendChild(confirmDiv);
                         confirmDiv.appendChild(confirm);
                         confirmDiv.appendChild(button);
