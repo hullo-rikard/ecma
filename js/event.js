@@ -96,7 +96,7 @@ class Page {
 
         this.refreshGuestList();
 
-        if (this.members.staff.length > 0) {
+        if (this.members.staff) {
             for (let member of this.members.staff) {
                 let name = document.createElement("p");
                 name.innerHTML = member.name + " - " + member.role;
